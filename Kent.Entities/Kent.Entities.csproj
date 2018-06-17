@@ -51,13 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KentEntities.cs" />
-    <Compile Include="Migrations\201806131537166_Initial.cs" />
-    <Compile Include="Migrations\201806131537166_Initial.Designer.cs">
-      <DependentUpon>201806131537166_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806160543374_FormsChange.cs" />
-    <Compile Include="Migrations\201806160543374_FormsChange.Designer.cs">
-      <DependentUpon>201806160543374_FormsChange.cs</DependentUpon>
+    <Compile Include="Migrations\201806170617553_Initial.cs" />
+    <Compile Include="Migrations\201806170617553_Initial.Designer.cs">
+      <DependentUpon>201806170617553_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\BaseModel.cs" />
@@ -65,12 +61,19 @@
     <Compile Include="Model\EmailQueue.cs" />
     <Compile Include="Model\EmailType.cs" />
     <Compile Include="Model\Form.cs" />
+    <Compile Include="Model\Saler.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\EmailQueues\EmailQueueRepository.cs" />
+    <Compile Include="Repositories\EmailQueues\IEmailQueueRepository.cs" />
+    <Compile Include="Repositories\Emails\EmailRepository.cs" />
+    <Compile Include="Repositories\Emails\IEmailRepository.cs" />
     <Compile Include="Repositories\Forms\FormRepository.cs" />
     <Compile Include="Repositories\Forms\IFormRepository.cs" />
+    <Compile Include="Repositories\Salers\SalerRepository.cs" />
+    <Compile Include="Repositories\Salers\ISalerRepository.cs" />
     <Compile Include="Repositories\Users\IUserRespository.cs" />
     <Compile Include="Repositories\Users\UserRespository.cs" />
   </ItemGroup>
@@ -85,13 +88,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806131537166_Initial.resx">
-      <DependentUpon>201806131537166_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806160543374_FormsChange.resx">
-      <DependentUpon>201806160543374_FormsChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806170617553_Initial.resx">
+      <DependentUpon>201806170617553_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

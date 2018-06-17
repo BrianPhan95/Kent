@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Kent.Entities.Repositories
 {
-    public interface IFormRepository
+    public interface IEmailQueueRepository
     {
-        List<Form> GetList(int typeID);
-        int SaveFormData(Form form);
+        bool SaveEmailToQueue(EmailQueue email);
+
+        EmailQueue GetEmailQueueByID(int id);
+        int CreateEmailAsync(EmailQueue newEmail);
     }
 }

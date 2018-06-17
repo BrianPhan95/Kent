@@ -9,7 +9,9 @@ namespace Kent.Entities.Model
 {
     public class Form : BaseModel
     {
-        public int FormTypeID { get; set; } 
+        public int FormTypeID { get; set; }
         public string Data { get; set; }
+
+        public ICollection<EmailQueue> Students { get; set; }
     }
 }

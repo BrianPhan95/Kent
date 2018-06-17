@@ -8,13 +8,13 @@ namespace Kent.Entities.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Forms",
+                "dbo.EmailLogs",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        FormTypeID = c.Int(nullable: false),
                         EmailQueueID = c.Int(nullable: false),
-                        Data = c.String(),
+                        Message = c.String(),
+                        Status = c.Int(nullable: false),
                         RecordOrder = c.Int(nullable: false),
                         RecordActive = c.Boolean(nullable: false),
                         RecordDeleted = c.Boolean(nullable: false),
@@ -25,8 +25,6 @@ namespace Kent.Entities.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.EmailQueues", t => t.EmailQueueID)
-                .ForeignKey("dbo.FormTypes", t => t.FormTypeID)
-                .Index(t => t.FormTypeID)
                 .Index(t => t.EmailQueueID);
             
             CreateTable(
@@ -38,13 +36,11 @@ namespace Kent.Entities.Migrations
                         Subject = c.String(),
                         From = c.String(),
                         FromName = c.String(),
+                        To = c.String(),
+                        ToName = c.String(),
                         CC = c.String(),
                         BCC = c.String(),
                         Body = c.String(),
-                        DataType = c.String(),
-                        DateFormat = c.String(),
-                        IsDefault = c.Boolean(nullable: false),
-                        EmailTypeId = c.Int(nullable: false),
                         RecordOrder = c.Int(nullable: false),
                         RecordActive = c.Boolean(nullable: false),
                         RecordDeleted = c.Boolean(nullable: false),
@@ -52,10 +48,11 @@ namespace Kent.Entities.Migrations
                         Created = c.DateTime(nullable: false),
                         LastUpdateBy = c.String(),
                         LastUpdate = c.DateTime(),
+                        Form_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.EmailTypes", t => t.EmailTypeId)
-                .Index(t => t.EmailTypeId);
+                .ForeignKey("dbo.Forms", t => t.Form_ID)
+                .Index(t => t.Form_ID);
             
             CreateTable(
                 "dbo.EmailTypes",
@@ -75,10 +72,30 @@ namespace Kent.Entities.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.FormTypes",
+                "dbo.Forms",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        FormTypeID = c.Int(nullable: false),
+                        Data = c.String(),
+                        RecordOrder = c.Int(nullable: false),
+                        RecordActive = c.Boolean(nullable: false),
+                        RecordDeleted = c.Boolean(nullable: false),
+                        CreatedBy = c.String(),
+                        Created = c.DateTime(nullable: false),
+                        LastUpdateBy = c.String(),
+                        LastUpdate = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Salers",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        SalerName = c.String(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
                         RecordOrder = c.Int(nullable: false),
                         RecordActive = c.Boolean(nullable: false),
                         RecordDeleted = c.Boolean(nullable: false),
@@ -135,19 +152,18 @@ namespace Kent.Entities.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Users", "UserTypeId", "dbo.UserTypes");
-            DropForeignKey("dbo.Forms", "FormTypeID", "dbo.FormTypes");
-            DropForeignKey("dbo.Forms", "EmailQueueID", "dbo.EmailQueues");
-            DropForeignKey("dbo.EmailQueues", "EmailTypeId", "dbo.EmailTypes");
+            DropForeignKey("dbo.EmailQueues", "Form_ID", "dbo.Forms");
+            DropForeignKey("dbo.EmailLogs", "EmailQueueID", "dbo.EmailQueues");
             DropIndex("dbo.Users", new[] { "UserTypeId" });
-            DropIndex("dbo.EmailQueues", new[] { "EmailTypeId" });
-            DropIndex("dbo.Forms", new[] { "EmailQueueID" });
-            DropIndex("dbo.Forms", new[] { "FormTypeID" });
+            DropIndex("dbo.EmailQueues", new[] { "Form_ID" });
+            DropIndex("dbo.EmailLogs", new[] { "EmailQueueID" });
             DropTable("dbo.UserTypes");
             DropTable("dbo.Users");
-            DropTable("dbo.FormTypes");
+            DropTable("dbo.Salers");
+            DropTable("dbo.Forms");
             DropTable("dbo.EmailTypes");
             DropTable("dbo.EmailQueues");
-            DropTable("dbo.Forms");
+            DropTable("dbo.EmailLogs");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Kent.Business.Core.Models.Forms;
+﻿using Kent.Business.BackgroundTask;
+using Kent.Business.Core.Models.Forms;
 using Kent.Entities;
 using Kent.Entities.Model;
 using Kent.Entities.Repositories;
@@ -14,32 +15,15 @@ namespace Kent.Business.Services
     public class FormServices : IFormServices
     {
         private readonly IFormRepository _formRepository;
+        private readonly ISalerServices _salerService;
+        private readonly IEmailQueueServices _emailQueueService;
 
-        private static KentEntities kentEntities { get; set; }
-        public FormServices(IFormRepository formRepository)
+        public FormServices(IFormRepository formRepository, ISalerServices salerService, IEmailQueueServices emailQueueService)
         {
-            kentEntities = new KentEntities();
             _formRepository = formRepository;
-
+            _salerService = salerService;
+            _emailQueueService = emailQueueService;
         }
-
-        public bool SaveForm(FormModel model)
-        {
-            var form = new Form()
-            {
-                Data = model.Data,
-                FormTypeID = (int)model.FormTypeID,
-                Created = DateTime.Now,
-                CreatedBy = "test",
-                RecordActive = true,
-                RecordDeleted = false,
-                RecordOrder = 0
-            };
-            kentEntities.Forms.Add(form);
-            kentEntities.SaveChanges();
-            return true;
-        }
-
         public List<FormModel> GetListForms(FormsEnums.FormType type)
         {
             List<FormModel> list = new List<FormModel>();
@@ -62,6 +46,64 @@ namespace Kent.Business.Services
             return list;
         }
 
+        public bool SaveForm(FormModel model)
+        {
+            var form = new Form()
+            {
+                Data = model.Data,
+                FormTypeID = (int)model.FormTypeID,
+                Created = DateTime.Now,
+                CreatedBy = "test",
+                RecordActive = true,
+                RecordDeleted = false,
+                RecordOrder = 0
+            };
+            var formID = _formRepository.SaveFormData(form);
+            if (formID > 0)
+            {
+                CreateEmailQueue(form);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void CreateEmailQueue(Form formData)
+        {
+            List<Saler> listSaler = _salerService.GetList();
+
+            try
+            {
+                List<EmailQueue> emails = new List<EmailQueue>();
+                foreach (var saler in listSaler)
+                {
+                    EmailQueue newEmail = new EmailQueue()
+                    {
+                        From = "",
+                        FromName = "Service",
+                        To = saler.Email,
+                        ToName = saler.SalerName,
+                        Subject = "",
+                        Body = formData.Data,
+                        CreatedBy = "system",
+                        Created = DateTime.Now,
+                        RecordActive = true,
+                    };
+
+                    int emailQueueID = _emailQueueService.AddNewEmail(newEmail);
+                    if (emailQueueID > 0)
+                    {
+                        emails.Add(newEmail);
+                    }
+                }
+
+                EmailBackgroundTask.Run(emails);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         private List<FormModel> Mapping(List<Form> lst, FormsEnums.FormType type)
         {
             return lst.Select(d => new FormModel()

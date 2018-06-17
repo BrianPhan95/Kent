@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,10 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundTask\EmailBackgroundTask.cs" />
     <Compile Include="Core\Models\Forms\FormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailQueues\EmailQueueServices.cs" />
+    <Compile Include="Services\EmailQueues\IEmailQueueServices.cs" />
+    <Compile Include="Services\Emails\IEmailServices.cs" />
+    <Compile Include="Services\Emails\EmailServices.cs" />
     <Compile Include="Services\Forms\FormServices.cs" />
     <Compile Include="Services\Forms\IFormServices.cs" />
+    <Compile Include="Services\Salers\ISalerServices.cs" />
+    <Compile Include="Services\Salers\SalerServices.cs" />
     <Compile Include="Services\Users\IUserServices.cs" />
     <Compile Include="Services\Users\UserServices.cs" />
   </ItemGroup>
@@ -58,6 +68,8 @@
       <Name>Kent.Libary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kent.Entities.Repositories
+namespace Kent.Business.Services
 {
-    public interface IFormRepository
+    public interface IEmailServices
     {
-        List<Form> GetList(int typeID);
-        int SaveFormData(Form form);
+     
     }
 }

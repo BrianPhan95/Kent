@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Kent.Entities.Repositories
 {
-    public interface IFormRepository
+    public interface IEmailRepository
     {
-        List<Form> GetList(int typeID);
-        int SaveFormData(Form form);
+        
     }
 }

@@ -38,7 +38,7 @@ namespace Kent.Web
         protected void Application_Error(Object sender, EventArgs e)
         {
             Server.ClearError();
-        } 
+        }
 
         public static void RegisterComponents()
         {
@@ -46,12 +46,19 @@ namespace Kent.Web
 
             #region Repository
             container.RegisterType<IFormRepository, FormRepository>();
-            
+            container.RegisterType<ISalerRepository, SalerRepository>();
+            container.RegisterType<IEmailRepository, EmailRepository>();
+            container.RegisterType<IEmailQueueRepository, EmailQueueRepository>();
+            container.RegisterType<IUserRespository, UserRespository>();
+
             #endregion
 
             #region Services
             container.RegisterType<IFormServices, FormServices>();
             container.RegisterType<IUserServices, UserServices>();
+            container.RegisterType<ISalerServices, SalerServices>();
+            container.RegisterType<IEmailServices, EmailServices>();
+            container.RegisterType<IEmailQueueServices, EmailQueueServices>();
             #endregion
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

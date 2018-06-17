@@ -17,21 +17,14 @@ namespace Kent.Entities.Model
 
         public string FromName { get; set; }
 
+        public string To { get; set; }
+
+        public string ToName { get; set; }
+
         public string CC { get; set; }
 
         public string BCC { get; set; }
 
         public string Body { get; set; }
-
-        public string DataType { get; set; }
-
-        public string DateFormat { get; set; }
-
-        public bool IsDefault { get; set; }
-
-        public int EmailTypeId { get; set; }
-
-        [ForeignKey("EmailTypeId")]
-        public virtual EmailType UserType { get; set; }
     }
 }
