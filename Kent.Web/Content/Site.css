@@ -1,17 +1,670 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+body {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #283046;
+    text-decoration: none !important;
+    border: 0;
+    list-style: none;
+    outline: none;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.form_signup {
+    width: 1170px;
+    margin: 60px auto;
+}
+
+.form_signup__content {
+    width: 100%;
+    display: inline-block;
+    background: url(/Content/Media/imgexample_formtv.png) no-repeat left top;
+}
+
+    .form_signup__content form {
+        background: #fbdf00 url(/Content/Media/bg_formtv.png) no-repeat left top;
+        float: right;
+        width: 500px;
+        padding: 20px;
+    }
+
+        .form_signup__content form h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form_signup__content form .form_item {
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+            .form_signup__content form .form_item p {
+                float: left;
+                font-size: 14px;
+                padding-left: 40px;
+                line-height: 33px;
+                cursor: pointer;
+            }
+
+            .form_signup__content form .form_item button {
+                border-radius: 10px 0 10px 0;
+                height: 35px;
+                width: 141px;
+                float: left;
+                background: #ed1c24;
+                color: #fff;
+                font-size: 16px;
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                transition: all 1s ease;
+            }
+
+                .form_signup__content form .form_item button:hover {
+                    background: #000;
+                }
+
+            .form_signup__content form .form_item label {
+                font-weight: normal;
+                line-height: 24px;
+                padding-left: 0;
+                width: 25%;
+                padding-right: 0;
+            }
+
+                .form_signup__content form .form_item label b {
+                    padding: 0;
+                    margin-top: 6px;
+                    display: inline-block;
+                }
+
+            .form_signup__content form .form_item input {
+                height: 30px;
+                border-radius: 4px;
+                width: 75%;
+                padding: 0 10px;
+                background: #fff;
+            }
+
+            .form_signup__content form .form_item textarea {
+                height: 100px;
+                border-radius: 4px;
+                width: 75%;
+                padding: 0 10px;
+                background: #fff;
+            }
+
+            .form_signup__content form .form_item .check_form {
+                padding-left: 0;
+            }
+
+                .form_signup__content form .form_item .check_form .form-check {
+                    height: 20px;
+                    margin-bottom: 10px;
+                }
+
+                    .form_signup__content form .form_item .check_form .form-check label {
+                        width: 100%;
+                        line-height: 37px;
+                        display: inline-block;
+                    }
+
+                        .form_signup__content form .form_item .check_form .form-check label input {
+                            float: left;
+                            margin-right: 5px;
+                            width: auto;
+                        }
+
+                    .form_signup__content form .form_item .check_form .form-check span {
+                        font-size: 12px;
+                        font-style: italic;
+                        color: #303030;
+                    }
+
+.form_success {
+    width: 500px;
+    margin: 60px auto;
+}
+
+.form_success__content {
+    width: 100%;
+    background: #fbdf00 url(/Content/Media/bg_formtv.png) no-repeat left top;
+    float: right;
+    width: 500px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+    .form_success__content p {
+        margin-top: 20px;
+        line-height: 23px;
+        font-size: 16px;
+    }
+
+@media only screen and (max-width: 1190px) {
+    .form_signup {
+        width: 444px;
+        margin: 60px auto;
+    }
+
+    .form_signup__content {
+        background: none;
+    }
+
+        .form_signup__content form {
+            background: url(/Content/Media/bg_formtv.png) no-repeat left top;
+            float: right;
+            width: 444px;
+            padding: 20px;
+        }
+
+            .form_signup__content form h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 22px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+}
+
+@media only screen and (max-width: 700px) {
+    .form_signup {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .form_signup__content {
+        background: none;
+    }
+
+        .form_signup__content form {
+            background: url(/Content/Media/bg_formtv.png) no-repeat left top;
+            float: right;
+            width: 100%;
+            padding: 20px;
+        }
+
+            .form_signup__content form label, .form_signup__content form input, .form_signup__content form textarea {
+                width: 100% !important;
+            }
+
+            .form_signup__content form .form_item .check_form .form-check {
+                height: 25px;
+            }
+
+                .form_signup__content form .form_item .check_form .form-check label input {
+                    width: auto !important;
+                    margin-top: -7px;
+                }
+
+                .form_signup__content form .form_item .check_form .form-check label {
+                    line-height: 18px;
+                }
+
+                .form_signup__content form .form_item .check_form .form-check label {
+                    font-size: 12px;
+                }
+}
+
+.form_thamquan {
+    width: 1170px;
+    margin: 60px auto;
+}
+
+.form_thamquan__content {
+    width: 100%;
+    display: inline-block;
+    background: url(/Content/Media/imgexample_formthamquan.png) no-repeat left top;
+}
+
+    .form_thamquan__content form {
+        background: #fbdf00 url(/Content/Media/bg_formtv.png) no-repeat left top;
+        float: right;
+        width: 444px;
+        padding: 20px;
+    }
+
+        .form_thamquan__content form h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form_thamquan__content form .form_item {
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+            .form_thamquan__content form .form_item p {
+                float: left;
+                font-size: 14px;
+                padding-left: 40px;
+                line-height: 33px;
+                cursor: pointer;
+            }
+
+            .form_thamquan__content form .form_item button {
+                border-radius: 10px 0 10px 0;
+                height: 35px;
+                width: 125px;
+                float: left;
+                background: #ed1c24;
+                color: #fff;
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                transition: all 1s ease;
+            }
+
+                .form_thamquan__content form .form_item button:hover {
+                    background: #000;
+                }
+
+            .form_thamquan__content form .form_item label {
+                font-weight: normal;
+                line-height: 24px;
+                padding-left: 0;
+                width: 25%;
+                padding-right: 0;
+            }
+
+                .form_thamquan__content form .form_item label b {
+                    padding: 0;
+                }
+
+            .form_thamquan__content form .form_item input {
+                height: 30px;
+                border-radius: 4px;
+                width: 75%;
+                padding: 0 10px;
+                background: #fff;
+            }
+
+            .form_thamquan__content form .form_item .form_date input, .form_thamquan__content form .form_item .form_time input {
+                border-radius: 4px 0 0 4px;
+                border: 0;
+            }
+
+            .form_thamquan__content form .form_item .form_date span, .form_thamquan__content form .form_item .form_time span {
+                background: #fff;
+                border: 0;
+                border-radius: 0 4px 4px 0;
+                color: #5d5d5d;
+            }
+
+            .form_thamquan__content form .form_item textarea {
+                height: 100px;
+                border-radius: 4px;
+                width: 75%;
+                padding: 0 10px;
+                background: #fff;
+            }
+
+            .form_thamquan__content form .form_item .check_form {
+                padding-left: 0;
+            }
+
+                .form_thamquan__content form .form_item .check_form .form-check {
+                    height: 20px;
+                    margin-bottom: 10px;
+                }
+
+                    .form_thamquan__content form .form_item .check_form .form-check label {
+                        width: 100%;
+                        line-height: 37px;
+                        display: inline-block;
+                    }
+
+                        .form_thamquan__content form .form_item .check_form .form-check label input {
+                            float: left;
+                            margin-right: 5px;
+                            width: auto;
+                        }
+
+                    .form_thamquan__content form .form_item .check_form .form-check span {
+                        font-size: 12px;
+                        font-style: italic;
+                        color: #303030;
+                    }
+
+@media only screen and (max-width: 1190px) {
+    .form_thamquan {
+        width: 444px;
+        margin: 60px auto;
+    }
+
+    .form_thamquan__content {
+        background: none;
+    }
+
+        .form_thamquan__content form {
+            background: url(/Content/Media/bg_formtv.png) no-repeat left top;
+            float: right;
+            width: 444px;
+            padding: 20px;
+        }
+
+            .form_thamquan__content form h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 22px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+}
+
+@media only screen and (max-width: 767px) {
+    .form_thamquan {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .form_thamquan__content {
+        background: none;
+    }
+
+        .form_thamquan__content form {
+            background: url(/Content/Media/bg_formtv.png) no-repeat left top;
+            float: right;
+            width: 100%;
+            padding: 20px;
+        }
+
+            .form_thamquan__content form label, .form_thamquan__content form input, .form_thamquan__content form textarea {
+                width: 100% !important;
+            }
+
+            .form_thamquan__content form .form_item .check_form .form-check {
+                height: 25px;
+            }
+
+                .form_thamquan__content form .form_item .check_form .form-check label input {
+                    width: auto !important;
+                    margin-top: -7px;
+                }
+
+                .form_thamquan__content form .form_item .check_form .form-check label {
+                    line-height: 18px;
+                }
+
+                .form_thamquan__content form .form_item .check_form .form-check label {
+                    font-size: 12px;
+                }
+}
+
+.form_nhaphoc h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.form_nhaphoc h6 {
+    display: inline-block;
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+}
+
+.form_nhaphoc .item_nhaphoc {
+    padding: 0 15px;
+    height: 30px;
+}
+
+    .form_nhaphoc .item_nhaphoc .form_namnu {
+        padding-left: 0;
+    }
+
+    .form_nhaphoc .item_nhaphoc label {
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    .form_nhaphoc .item_nhaphoc span {
+        font-size: 13px;
+        font-style: italic;
+        color: #515151;
+        background: #fff;
+        border: 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .form_nhaphoc .item_nhaphoc .form_date input, .form_nhaphoc .item_nhaphoc .form_time input {
+        border-right: 0;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .form_nhaphoc .item_nhaphoc .form_date span, .form_nhaphoc .item_nhaphoc .form_time span {
+        border: 1px solid #e9e9e9;
+        border-left: 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .form_nhaphoc .item_nhaphoc input, .form_nhaphoc .item_nhaphoc select {
+        border: 1px solid #e9e9e9;
+        height: 30px;
+        border-radius: 4px;
+        padding: 0 10px;
+        background: #fff;
+    }
+
+        .form_nhaphoc .item_nhaphoc input:focus, .form_nhaphoc .item_nhaphoc select:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+
+    .form_nhaphoc .item_nhaphoc .form_namnu .form-check {
+        float: left;
+        margin-right: 10px;
+        margin-left: 0;
+        width: auto;
+    }
+
+        .form_nhaphoc .item_nhaphoc .form_namnu .form-check input {
+            height: auto;
+        }
+
+.bg_nganhhoc {
+    background: #f4f4f4;
+}
+
+    .bg_nganhhoc .ctrinhhoc, .bg_nganhhoc .form_namnu {
+        padding: 0;
+    }
+
+        .bg_nganhhoc .ctrinhhoc .form-check, .bg_nganhhoc .form_namnu .form-check {
+            margin-bottom: 10px;
+        }
+
+            .bg_nganhhoc .ctrinhhoc .form-check label, .bg_nganhhoc .form_namnu .form-check label {
+                font-weight: normal;
+            }
+
+.check_accept {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f4f4f4;
+}
+
+    .check_accept .form-check {
+        padding: 0;
+    }
+
+        .check_accept .form-check label {
+            font-weight: normal;
+        }
+
+.hosolist {
+    width: 100%;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+    .hosolist h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 0 15px;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    .hosolist h6 {
+        display: inline-block;
+        padding: 0 15px;
+        font-weight: bold;
+        font-size: 14px;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hosolist .check_hs {
+        height: 50px;
+    }
+
+        .hosolist .check_hs img {
+            float: left;
+            width: 10px;
+            margin: 5px 10px 0 0;
+        }
+
+        .hosolist .check_hs p {
+            float: left;
+            width: 90%;
+        }
+
+.button_form {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+    .button_form button {
+        border-radius: 10px 0 10px 0;
+        height: 35px;
+        width: 141px;
+        font-size: 16px;
+        background: #fbdf00;
+        color: #000;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+        .button_form button:hover {
+            background: #000;
+            color: #fff;
+        }
+
+@media only screen and (max-width: 767px) {
+    .form_nhaphoc .item_nhaphoc input {
+        width: 100%;
+    }
+
+    .form_nhaphoc .item_nhaphoc {
+        padding: 0 15px;
+        height: 30px;
+        margin-bottom: 15px;
+        width: 100%;
+        display: inline-block;
+    }
+
+    .form_nhaphoc .item_nhaphoc {
+        padding: 0 15px;
+        height: 50px;
+        margin-bottom: 15px;
+        width: 100%;
+        display: inline-block;
+    }
+
+        .form_nhaphoc .item_nhaphoc label {
+            font-weight: normal;
+            padding: 0;
+            margin: 0;
+            margin-top: 5px;
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .form_nhaphoc .item_nhaphoc .form_namnu .form-check input {
+            width: auto !important;
+        }
+
+    .space_html {
+        display: none !important;
+    }
+
+    .bg_nganhhoc {
+        margin-top: 20px;
+    }
+
+    .form_success {
+        width: 100%;
+        margin: 60px auto;
+        padding: 0 15px;
+    }
+
+    .form_success__content {
+        width: 100%;
+        background: #fbdf00 url(/Content/Media/bg_formtv.png) no-repeat left top;
+        float: right;
+        width: 100%;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+        .form_success__content p {
+            margin-top: 20px;
+            line-height: 23px;
+            font-size: 16px;
+        }
+}
+
+.infor_name label {
+    font-weight: normal;
+}
+
+.infor_name input.infor_other {
+    border: 1px solid #e9e9e9;
+    height: 30px;
+    border-radius: 4px;
+    padding: 0 10px;
+    background: #fff;
+}
+
+.infor_name input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+/*# sourceMappingURL=form.css.map */

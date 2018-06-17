@@ -11,7 +11,7 @@ namespace Kent.Entities
 {
     public class KentEntities : DbContext
     {
-        public KentEntities() : base("KentDatabase")
+        public KentEntities() : base("name=KentDatabase")
         {
 
         }
@@ -19,7 +19,6 @@ namespace Kent.Entities
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<Form> Forms { get; set; }
-        public DbSet<FormType> FormTypes { get; set; }
         public DbSet<EmailLog> EmailLogs { get; set; }
         public DbSet<EmailQueue> EmailQueues { get; set; }
         public DbSet<EmailType> EmailTypes { get; set; }  

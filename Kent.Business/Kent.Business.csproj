@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Models\Forms\FormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Forms\FormServices.cs" />
     <Compile Include="Services\Forms\IFormServices.cs" />
+    <Compile Include="Services\Users\IUserServices.cs" />
+    <Compile Include="Services\Users\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kent.Entities\Kent.Entities.csproj">
@@ -54,8 +58,6 @@
       <Name>Kent.Libary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
