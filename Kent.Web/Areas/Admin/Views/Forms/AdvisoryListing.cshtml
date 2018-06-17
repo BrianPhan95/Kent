@@ -1,0 +1,56 @@
+﻿@model List<Kent.Web.Areas.Admin.Models.FormData.AdvisoryData>
+@{
+    ViewBag.Title = "Danh sách tư vấn";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+<h2>Danh sách tư vấn</h2>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                @*<h3 class="card-title">Hover Data Table</h3>*@
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Địa chỉ Email</th>
+                            <th>Số điện thoại liên hệ</th>
+                            <th>Ngành đăng ký tư vấn</th>
+                            <th>Ngày gửi đăng ký</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <td>@data.Name</td>
+                                <td>
+                                    @data.Email
+                                </td>
+                                <td>@data.PhoneNumber</td>
+                                <td>@*@data.Email*@</td>
+                                <td>@data.DateCreated</td>
+                            </tr>
+                        }
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th>Engine version</th>
+                                <th>CSS grade</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+

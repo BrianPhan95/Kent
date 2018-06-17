@@ -1,0 +1,68 @@
+﻿@model Kent.Web.Models.Forms.AdvisoryModel
+@{
+    Layout = null;
+    ViewBag.Title = "Tư vấn";
+   var SpecializeList = new List<SelectListItem>()
+    {
+        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
+        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
+        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
+        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
+        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
+        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
+        new SelectListItem(){Text="Dự bị Đại học Quốc tế", Value="Dự bị Đại học Quốc tế"},
+    };
+}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/site.css">
+<div class="form_signup">
+    <div class="form_signup__content">
+        @using (Html.BeginForm("Advisory", "Forms", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <h2>Đăng ký tư vấn</h2>
+                <div class="form-group form_item">
+                    <label for="name" class="col-md-3">Họ và tên</label>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+                </div>
+                <div class="form-group form_item">
+                    <label for="email" class="col-md-3">Số điện thoại</label>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-md-9" })
+                </div>
+                <div class="form-group form_item">
+                    <label for="email" class="col-md-3">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "col-md-9" })
+                </div>
+                <div class="form-group form_item">
+                    <label for="email" class="col-md-3"><b>Chuyên ngành</b></label>
+                    <div class="col-md-9 check_form">
+                        @foreach (var item in SpecializeList)
+                        {
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox"
+                                           name="Specialize"
+                                           value="@item.Value" />
+                                    @item.Text
+                                </label>
+                            </div>
+                        }
+                        <div class="form-check">
+                            <span>Quý phụ huynh học sinh có thể chọn tư vấn nhiều ngành</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form_item">
+                    <label for="email" class="col-md-3">Lời nhắn</label>
+                    @Html.TextAreaFor(m => m.Message, new { @class = "col-md-9" })
+                </div>
+                <div class="form-group form_item">
+                    <label for="email" class="col-md-3">&nbsp;</label>
+                    <button type="submit">Đăng ký</button>
+                    <p>Bỏ qua</p>
+                </div>
+        }
+
+    </div>
+</div>

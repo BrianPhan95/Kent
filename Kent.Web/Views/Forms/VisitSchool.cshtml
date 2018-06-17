@@ -1,0 +1,56 @@
+﻿@model Kent.Web.Models.Forms.VisitSchoolModel
+@{
+    Layout = null;
+    ViewBag.Title = "Thăm quan trường";
+}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/site.css">
+<div class="form_thamquan">
+    <div class="form_thamquan__content">
+        @using (Html.BeginForm("VisitSchool", "Forms", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <h2>Đăng ký thăm quan trường</h2>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Họ và tên</label>
+                @*<input type="email" class="col-md-9" id="name" required />*@
+                @Html.TextBoxFor(m => m.FullName, new { @class = "col-md-8" })
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Số điện thoại</label>
+                @*<input type="email" class="col-md-9" id="phone" required />*@
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-md-8" })
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Email</label>
+                @*<input type="email" class="col-md-9" id="email" required />*@
+                @Html.TextBoxFor(m => m.Email, new { @class = "col-md-8" })
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Ngày tháng</label>
+                <div class="input-group date form_date col-md-9" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    @*<input style="width:100%" class="" size="16" type="text" value="" readonly>*@
+                    @Html.TextBoxFor(m => m.DateVisit, new { @class = "col-md-8" })
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            @*<div class="form-group form_item">
+                    <label for="email" class="col-md-3">Thời gian</label>
+                    <div class="input-group date form_time col-md-9" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                        <input style="width:100%" class="form-control" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>*@
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Lời nhắn</label>
+                @Html.TextAreaFor(m => m.Message, new { @class = "col-md-8" })
+                @*<textarea class="col-md-9" id="exampleFormControlTextarea1"></textarea>*@
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">&nbsp;</label>
+                <button type="submit">Đăng ký</button>
+                <p>Bỏ qua</p>
+            </div>
+        }
+    </div>
+</div>
