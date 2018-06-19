@@ -6,6 +6,7 @@ using Kent.Entities.Repositories;
 using Kent.Libary.Enums;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,13 @@ namespace Kent.Business.Services
     public class FormServices : IFormServices
     {
         private readonly IFormRepository _formRepository;
-        private readonly ISalerServices _salerService;
+        private readonly IEmployeesServices _employeesService;
         private readonly IEmailQueueServices _emailQueueService;
 
-        public FormServices(IFormRepository formRepository, ISalerServices salerService, IEmailQueueServices emailQueueService)
+        public FormServices(IFormRepository formRepository, IEmployeesServices employeesService, IEmailQueueServices emailQueueService)
         {
             _formRepository = formRepository;
-            _salerService = salerService;
+            _employeesService = employeesService;
             _emailQueueService = emailQueueService;
         }
         public List<FormModel> GetListForms(FormsEnums.FormType type)
@@ -61,30 +62,30 @@ namespace Kent.Business.Services
             var formID = _formRepository.SaveFormData(form);
             if (formID > 0)
             {
-                CreateEmailQueue(form);
+                CreateEmailQueue(form, model.EmailBodyString);
                 return true;
             }
 
             return false;
         }
 
-        private void CreateEmailQueue(Form formData)
+        private void CreateEmailQueue(Form formData, string emailBodyStr)
         {
-            List<Saler> listSaler = _salerService.GetList();
+            List<Employees> listEmployees = _employeesService.GetList();
 
             try
             {
                 List<EmailQueue> emails = new List<EmailQueue>();
-                foreach (var saler in listSaler)
+                foreach (var employees in listEmployees)
                 {
                     EmailQueue newEmail = new EmailQueue()
                     {
                         From = "",
                         FromName = "Service",
-                        To = saler.Email,
-                        ToName = saler.SalerName,
+                        To = employees.Email,
+                        ToName = employees.Name,
                         Subject = "",
-                        Body = formData.Data,
+                        Body = emailBodyStr,
                         CreatedBy = "system",
                         Created = DateTime.Now,
                         RecordActive = true,

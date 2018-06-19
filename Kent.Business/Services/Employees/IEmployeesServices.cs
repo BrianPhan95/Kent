@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Kent.Business.Services
 {
-    public interface ISalerServices
+    public interface IEmployeesServices
     {
-        List<Saler> GetList();
+        List<Employees> GetList();
+        bool AddNewEmployees(Employees employees);
     }
 }

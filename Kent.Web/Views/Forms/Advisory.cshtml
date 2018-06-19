@@ -2,7 +2,7 @@
 @{
     Layout = null;
     ViewBag.Title = "Tư vấn";
-   var SpecializeList = new List<SelectListItem>()
+    var SpecializeList = new List<SelectListItem>()
     {
         new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
         new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
@@ -22,10 +22,10 @@
         @using (Html.BeginForm("Advisory", "Forms", null, FormMethod.Post, new { @class = "form-horizontal" }))
         {
             <h2>Đăng ký tư vấn</h2>
-                <div class="form-group form_item">
-                    <label for="name" class="col-md-3">Họ và tên</label>
-                    @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
-                </div>
+            <div class="form-group form_item">
+                <label for="name" class="col-md-3">Họ và tên</label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+            </div>
                 <div class="form-group form_item">
                     <label for="email" class="col-md-3">Số điện thoại</label>
                     @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-md-9" })

@@ -40,7 +40,8 @@ namespace Kent.Web.Controllers
                 var formModel = new FormModel()
                 {
                     FormTypeID = FormsEnums.FormType.Admission,
-                    Data = SerializeUtilities.Serialize(model)
+                    Data = SerializeUtilities.Serialize(model),
+                    EmailBodyString = RenderRazorViewToString("Admission", model)
                 };
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
@@ -67,7 +68,8 @@ namespace Kent.Web.Controllers
                 var formModel = new FormModel()
                 {
                     FormTypeID = FormsEnums.FormType.Advisory,
-                    Data = SerializeUtilities.Serialize(model)
+                    Data = SerializeUtilities.Serialize(model),
+                    EmailBodyString = RenderRazorViewToString("Advisory", model)
                 };
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
@@ -94,7 +96,8 @@ namespace Kent.Web.Controllers
                 var formModel = new FormModel()
                 {
                     FormTypeID = FormsEnums.FormType.Visit,
-                    Data = SerializeUtilities.Serialize(model)
+                    Data = SerializeUtilities.Serialize(model),
+                    EmailBodyString = RenderRazorViewToString("VisitSchool", model)
                 };
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)

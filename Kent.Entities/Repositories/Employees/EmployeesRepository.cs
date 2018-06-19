@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace Kent.Entities.Repositories
 {
-    public class SalerRepository : BaseRepository, ISalerRepository
+    public class EmployeesRepository : BaseRepository, IEmployeesRepository
     {
-        public List<Saler> GetList()
+        public List<Employees> GetList()
         {
-            List<Saler> result = null;
+            List<Employees> result = null;
 
             using (IDbConnection conn = Connection)
             {
-                string sql = "select * from Salers";
+                string sql = "select * from Employees";
 
                 try
                 {
                     conn.Open();
 
-                    result = conn.Query<Saler>(sql).AsQueryable().ToList();
+                    result = conn.Query<Employees>(sql).AsQueryable().ToList();
                 }
                 catch (SqlException sqlEx)
                 {
@@ -45,6 +45,26 @@ namespace Kent.Entities.Repositories
             }
 
             return result;
+        }
+
+        public bool AddNewEmployees(Employees employees)
+        {
+            var entity = new KentEntities();
+            try
+            {
+                entity.Employees.Add(employees);
+                entity.SaveChangesAsync();
+                return true;
+            }
+            catch (SqlException sqlEx)
+            {
+                Logger.ErrorException(sqlEx);
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException(ex);
+            }
+            return false;
         }
     }
 }

@@ -55,13 +55,17 @@
     <Compile Include="Migrations\201806170617553_Initial.Designer.cs">
       <DependentUpon>201806170617553_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806170958309_ChangeToEmployees.cs" />
+    <Compile Include="Migrations\201806170958309_ChangeToEmployees.Designer.cs">
+      <DependentUpon>201806170958309_ChangeToEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\EmailLog.cs" />
     <Compile Include="Model\EmailQueue.cs" />
     <Compile Include="Model\EmailType.cs" />
     <Compile Include="Model\Form.cs" />
-    <Compile Include="Model\Saler.cs" />
+    <Compile Include="Model\Employees.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +76,8 @@
     <Compile Include="Repositories\Emails\IEmailRepository.cs" />
     <Compile Include="Repositories\Forms\FormRepository.cs" />
     <Compile Include="Repositories\Forms\IFormRepository.cs" />
-    <Compile Include="Repositories\Salers\SalerRepository.cs" />
-    <Compile Include="Repositories\Salers\ISalerRepository.cs" />
+    <Compile Include="Repositories\Employees\EmployeesRepository.cs" />
+    <Compile Include="Repositories\Employees\IEmployeesRepository.cs" />
     <Compile Include="Repositories\Users\IUserRespository.cs" />
     <Compile Include="Repositories\Users\UserRespository.cs" />
   </ItemGroup>
@@ -90,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806170617553_Initial.resx">
       <DependentUpon>201806170617553_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806170958309_ChangeToEmployees.resx">
+      <DependentUpon>201806170958309_ChangeToEmployees.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

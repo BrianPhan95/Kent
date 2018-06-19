@@ -1,0 +1,30 @@
+﻿@model Kent.Web.Areas.Admin.Models.Employees.EmployeesModel
+@{
+    ViewBag.Title = "Tạo mới";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm("Create", "Employees", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <h2>Tạo mới nhân viên</h2>
+
+            <div class="form-group">
+                <label for="name" class="col-md-3">Họ và tên</label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Số điện thoại</label>
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-md-9" })
+            </div>
+            <div class="form-group form_item">
+                <label for="email" class="col-md-3">Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "col-md-9" })
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        }
+    </div>
+</div>
+

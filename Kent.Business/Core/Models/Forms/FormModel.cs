@@ -14,5 +14,7 @@ namespace Kent.Business.Core.Models.Forms
         public string Data { get; set; }
 
         public DateTime? DateSubmit { get; set; }
+
+        public string EmailBodyString { get; set; }
     }
 }

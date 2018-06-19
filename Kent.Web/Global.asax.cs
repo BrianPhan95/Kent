@@ -25,20 +25,20 @@ namespace Kent.Web
             XmlConfigurator.Configure();
         }
 
-        protected void Application_PreSendRequestHeaders()
-        {
-            Response.Headers.Remove("Server");
-            Response.Headers.Remove("X-AspNet-Version");
-            Response.Headers.Remove("X-AspNetMvc-Version");
-            Response.Headers.Remove("X-Powered-By");
+        //protected void Application_PreSendRequestHeaders()
+        //{
+        //    Response.Headers.Remove("Server");
+        //    Response.Headers.Remove("X-AspNet-Version");
+        //    Response.Headers.Remove("X-AspNetMvc-Version");
+        //    Response.Headers.Remove("X-Powered-By");
 
-            Response.Headers.Add("Tranfer-Encoding", "Chunked");
-        }
+        //    Response.Headers.Add("Tranfer-Encoding", "Chunked");
+        //}
 
-        protected void Application_Error(Object sender, EventArgs e)
-        {
-            Server.ClearError();
-        }
+        //protected void Application_Error(Object sender, EventArgs e)
+        //{
+        //    Server.ClearError();
+        //}
 
         public static void RegisterComponents()
         {
@@ -46,7 +46,7 @@ namespace Kent.Web
 
             #region Repository
             container.RegisterType<IFormRepository, FormRepository>();
-            container.RegisterType<ISalerRepository, SalerRepository>();
+            container.RegisterType<IEmployeesRepository, EmployeesRepository>();
             container.RegisterType<IEmailRepository, EmailRepository>();
             container.RegisterType<IEmailQueueRepository, EmailQueueRepository>();
             container.RegisterType<IUserRespository, UserRespository>();
@@ -56,7 +56,7 @@ namespace Kent.Web
             #region Services
             container.RegisterType<IFormServices, FormServices>();
             container.RegisterType<IUserServices, UserServices>();
-            container.RegisterType<ISalerServices, SalerServices>();
+            container.RegisterType<IEmployeesServices, EmployeesServices>();
             container.RegisterType<IEmailServices, EmailServices>();
             container.RegisterType<IEmailQueueServices, EmailQueueServices>();
             #endregion
