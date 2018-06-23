@@ -7,25 +7,12 @@
     <title>@ViewBag.Title - Quản lý</title>
     
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/admin-site")
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/Content/AdminLTE/css/adminlte.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/Content/Plugins/iCheck/flat/blue.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="~/Content/Plugins/morris/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="~/Content/Plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="~/Content/Plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="~/Content/Plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -80,31 +67,15 @@
     </div>
 
     @RenderSection("scripts", required: false)
-
-    <!-- jQuery -->
-    <script src="~/Content/Plugins/jquery/jquery.min.js"></script>
+    @Scripts.Render("~/scripts/admin-site")
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
-    <script src="~/Content/Plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-    <script src="~/Content/Plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="~/Content/Plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="~/Content/Plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="~/Content/Plugins/fastclick/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/Content/AdminLTE/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/Content/AdminLTE/js/demo.js"></script>
+   
 </body>
 </html>

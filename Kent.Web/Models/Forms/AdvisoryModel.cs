@@ -17,7 +17,7 @@ namespace Kent.Web.Models.Forms
         public string PhoneNumber { get; set; }
         [Required]
         public string Email { get; set; }
-        public List<int> Specialize { get; set; }
+        public List<string> Specialize { get; set; }
         public string Message { get; set; }
         #endregion
     }

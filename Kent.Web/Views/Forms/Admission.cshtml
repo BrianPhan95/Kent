@@ -2,10 +2,25 @@
 @{
     Layout = null;
     ViewBag.Title = "Đăng ký nhập học";
-}     
+    var InternationalBachelorProgramLst = new List<SelectListItem>()
+    {
+        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
+        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
+        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
+        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
+        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
+        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
+    };
+    var UniversityFoundationProgramLst = new List<SelectListItem>()
+    {
+        new SelectListItem(){Text="Cơ bản (IELTS > 4.5)", Value="Cơ bản (IELTS > 4.5)"},
+        new SelectListItem(){Text="Nâng cao (IELTS > 6.0)", Value="Nâng cao (IELTS > 6.0)"},
+    };
+}
 <!-- Latest compiled and minified CSS -->
 @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="~/Content/site.css">*@
+    <link rel="stylesheet" href="~/Content/site.css">*@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="~/Content/site.css">
 @*<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">*@
@@ -51,32 +66,32 @@
                 <label for="email" class="col-sm-4">Ngày sinh</label>
                 @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "col-md-8" })
                 @*<div class="input-group date form_date col-md-8" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
-                <input type="hidden" id="dtp_input2" value="" /><br />*@
+                        <input class="form-control" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input2" value="" /><br />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Ngày cấp</label>
                 @Html.TextBoxFor(m => m.DateRange, new { @class = "col-md-8" })
                 @*<div class="input-group date form_date col-md-8" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>*@
+                        <input class="form-control" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Nơi sinh</label>
                 @Html.TextBoxFor(m => m.PlaceBirth, new { @class = "col-md-8" })
                 @*<select class="col-sm-8" name="" id="">
-                    <option value="">HCM</option>
-                </select>*@
+                        <option value="">HCM</option>
+                    </select>*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Nơi cấp</label>
                 @Html.TextBoxFor(m => m.PlaceRange, new { @class = "col-md-8" })
                 @*<select class="col-sm-8" name="" id="">
-                    <option value="">HCM</option>
-                </select>*@
+                        <option value="">HCM</option>
+                    </select>*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Trình độ</label>
@@ -102,8 +117,8 @@
                 <label for="email" class="col-sm-4"><span>Tỉnh / Thành phố</span></label>
                 @Html.TextBoxFor(m => m.Province, new { @class = "col-md-8" })
                 @*<select class="col-sm-8" name="" id="">
-                    <option value="">HCM</option>
-                </select>*@
+                        <option value="">HCM</option>
+                    </select>*@
             </div>
         </div>
     </div>
@@ -113,65 +128,45 @@
             <h6>Chương Trình Cử Nhân Thực Hành Quốc Tế </h6>
             <div class="form-group col-md-12 ctrinhhoc">
                 <div class="col-md-12 form_namnu">
-                    <div class="form-check col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Quản Trị Kinh Doanh
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Quản Trị Nhà Hàng & Dịch Vụ Ăn Uống
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Truyền Thông Đa Phương Tiện
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Quản Trị Marketing
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Thiết Kế Thời Trang
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Quản Trị Kinh Doanh Vận Tải Hàng Không
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Kế Toán
-                        </label>
-                    </div>
+                    @Html.HiddenFor(m => m.InternationalBachelorProgram)
+                    @foreach (var item in InternationalBachelorProgramLst)
+                    {
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @if (Model.InternationalBachelorProgram.Contains(item.Value))
+                                {
+                                    <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="Specialize" value="@item.Value" />
+                                }
+                                @item.Text
+                            </label>
+                        </div>
+                    }
                 </div>
             </div>
             <h6>Chương Trình Dự Bị Đại Học</h6>
             <div class="form-group col-md-12 ctrinhhoc">
                 <div class="col-md-12 form_namnu">
-                    <div class="form-check col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Cơ bản (IELTS > 4.5)
-                        </label>
-                    </div>
-                    <div class="form-check  col-sm-4">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Nâng cao (IELTS > 6.0)
-                        </label>
-                    </div>
+                    @Html.HiddenFor(m => m.UniversityFoundationProgram)
+                    @foreach (var item in UniversityFoundationProgramLst)
+                    {
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @if (Model.UniversityFoundationProgram.Contains(item.Value))
+                                {
+                                    <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="Specialize" value="@item.Value" />
+                                }
+                                @item.Text
+                            </label>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -181,27 +176,33 @@
             <h2>THÔNG TIN liên hệ</h2>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Họ và tên</label>
-                <input type="name" class="col-sm-8" id="name" required />
+                @Html.TextBoxFor(m=>m.Name, new { @class= "col-sm-8" })
+                @*<input type="name" class="col-sm-8" id="name" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Hộ khẩu thường trú</label>
-                <input type="name" class="col-sm-8" id="name" required />
+                @Html.TextBoxFor(m => m.Household, new { @class = "col-sm-8" })
+                @*<input type="name" class="col-sm-8" id="name" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Di động</label>
-                <input type="text" class="col-sm-8" id="date" required />
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-sm-8" })
+                @*<input type="text" class="col-sm-8" id="date" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Địa chỉ E-mail</label>
-                <input type="text" class="col-sm-8" id="time" required />
+                @Html.TextBoxFor(m => m.Email, new { @class = "col-sm-8" })
+                @*<input type="text" class="col-sm-8" id="time" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Tên phụ huynh/ người giám hộ</label>
-                <input type="text" class="col-sm-8" id="time" required />
+                @Html.TextBoxFor(m => m.GuardianName, new { @class = "col-sm-8" })
+                @*<input type="text" class="col-sm-8" id="time" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Điện thoại phụ huynh / người giám hộ</label>
-                <input type="text" class="col-sm-8" id="time" required />
+                @Html.TextBoxFor(m => m.GuardianPhoneNumber, new { @class = "col-sm-8" })
+                @*<input type="text" class="col-sm-8" id="time" required />*@
             </div>
         </div>
     </div>
@@ -339,5 +340,5 @@
         <div class="form-group col-md-12 button_form">
             <button type="submit">Đăng ký</button>
         </div>
-    </div>    
+    </div>
 }

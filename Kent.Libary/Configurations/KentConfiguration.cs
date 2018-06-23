@@ -18,5 +18,12 @@ namespace Kent.Libary.Configurations
         public const string CurrentControllerAction = ":::CurrentControllerAction:::";
 
         #endregion
+
+        #region Mail setting
+        public const string EmailFromSetting = "EmailFrom";
+        public const string EmailFromPasswordSetting = "EmailFromPassword";
+        public const string STMPHostSetting = "STMPHostSetting";
+        public const string STMPPort = "STMPPort";
+        #endregion
     }
 }

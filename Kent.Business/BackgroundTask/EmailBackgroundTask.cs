@@ -1,7 +1,9 @@
 ﻿using Kent.Business.Services;
 using Kent.Entities.Model;
+using Kent.Libary.Configurations;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -20,8 +22,8 @@ namespace Kent.Business.BackgroundTask
         //    _emailQueueService = emailQueueService;
         //}
 
-        private static readonly string EmailFrom = "tin.phan281@gmail.com";
-        private static readonly string EmailFromPassword = "PhanThanhTin";
+        private static readonly string EmailFrom = ConfigurationSettings.AppSettings[KentConfiguration.EmailFromSetting].ToString();
+        private static readonly string EmailFromPassword = ConfigurationSettings.AppSettings[KentConfiguration.EmailFromPasswordSetting].ToString();
 
         public static void Run(List<EmailQueue> emailQueueIds)
         {
@@ -60,12 +62,12 @@ namespace Kent.Business.BackgroundTask
                 //}
                 mm.IsBodyHtml = false;
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
+                smtp.Host = (string)ConfigurationSettings.AppSettings[KentConfiguration.STMPHostSetting];
                 smtp.EnableSsl = true;
                 NetworkCredential NetworkCred = new NetworkCredential(from, password);
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
-                smtp.Port = 587;
+                smtp.Port = Convert.ToInt32(ConfigurationSettings.AppSettings[KentConfiguration.STMPPort]);
                 //smtp.Send(mm);
                 smtp.SendMailAsync(mm);
             }

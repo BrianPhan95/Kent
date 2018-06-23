@@ -23,6 +23,27 @@ namespace Kent.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/admin-site").Include(
+                     "~/Content/AdminLTE/css/adminlte.min.css",
+                     "~/Content/Plugins/iCheck/flat/blue.css",
+                     "~/Content/Plugins/morris/morris.css",
+                     "~/Content/Plugins/jvectormap/jquery-jvectormap-1.2.2.css",
+                     "~/Content/Plugins/datepicker/datepicker3.css",
+                     "~/Content/Plugins/daterangepicker/daterangepicker-bs3.css0",
+                     "~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"));
+
+            bundles.Add(new ScriptBundle("~/scripts/admin-site").Include(
+                      "~/Content/Plugins/jquery/jquery.min.j",
+                      "~/Content/Plugins/bootstrap/js/bootstrap.bundle.min.js",
+                      "~/Content/Plugins/daterangepicker/daterangepicker.js",
+                      "~/Content/Plugins/datepicker/bootstrap-datepicker.js",
+                      "~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
+                      "~/Content/Plugins/slimScroll/jquery.slimscroll.min.js",
+                      "~/Content/Plugins/fastclick/fastclick.js",
+                      "~/Content/AdminLTE/js/adminlte.js",
+                      "~/Content/AdminLTE/js/demo.js"));
+
         }
     }
 }

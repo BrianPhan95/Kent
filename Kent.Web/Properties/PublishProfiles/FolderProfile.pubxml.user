@@ -76,31 +76,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:18</publishTime>
     </File>
     <File Include="bin/Kent.Business.dll">
-      <publishTime>06/19/2018 23:30:24</publishTime>
+      <publishTime>06/22/2018 22:59:56</publishTime>
     </File>
     <File Include="bin/Kent.Business.pdb">
-      <publishTime>06/19/2018 23:30:24</publishTime>
+      <publishTime>06/22/2018 22:59:56</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll">
-      <publishTime>06/18/2018 19:19:42</publishTime>
+      <publishTime>06/22/2018 22:59:55</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll.config">
-      <publishTime>06/13/2018 23:17:15</publishTime>
+      <publishTime>06/22/2018 22:38:56</publishTime>
     </File>
     <File Include="bin/Kent.Entities.pdb">
-      <publishTime>06/18/2018 19:19:42</publishTime>
+      <publishTime>06/22/2018 22:59:55</publishTime>
     </File>
     <File Include="bin/Kent.Libary.dll">
-      <publishTime>06/18/2018 19:19:40</publishTime>
+      <publishTime>06/22/2018 22:59:53</publishTime>
     </File>
     <File Include="bin/Kent.Libary.pdb">
-      <publishTime>06/18/2018 19:19:40</publishTime>
+      <publishTime>06/22/2018 22:59:53</publishTime>
     </File>
     <File Include="bin/Kent.Web.dll">
-      <publishTime>06/19/2018 23:30:32</publishTime>
+      <publishTime>06/22/2018 23:00:07</publishTime>
     </File>
     <File Include="bin/Kent.Web.pdb">
-      <publishTime>06/19/2018 23:30:32</publishTime>
+      <publishTime>06/22/2018 23:00:07</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
@@ -2242,7 +2242,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/14/2018 22:11:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/19/2018 23:30:33</publishTime>
+      <publishTime>06/22/2018 23:00:08</publishTime>
     </File>
   </ItemGroup>
 </Project>
