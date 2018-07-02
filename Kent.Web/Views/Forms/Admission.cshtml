@@ -133,7 +133,7 @@
                     {
                         <div class="form-check">
                             <label class="form-check-label">
-                                @if (Model.InternationalBachelorProgram.Contains(item.Value))
+                                @if (Model.InternationalBachelorProgram != null && Model.InternationalBachelorProgram.Contains(item.Value))
                                 {
                                     <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
                                 }
@@ -155,7 +155,7 @@
                     {
                         <div class="form-check">
                             <label class="form-check-label">
-                                @if (Model.UniversityFoundationProgram.Contains(item.Value))
+                                @if (Model.UniversityFoundationProgram != null && Model.UniversityFoundationProgram.Contains(item.Value))
                                 {
                                     <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
                                 }
@@ -176,7 +176,7 @@
             <h2>THÔNG TIN liên hệ</h2>
             <div class="form-group col-md-6 item_nhaphoc">
                 <label for="email" class="col-sm-4">Họ và tên</label>
-                @Html.TextBoxFor(m=>m.Name, new { @class= "col-sm-8" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "col-sm-8" })
                 @*<input type="name" class="col-sm-8" id="name" required />*@
             </div>
             <div class="form-group col-md-6 item_nhaphoc">

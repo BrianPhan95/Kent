@@ -9,6 +9,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\Users\Phan Thanh Tin\Desktop\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="app.config">
+      <publishTime>06/25/2018 22:59:36</publishTime>
+    </File>
     <File Include="ApplicationInsights.config">
       <publishTime>06/12/2018 22:51:59</publishTime>
     </File>
@@ -43,7 +46,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 17:33:50</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>06/17/2018 17:34:05</publishTime>
+      <publishTime>06/23/2018 13:26:08</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>06/12/2018 23:06:19</publishTime>
@@ -76,31 +79,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:18</publishTime>
     </File>
     <File Include="bin/Kent.Business.dll">
-      <publishTime>06/22/2018 22:59:56</publishTime>
+      <publishTime>07/02/2018 21:44:46</publishTime>
     </File>
     <File Include="bin/Kent.Business.pdb">
-      <publishTime>06/22/2018 22:59:56</publishTime>
+      <publishTime>07/02/2018 21:44:46</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll">
-      <publishTime>06/22/2018 22:59:55</publishTime>
+      <publishTime>07/02/2018 21:44:45</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll.config">
       <publishTime>06/22/2018 22:38:56</publishTime>
     </File>
     <File Include="bin/Kent.Entities.pdb">
-      <publishTime>06/22/2018 22:59:55</publishTime>
+      <publishTime>07/02/2018 21:44:45</publishTime>
     </File>
     <File Include="bin/Kent.Libary.dll">
-      <publishTime>06/22/2018 22:59:53</publishTime>
+      <publishTime>07/02/2018 21:31:54</publishTime>
     </File>
     <File Include="bin/Kent.Libary.pdb">
-      <publishTime>06/22/2018 22:59:53</publishTime>
+      <publishTime>07/02/2018 21:31:54</publishTime>
     </File>
     <File Include="bin/Kent.Web.dll">
-      <publishTime>06/22/2018 23:00:07</publishTime>
+      <publishTime>07/02/2018 21:44:53</publishTime>
     </File>
     <File Include="bin/Kent.Web.pdb">
-      <publishTime>06/22/2018 23:00:07</publishTime>
+      <publishTime>07/02/2018 21:44:53</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
@@ -2170,7 +2173,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/05/2018 14:54:10</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>06/16/2018 11:32:49</publishTime>
+      <publishTime>06/30/2018 13:23:19</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>06/12/2018 22:51:33</publishTime>
@@ -2189,6 +2192,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Global.asax">
       <publishTime>06/12/2018 22:51:33</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>06/30/2018 18:01:30</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>06/12/2018 22:51:39</publishTime>
@@ -2215,10 +2221,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2018 22:51:54</publishTime>
     </File>
     <File Include="Views/Forms/Admission.cshtml">
-      <publishTime>06/17/2018 00:20:13</publishTime>
+      <publishTime>06/30/2018 13:19:14</publishTime>
     </File>
     <File Include="Views/Forms/Advisory.cshtml">
-      <publishTime>06/17/2018 17:49:55</publishTime>
+      <publishTime>06/30/2018 22:57:51</publishTime>
     </File>
     <File Include="Views/Forms/Success.cshtml">
       <publishTime>06/16/2018 11:47:19</publishTime>
@@ -2233,7 +2239,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2018 22:51:33</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/17/2018 00:07:48</publishTime>
+      <publishTime>06/23/2018 14:55:43</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/12/2018 22:51:33</publishTime>
@@ -2242,7 +2248,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/14/2018 22:11:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/22/2018 23:00:08</publishTime>
+      <publishTime>07/02/2018 21:33:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@ using Kent.Web.Areas.Admin.Models.FormData;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
+    //[Authorize]
     public class FormsController : BackendController
     {
         private readonly IFormServices _formServices;

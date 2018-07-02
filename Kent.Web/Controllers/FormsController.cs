@@ -1,6 +1,7 @@
 ﻿using Kent.Business.Core.Models.Forms;
 using Kent.Business.Services;
 using Kent.Libary.Enums;
+using Kent.Libary.Logger;
 using Kent.Libary.Utilities;
 using Kent.Web.Models.Forms;
 using System;
@@ -43,6 +44,7 @@ namespace Kent.Web.Controllers
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Admission", model)
                 };
+               
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
                 {

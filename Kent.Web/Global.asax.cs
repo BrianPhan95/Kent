@@ -2,6 +2,7 @@
 using Kent.Entities.Repositories;
 using log4net.Config;
 using System;
+using System.IO;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,6 +17,12 @@ namespace Kent.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            // Config log4net
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/log4net.config")));
+
+            // Set database initializer only if site is finish setup 
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<WebEdEntities, Configuration>());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
