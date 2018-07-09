@@ -79,7 +79,7 @@ namespace Kent.Entities.Repositories
                 {
                     conn.Open();
 
-                    result = conn.Query<int>(sql).First();
+                    result = conn.Query<int>(sql).FirstOrDefault();
                 }
                 catch (SqlException sqlEx)
                 {

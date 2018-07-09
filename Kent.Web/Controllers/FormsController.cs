@@ -34,7 +34,8 @@ namespace Kent.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Admission(AdmissionModel model)
+        [AllowAnonymous]
+        public JsonResult Admission(AdmissionModel model)
         {
             if (ModelState.IsValid)
             {
@@ -44,14 +45,14 @@ namespace Kent.Web.Controllers
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Admission", model)
                 };
-               
+
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
                 {
-                    return View("Success");
+                    return Json(new { success = true });
                 }
             }
-            return View(model);
+            return Json(new { success = false });
         }
         #endregion
 
@@ -63,7 +64,8 @@ namespace Kent.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Advisory(AdvisoryModel model)
+        [AllowAnonymous]
+        public JsonResult Advisory(AdvisoryModel model)
         {
             if (ModelState.IsValid)
             {
@@ -76,10 +78,10 @@ namespace Kent.Web.Controllers
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
                 {
-                    return View("Success");
+                    return Json(new { success = true });
                 }
             }
-            return View(model);
+            return Json(new { success = false });
         }
         #endregion
 
@@ -91,7 +93,8 @@ namespace Kent.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult VisitSchool(VisitSchoolModel model)
+        [AllowAnonymous]
+        public JsonResult VisitSchool(VisitSchoolModel model)
         {
             if (ModelState.IsValid)
             {
@@ -104,10 +107,68 @@ namespace Kent.Web.Controllers
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
                 {
-                    return View("Success");
+                    return Json(new { success = true });
                 }
             }
+            return Json(new { success = false });
+        }
+        #endregion
+
+        #region Contact
+        public ActionResult Contact()
+        {
+            var model = new ContactModel();
             return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult Contact(ContactModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var formModel = new FormModel()
+                {
+                    FormTypeID = FormsEnums.FormType.Contact,
+                    Data = SerializeUtilities.Serialize(model),
+                    EmailBodyString = RenderRazorViewToString("Contact", model)
+                };
+                var respone = _formServices.SaveForm(formModel);
+                if (respone)
+                {
+                    return Json(new { success = true });
+                }
+            }
+            return Json(new { success = false });
+        }
+        #endregion
+
+        #region Alumni
+        public ActionResult Alumni()
+        {
+            var model = new AlumniModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult Alumni(AlumniModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var formModel = new FormModel()
+                {
+                    FormTypeID = FormsEnums.FormType.Alumni,
+                    Data = SerializeUtilities.Serialize(model),
+                    EmailBodyString = RenderRazorViewToString("Alumni", model)
+                };
+                var respone = _formServices.SaveForm(formModel);
+                if (respone)
+                {
+                    return Json(new { success = true });
+                }
+            }
+            return Json(new { success = false });
         }
         #endregion
     }

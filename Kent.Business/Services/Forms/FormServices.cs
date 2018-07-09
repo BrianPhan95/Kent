@@ -3,12 +3,18 @@ using Kent.Business.Core.Models.Forms;
 using Kent.Entities;
 using Kent.Entities.Model;
 using Kent.Entities.Repositories;
+using Kent.Libary.Configurations;
 using Kent.Libary.Enums;
+using Kent.Libary.Logger;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kent.Business.Services
@@ -91,18 +97,18 @@ namespace Kent.Business.Services
                         RecordActive = true,
                     };
 
-                    int emailQueueID = _emailQueueService.AddNewEmail(newEmail);
-                    if (emailQueueID > 0)
+                    int addToQueue = _emailQueueService.AddNewEmail(newEmail);
+                    if (addToQueue > 0)
                     {
                         emails.Add(newEmail);
                     }
                 }
 
-                EmailBackgroundTask.Run(emails);
+                TaskSentMail(emails);
             }
             catch (Exception ex)
             {
-
+                Logger.ErrorException(ex);
             }
         }
         private List<FormModel> Mapping(List<Form> lst, FormsEnums.FormType type)
@@ -113,6 +119,58 @@ namespace Kent.Business.Services
                 FormTypeID = type,
                 DateSubmit = d.Created
             }).ToList();
+        }
+        private static readonly string EmailFrom = ConfigurationManager.AppSettings[KentConfiguration.EmailFromSetting].ToString();
+        private static readonly string EmailFromPassword = ConfigurationManager.AppSettings[KentConfiguration.EmailFromPasswordSetting].ToString();
+
+        private void TaskSentMail(List<EmailQueue> emailQueueIds)
+        {
+            try
+            {
+                foreach (var emailQueue in emailQueueIds)
+                {
+
+                    //EmailQueue emailQueue = _emailQueueService.GetEmailByID(queueID);
+                    Thread email = new Thread(delegate ()
+                    {
+                        SendEmail(emailQueue.To, EmailFrom, EmailFromPassword, emailQueue.Subject, emailQueue.Body);
+                    });
+
+                    email.IsBackground = true;
+                    email.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException(ex);
+            }
+        }
+
+        private void SendEmail(string to, string from, string password, string subject, string body)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Host = ConfigurationManager.AppSettings[KentConfiguration.STMPHostSetting].ToString();
+                client.Port = Convert.ToInt32(ConfigurationManager.AppSettings[KentConfiguration.STMPPort]);
+
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(from, password);
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(from);
+                mailMessage.To.Add(to);
+                mailMessage.Body = body;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Subject = subject;
+                client.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException(ex);
+
+            }
+
         }
     }
 }

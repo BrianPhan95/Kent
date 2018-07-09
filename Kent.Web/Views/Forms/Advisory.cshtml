@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="~/Content/site.css">
 <div class="form_signup">
     <div class="form_signup__content">
-        @using (Html.BeginForm("Advisory", "Forms", null, FormMethod.Post, new { @class = "form-horizontal", @id = "AdvisorySubmit" }))
+        @using (Ajax.BeginForm("Advisory", "Forms", new AjaxOptions() { OnBegin = "AdvisorySubmit", OnSuccess = "AdvisoryComplete" }))
         {
             @Html.ValidationSummary()
             <h2>Đăng ký tư vấn</h2>
@@ -66,20 +66,46 @@
             </div>
             <div class="form-group form_item">
                 <label for="email" class="col-md-3">&nbsp;</label>
-                <button id="btn-submit" type="submit">Đăng ký</button>
+                <button id="btn-submit">Đăng ký</button>
                 <p>Bỏ qua</p>
             </div>
         }
     </div>
 </div>
 @Scripts.Render("~/bundles/jquery")
+<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+
+<div id="successModal" class="modal fade" role="dialog">
+    <div class="modal-dialog form_tuvan_popup">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form_success">
+                    <div class="form_success__content">
+                        <img src="images/icon_success.png" alt="">
+                        <p>
+                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
+                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
+                            Xin cảm ơn!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-    $("#AdvisorySubmit").submit(function () {
-        console.log("submit");
+    function AdvisorySubmit() {
         var specializeList = [];
         $('input:checkbox:checked').each(function () {
             specializeList.push($(this).attr('value'));
         });
         document.getElementById("Specialize").value = specializeList;
-    });
+    };
+    function AdvisoryComplete(result) {
+        if (result.success == true) {
+            $("#successModal").modal();
+        }
+    }
 </script>

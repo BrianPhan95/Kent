@@ -1,0 +1,166 @@
+﻿@model Kent.Web.Models.Forms.AlumniModel
+@{
+    Layout = null;
+    ViewBag.Title = "Tư vấn";
+}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/site.css">
+<!-- Modal -->
+<div class="form_signup__content">
+    @using (Ajax.BeginForm("Alumni", "Forms", new AjaxOptions() { OnBegin = "AlumniSubmit", OnSuccess = "AlumniSuccess", OnComplete = "AlumniComplete" }))
+    {
+                <h2>Đăng ký tư vấn</h2>
+                <div class="col-sm-6">
+                    <div class="form-group form_item">
+                        <label for="FullName" class="col-md-5">Họ và tên</label>
+                        <input type="text" class="col-md-7" id="name" name="FullName" required />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="email" class="col-md-5">Ngày sinh</label>
+                        <div class="input-group date form_date col-md-7" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input style="width:100%" class="" size="16" type="text" name="DateOfBirth" value="" readonly>
+                            <span class="input-group-addon"><span class="icon_calendar glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="PhoneNumber" class="col-md-5">Số điện thoại</label>
+                        <input type="tel" class="col-md-7" id="phone" name="PhoneNumber" required />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="Email" class="col-md-5">Email</label>
+                        <input type="email" class="col-md-7" id="email" name="Email" required />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="Address" class="col-md-5">Địa chỉ hiện tại</label>
+                        <input type="text" class="col-md-7" id="email" name="Address" required />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="email" class="col-md-5">&nbsp;</label>
+                        <input type="email" class="col-md-7" id="email" />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="email" class="col-md-5">&nbsp;</label>
+                        <input type="email" class="col-md-7" id="email" />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="AdmissionDate" class="col-md-5">Ngày nhập học</label>
+                        <div class="input-group date form_date col-md-7" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input style="width:100%" class="" size="16" type="datetime" name="AdmissionDate" value="" readonly>
+                            <span class="input-group-addon"><span class="icon_calendar glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="GraduatingDate" class="col-md-5">Ngày tốt nghiệp</label>
+                        <div class="input-group date form_date col-md-7" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input style="width:100%" class="" name="GraduatingDate" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="icon_calendar glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group form_item">
+                        <label for="Specialized" class="col-md-5">Chuyên ngành</label>
+                        <input type="text" class="hidden" name="Specialized" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">Chuyên ngành kế toán</option>
+                            <option value="">Chuyên ngành kế toán</option>
+                            <option value="">Chuyên ngành kế toán</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="CurrentCompany" class="col-md-5">Công ty hiện tại</label>
+                        <input type="text" class="col-md-7" id="name" name="CurrentCompany" required />
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="CompanyField" class="col-md-5"> Lĩnh vực công ty</label>
+                        <input type="text" name="CompanyField" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">Công nghệ</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="Staff" class="col-md-5"> Bộ phận hiện tại</label>
+                        <input type="text" name="Staff" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">Công nghệ</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="Position" class="col-md-5">   Chức vụ hiện tại</label>
+                        <input type="text" name="Position" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">Nhân viên</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="Salary" class="col-md-5">  Mức lương hiện tại</label>
+                        <input type="text" name="Salary" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">20 triệu</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="email" class="col-md-5">   Mức lương khởi điểm khi ra trường</label>
+                        <input type="text" name="SalaryStarting" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">8 triệu</option>
+                        </select>
+                    </div>
+                    <div class="form-group form_item">
+                        <label for="email" class="col-md-5"> Đi du học</label>
+                        <input type="text" name="StudyAbroad" class="hidden" />
+                        <select class="col-md-7" name="" id="">
+                            <option value="">Anh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form_item form_cuusv_button">
+                                <label for="email" class="col-md-3 none_label">&nbsp;</label>
+                                <button type="submit">Đăng ký</button>
+                                <p data-dismiss="modal">Bỏ qua</p>
+                            </div>
+    }
+</div>
+
+<!-- end popup dang ky cuu sinh vien -->
+
+<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<div id="successModal" class="modal fade" role="dialog">
+    <div class="modal-dialog form_tuvan_popup">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form_success">
+                    <div class="form_success__content">
+                        <img src="images/icon_success.png" alt="">
+                        <p>
+                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
+                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
+                            Xin cảm ơn!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        function AlumniSubmit() {
+            var specializeList = [];
+            $('input:checkbox:checked').each(function () {
+                specializeList.push($(this).attr('value'));
+            });
+            document.getElementById("Specialize").value = specializeList;
+        };
+        function AlumniComplete(result) {
+            $("#successModal").modal();
+        }
+
+        function AlumniSuccess(result) {
+            if (result.success == true) {
+                $("#successModal").modal();
+            }
+        }
+</script>

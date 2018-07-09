@@ -13,28 +13,31 @@ namespace Kent.Entities.Repositories
 {
     public class EmailQueueRepository : BaseRepository, IEmailQueueRepository
     {
-        private readonly KentEntities kentEntities;
-        public EmailQueueRepository()
-        {
-            kentEntities = new KentEntities();
-        }
+        //private readonly KentEntities kentEntities;
+        //public EmailQueueRepository()
+        //{
+        //    kentEntities = new KentEntities();
+        //}
 
         public bool SaveEmailToQueue(EmailQueue email)
         {
-            try
+            using (var db = new KentEntities())
             {
-                kentEntities.EmailQueues.Add(email);
-                kentEntities.SaveChangesAsync();
-                return true;
+                try
+                {
+                    db.EmailQueues.Add(email);
+                    return db.SaveChanges() > 0 ? true : false;
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
             }
-            catch (SqlException sqlEx)
-            {
-                Logger.ErrorException(sqlEx);
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorException(ex);
-            }
+
             return false;
         }
 
@@ -74,20 +77,23 @@ namespace Kent.Entities.Repositories
 
         public int CreateEmailAsync(EmailQueue newEmail)
         {
-            try
+            using (var db = new KentEntities())
             {
-                kentEntities.EmailQueues.Add(newEmail);
+                try
+                {
+                    db.EmailQueues.Add(newEmail);
+                    return db.SaveChanges();
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
+            }
 
-                return kentEntities.SaveChanges();
-            }
-            catch (SqlException sqlEx)
-            {
-                Logger.ErrorException(sqlEx);
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorException(ex);
-            }
             return 0;
         }
     }

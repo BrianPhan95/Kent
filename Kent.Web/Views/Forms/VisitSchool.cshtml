@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="~/Content/site.css">
 <div class="form_thamquan">
     <div class="form_thamquan__content">
-        @using (Html.BeginForm("VisitSchool", "Forms", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        @using (Ajax.BeginForm("VisitSchool", "Forms", new AjaxOptions() { OnBegin = "VisitSchoolSubmit", OnSuccess = "VisitSchoolComplete" }))
         {
             <h2>Đăng ký thăm quan trường</h2>
             <div class="form-group form_item">
@@ -54,3 +54,39 @@
         }
     </div>
 </div>
+<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+
+<div id="successModal" class="modal fade" role="dialog">
+    <div class="modal-dialog form_tuvan_popup">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form_success">
+                    <div class="form_success__content">
+                        <img src="images/icon_success.png" alt="">
+                        <p>
+                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
+                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
+                            Xin cảm ơn!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function VisitSchoolSubmit() {
+        //var specializeList = [];
+        //$('input:checkbox:checked').each(function () {
+        //    specializeList.push($(this).attr('value'));
+        //});
+        //document.getElementById("Specialize").value = specializeList;
+    };
+    function VisitSchoolComplete(result) {
+        if (result.success == true) {
+            $("#successModal").modal();
+        }
+    }
+</script>

@@ -8,6 +8,7 @@ namespace Kent.Libary.Configurations
 {
     public class KentConfiguration
     {
+        public const string ConnectionString = "KentDatabase";
         #region Sessions
 
         public const string CurrentUser = ":::CurrentUser:::";
@@ -24,6 +25,7 @@ namespace Kent.Libary.Configurations
         public const string EmailFromPasswordSetting = "EmailFromPassword";
         public const string STMPHostSetting = "STMPHostSetting";
         public const string STMPPort = "STMPPort";
+        public const string STMPUseAuthentication = "STMPUseAuthentication";
         #endregion
     }
 }

@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.Title - Quản lý</title>
     
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/admin-site")
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,6 +13,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/admin-site")
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -67,7 +67,6 @@
     </div>
 
     @RenderSection("scripts", required: false)
-    @Scripts.Render("~/scripts/admin-site")
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -76,6 +75,7 @@
     </script>
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-   
+    @Scripts.Render("~/scripts/admin-site")
+
 </body>
 </html>

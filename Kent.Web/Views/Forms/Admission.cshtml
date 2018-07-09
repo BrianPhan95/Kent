@@ -2,21 +2,23 @@
 @{
     Layout = null;
     ViewBag.Title = "Đăng ký nhập học";
-    var InternationalBachelorProgramLst = new List<SelectListItem>()
+    var InternationalBachelorProgramLst = new List<SelectListItem>
+    ()
     {
-        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
-        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
-        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
-        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
-        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
-        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
-        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
+    new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
+    new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
+    new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
+    new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
+    new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
+    new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
+    new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
     };
-    var UniversityFoundationProgramLst = new List<SelectListItem>()
-    {
+    var UniversityFoundationProgramLst = new List<SelectListItem>
+        ()
+        {
         new SelectListItem(){Text="Cơ bản (IELTS > 4.5)", Value="Cơ bản (IELTS > 4.5)"},
         new SelectListItem(){Text="Nâng cao (IELTS > 6.0)", Value="Nâng cao (IELTS > 6.0)"},
-    };
+        };
 }
 <!-- Latest compiled and minified CSS -->
 @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -25,7 +27,7 @@
 <link rel="stylesheet" href="~/Content/site.css">
 @*<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">*@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-@using (Html.BeginForm("Admission", "Forms", null, FormMethod.Post, new { @class = "form-horizontal form_nhaphoc" }))
+@using (Ajax.BeginForm("Admission", "Forms", new AjaxOptions {OnBegin= "AdmissionSubmit", OnComplete = "AdmissionComplete" }))
 {
     <div class="container">
         <div class="infor_name">
@@ -130,21 +132,21 @@
                 <div class="col-md-12 form_namnu">
                     @Html.HiddenFor(m => m.InternationalBachelorProgram)
                     @foreach (var item in InternationalBachelorProgramLst)
-                    {
+                        {
                         <div class="form-check">
                             <label class="form-check-label">
                                 @if (Model.InternationalBachelorProgram != null && Model.InternationalBachelorProgram.Contains(item.Value))
-                                {
+                                    {
                                     <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
-                                }
-                                else
-                                {
+                                    }
+                                    else
+                                    {
                                     <input type="checkbox" name="Specialize" value="@item.Value" />
-                                }
+                                    }
                                 @item.Text
                             </label>
                         </div>
-                    }
+                        }
                 </div>
             </div>
             <h6>Chương Trình Dự Bị Đại Học</h6>
@@ -152,21 +154,21 @@
                 <div class="col-md-12 form_namnu">
                     @Html.HiddenFor(m => m.UniversityFoundationProgram)
                     @foreach (var item in UniversityFoundationProgramLst)
-                    {
+                        {
                         <div class="form-check">
                             <label class="form-check-label">
                                 @if (Model.UniversityFoundationProgram != null && Model.UniversityFoundationProgram.Contains(item.Value))
-                                {
+                                    {
                                     <input class="form-check-input" type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
-                                }
-                                else
-                                {
+                                    }
+                                    else
+                                    {
                                     <input type="checkbox" name="Specialize" value="@item.Value" />
-                                }
+                                    }
                                 @item.Text
                             </label>
                         </div>
-                    }
+                        }
                 </div>
             </div>
         </div>
@@ -342,3 +344,38 @@
         </div>
     </div>
 }
+
+<div id="successModal" class="modal fade" role="dialog">
+    <div class="modal-dialog form_tuvan_popup">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form_success">
+                    <div class="form_success__content">
+                        <img src="images/icon_success.png" alt="">
+                        <p>
+                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
+                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
+                            Xin cảm ơn!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function AdmissionSubmit() {
+        //var specializeList = [];
+        //$('input:checkbox:checked').each(function () {
+        //    specializeList.push($(this).attr('value'));
+        //});
+        //document.getElementById("Specialize").value = specializeList;
+    };
+    function AdmissionComplete(result) {
+        if (result.success == true) {
+            $("#successModal").modal();
+        }
+    }
+</script>
+

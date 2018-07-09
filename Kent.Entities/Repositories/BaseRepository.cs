@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Kent.Libary.Configurations;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kent.Entities.Repositories
 {
@@ -14,7 +11,8 @@ namespace Kent.Entities.Repositories
         {
             get
             {
-                return new SqlConnection("Data Source=DESKTOP-UBBU8PA;Initial Catalog=KentDatabase;Integrated Security=True");
+                var connectionString = ConfigurationManager.ConnectionStrings[KentConfiguration.ConnectionString].ConnectionString;
+                return new SqlConnection(connectionString);
             }
         }
     }

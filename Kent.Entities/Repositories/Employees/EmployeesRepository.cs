@@ -49,22 +49,60 @@ namespace Kent.Entities.Repositories
 
         public bool AddNewEmployees(Employees employees)
         {
-            var entity = new KentEntities();
-            try
+            int result = 0;
+
+            using (IDbConnection conn = Connection)
             {
-                entity.Employees.Add(employees);
-                entity.SaveChangesAsync();
-                return true;
+                string sql = string.Format(@"INSERT INTO [dbo].[Employees]
+                                               ([Email]
+                                               ,[PhoneNumber]
+                                               ,[RecordOrder]
+                                               ,[RecordActive]
+                                               ,[RecordDeleted]
+                                               ,[CreatedBy]
+                                               ,[Created]
+                                               ,[LastUpdateBy]
+                                               ,[LastUpdate]
+                                               ,[Name])
+                                         VALUES
+                                               ('{0}'
+                                               ,'{1}'
+                                               ,0
+                                               ,1
+                                               ,0
+                                               ,'{2}'
+                                               ,GETDATE()
+                                               ,'{3}'
+                                               ,GETDATE()
+                                               ,'{4}')", employees.Email, employees.PhoneNumber, employees.CreatedBy, employees.LastUpdateBy, employees.Name);
+
+                try
+                {
+                    conn.Open();
+
+                    result = conn.Execute(sql);
+                    //db.Employees.Add(employees);
+                    //db.SaveChangesAsync();
+                    //return true;
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
+                finally
+                {
+                    if (conn != null && conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
             }
-            catch (SqlException sqlEx)
-            {
-                Logger.ErrorException(sqlEx);
-            }
-            catch (Exception ex)
-            {
-                Logger.ErrorException(ex);
-            }
-            return false;
+
+            return result == 1 ? true : false;
         }
     }
 }

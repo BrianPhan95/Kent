@@ -34,7 +34,7 @@ namespace Kent.Web
                      "~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"));
 
             bundles.Add(new ScriptBundle("~/scripts/admin-site").Include(
-                      "~/Content/Plugins/jquery/jquery.min.j",
+                      "~/Content/Plugins/jquery/jquery.min.js",
                       "~/Content/Plugins/bootstrap/js/bootstrap.bundle.min.js",
                       "~/Content/Plugins/daterangepicker/daterangepicker.js",
                       "~/Content/Plugins/datepicker/bootstrap-datepicker.js",

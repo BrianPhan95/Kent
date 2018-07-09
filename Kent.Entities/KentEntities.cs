@@ -21,7 +21,7 @@ namespace Kent.Entities
         public DbSet<Form> Forms { get; set; }
         public DbSet<EmailLog> EmailLogs { get; set; }
         public DbSet<EmailQueue> EmailQueues { get; set; }
-        public DbSet<EmailType> EmailTypes { get; set; }  
+        public DbSet<EmailType> EmailTypes { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
