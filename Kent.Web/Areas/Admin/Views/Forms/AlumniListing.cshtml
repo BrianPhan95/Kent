@@ -1,0 +1,71 @@
+﻿@model List<Kent.Web.Areas.Admin.Models.FormData.AlumniData>
+@{
+    ViewBag.Title = "Danh sách cựu sinh viên";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+<h2>Danh sách cựu sinh viên</h2>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                @*<h3 class="card-title">Hover Data Table</h3>*@
+                @using (Html.BeginForm("AlumniListing", "Forms"))
+                {
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="keywordStr" name="keyword" placeholder="Từ khóa tìm kiếm">
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Email</th>
+                            <th>Ngày tốt nghiệp</th>
+                            <th>Du học</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <td>@data.FullName</td>
+                                <td>
+                                    @data.DateOfBirth
+                                </td>
+                                <td>@data.Email</td>
+                                <td>@data.GraduatingDate</td>
+                                <td>@data.StudyAbroad</td>
+                                <td>
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th>Engine version</th>
+                                <th>CSS grade</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+

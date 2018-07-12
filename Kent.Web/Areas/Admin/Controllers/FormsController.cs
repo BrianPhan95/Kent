@@ -25,9 +25,9 @@ namespace Kent.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult AdmissionListing()
+        public ActionResult AdmissionListing(string keyword)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Admission);
+            var listing = _formServices.GetListForms(FormsEnums.FormType.Admission, keyword);
             List<AdmissionData> dataLst = listing
                 .Select(d =>
                 {
@@ -44,9 +44,9 @@ namespace Kent.Web.Areas.Admin.Controllers
             return View(dataLst);
         }
 
-        public ActionResult AdvisoryListing()
+        public ActionResult AdvisoryListing(string keyword)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Advisory);
+            var listing = _formServices.GetListForms(FormsEnums.FormType.Advisory, keyword);
             List<AdvisoryData> dataLst = listing
                 .Select(d =>
                 {
@@ -61,9 +61,9 @@ namespace Kent.Web.Areas.Admin.Controllers
                 }).ToList();
             return View(dataLst);
         }
-        public ActionResult VisitListing()
+        public ActionResult VisitListing(string keyword)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Visit);
+            var listing = _formServices.GetListForms(FormsEnums.FormType.Visit, keyword);
             List<VisitSchoolData> dataLst = listing
                 .Select(d =>
                 {
@@ -75,6 +75,43 @@ namespace Kent.Web.Areas.Admin.Controllers
                         PhoneNumber = data.PhoneNumber,
                         DateVisit = data.DateVisit,
                         DateCreated = d.DateSubmit.Value
+                    };
+                }).ToList();
+
+            return View(dataLst);
+        }
+        public ActionResult AlumniListing(string keyword)
+        {
+            var listing = _formServices.GetListForms(FormsEnums.FormType.Alumni, keyword);
+            List<AlumniData> dataLst = listing
+                .Select(d =>
+                {
+                    var data = SerializeUtilities.Deserialize<AlumniModel>(d.Data);
+                    return new AlumniData()
+                    {
+                        FullName = data.FullName,
+                        Email = data.Email,
+                        PhoneNumber = data.PhoneNumber,
+                        GraduatingDate = data.GraduatingDate
+                    };
+                }).ToList();
+
+            return View(dataLst);
+        }
+
+        public ActionResult ContactListing(string keyword)
+        {
+            var listing = _formServices.GetListForms(FormsEnums.FormType.Contact, keyword);
+            List<ContactData> dataLst = listing
+                .Select(d =>
+                {
+                    var data = SerializeUtilities.Deserialize<ContactModel>(d.Data);
+                    return new ContactData()
+                    {
+                        Email = data.Email,
+                        PhoneNumber = data.PhoneNumber,
+                        Fullname = data.Fullname,
+                        Content = data.Content
                     };
                 }).ToList();
 

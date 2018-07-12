@@ -12,6 +12,17 @@
         <div class="card">
             <div class="card-header">
                 @*<h3 class="card-title">Hover Data Table</h3>*@
+                @using (Html.BeginForm("AdmissionListing", "Forms"))
+                {
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="keywordStr" name="keyword" placeholder="Từ khóa tìm kiếm">
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                }
             </div>
             <!-- /.card-header -->
             <div class="card-body">

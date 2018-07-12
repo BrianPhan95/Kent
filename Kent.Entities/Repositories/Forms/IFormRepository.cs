@@ -9,7 +9,7 @@ namespace Kent.Entities.Repositories
 {
     public interface IFormRepository
     {
-        List<Form> GetList(int typeID);
+        List<Form> GetList(int typeID, string keyword);
         int SaveFormData(Form form);
     }
 }

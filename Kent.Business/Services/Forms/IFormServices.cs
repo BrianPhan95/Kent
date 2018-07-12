@@ -12,6 +12,6 @@ namespace Kent.Business.Services
     {
         bool SaveForm(FormModel model);
 
-        List<FormModel> GetListForms(FormsEnums.FormType type);
+        List<FormModel> GetListForms(FormsEnums.FormType type, string keyword);
     }
 }

@@ -31,22 +31,26 @@ namespace Kent.Business.Services
             _employeesService = employeesService;
             _emailQueueService = emailQueueService;
         }
-        public List<FormModel> GetListForms(FormsEnums.FormType type)
+        public List<FormModel> GetListForms(FormsEnums.FormType type, string keyword)
         {
             List<FormModel> list = new List<FormModel>();
             List<Form> listData = new List<Form>();
             switch (type)
             {
                 case FormsEnums.FormType.Admission:
-                    listData = _formRepository.GetList((int)type);
+                    listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
                 case FormsEnums.FormType.Advisory:
-                    listData = _formRepository.GetList((int)type);
+                    listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
                 case FormsEnums.FormType.Visit:
-                    listData = _formRepository.GetList((int)type);
+                    listData = _formRepository.GetList((int)type, keyword);
+                    list = Mapping(listData, type);
+                    break;
+                default:
+                    listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
             }

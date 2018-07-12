@@ -13,13 +13,14 @@ namespace Kent.Entities.Repositories
 {
     public class FormRepository : BaseRepository, IFormRepository
     {
-        public List<Form> GetList(int typeID)
+        public List<Form> GetList(int typeID, string keyword)
         {
             List<Form> result = null;
 
             using (IDbConnection conn = Connection)
             {
-                string sql = "select * from Forms where FormTypeID = " + typeID;
+                string getFormDatas = "select * from Forms where FormTypeID = {0} AND Data LIKE '%{1}%'";
+                string sql = string.Format(getFormDatas, typeID, keyword);
 
                 try
                 {
@@ -49,7 +50,7 @@ namespace Kent.Entities.Repositories
 
         public int SaveFormData(Form form)
         {
-            int result = 0 ;
+            int result = 0;
 
             using (IDbConnection conn = Connection)
             {
@@ -64,8 +65,8 @@ namespace Kent.Entities.Repositories
                             + ",[LastUpdateBy]"
                             + ",[LastUpdate])"
                             + " VALUES ("
-                            + form.FormTypeID.ToString()  + ","
-                            + "'"+ form.Data.ToString() + "',"
+                            + form.FormTypeID.ToString() + ","
+                            + "'" + form.Data.ToString() + "',"
                             + "0,"
                             + "1,"
                             + "0,"

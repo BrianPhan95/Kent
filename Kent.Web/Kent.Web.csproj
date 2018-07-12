@@ -206,6 +206,8 @@
     <Compile Include="Areas\Admin\Models\Employees\EmployeesModel.cs" />
     <Compile Include="Areas\Admin\Models\FormData\AdmissionData.cs" />
     <Compile Include="Areas\Admin\Models\FormData\AdvisoryData.cs" />
+    <Compile Include="Areas\Admin\Models\FormData\AlumniData.cs" />
+    <Compile Include="Areas\Admin\Models\FormData\ContactData.cs" />
     <Compile Include="Areas\Admin\Models\FormData\VisitSchoolData.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserSessionModel.cs" />
     <Compile Include="Attribute\AdminAuthorize.cs" />
@@ -841,7 +843,7 @@
     <Content Include="Content\Plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
     <Content Include="Content\Plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="Content\Plugins\datatables\extensions\TableTools\Readme.md" />
-    <Content Include="Areas\Admin\Views\Forms\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Forms\ContactListing.cshtml" />
     <Content Include="Areas\Admin\Views\Forms\AdmissionListing.cshtml" />
     <Content Include="Areas\Admin\Views\Forms\AdvisoryListing.cshtml" />
     <Content Include="Areas\Admin\Views\Forms\VisitListing.cshtml" />
@@ -849,6 +851,7 @@
     <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
     <Content Include="log4net.config" />
+    <Content Include="Areas\Admin\Views\Forms\AlumniListing.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
