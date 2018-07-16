@@ -8,6 +8,9 @@ using Kent.Libary.Enums;
 using Kent.Libary.Utilities;
 using Kent.Web.Models.Forms;
 using Kent.Web.Areas.Admin.Models.FormData;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
@@ -25,7 +28,7 @@ namespace Kent.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult AdmissionListing(string keyword)
+        public ActionResult AdmissionListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Admission, keyword);
             List<AdmissionData> dataLst = listing
@@ -41,10 +44,28 @@ namespace Kent.Web.Areas.Admin.Controllers
                         DateSubmit = d.DateSubmit.Value
                     };
                 }).ToList();
+
+            if (export.HasValue && export.Value)
+            {
+                var gv = new GridView();
+                gv.DataSource = dataLst;
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Danh sach đăng kí nhập học.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter objStringWriter = new StringWriter();
+                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+            }
             return View(dataLst);
         }
 
-        public ActionResult AdvisoryListing(string keyword)
+        public ActionResult AdvisoryListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Advisory, keyword);
             List<AdvisoryData> dataLst = listing
@@ -59,9 +80,26 @@ namespace Kent.Web.Areas.Admin.Controllers
                         DateCreated = d.DateSubmit.Value
                     };
                 }).ToList();
+            if (export.HasValue && export.Value)
+            {
+                var gv = new GridView();
+                gv.DataSource = dataLst;
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Danh sách tư vấn.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter objStringWriter = new StringWriter();
+                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+            }
             return View(dataLst);
         }
-        public ActionResult VisitListing(string keyword)
+        public ActionResult VisitListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Visit, keyword);
             List<VisitSchoolData> dataLst = listing
@@ -77,10 +115,27 @@ namespace Kent.Web.Areas.Admin.Controllers
                         DateCreated = d.DateSubmit.Value
                     };
                 }).ToList();
+            if (export.HasValue && export.Value)
+            {
+                var gv = new GridView();
+                gv.DataSource = dataLst;
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Danh sách tham quan.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter objStringWriter = new StringWriter();
+                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+            }
 
             return View(dataLst);
         }
-        public ActionResult AlumniListing(string keyword)
+        public ActionResult AlumniListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Alumni, keyword);
             List<AlumniData> dataLst = listing
@@ -96,10 +151,28 @@ namespace Kent.Web.Areas.Admin.Controllers
                     };
                 }).ToList();
 
+            if (export.HasValue && export.Value)
+            {
+                var gv = new GridView();
+                gv.DataSource = dataLst;
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Danh sach cuu sinh vien.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter objStringWriter = new StringWriter();
+                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+            }
+
             return View(dataLst);
         }
 
-        public ActionResult ContactListing(string keyword)
+        public ActionResult ContactListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Contact, keyword);
             List<ContactData> dataLst = listing
@@ -115,7 +188,43 @@ namespace Kent.Web.Areas.Admin.Controllers
                     };
                 }).ToList();
 
+            if (export.HasValue && export.Value)
+            {
+                var gv = new GridView();
+                gv.DataSource = dataLst;
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Danh sách liên hệ.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter objStringWriter = new StringWriter();
+                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+            }
+
             return View(dataLst);
         }
+
+        //public void ExportToExcel(List<T> list)
+        //{
+        //    var gv = new GridView();
+        //    gv.DataSource = list;
+        //    gv.DataBind();
+        //    Response.ClearContent();
+        //    Response.Buffer = true;
+        //    Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+        //    Response.ContentType = "application/ms-excel";
+        //    Response.Charset = "";
+        //    StringWriter objStringWriter = new StringWriter();
+        //    HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+        //    gv.RenderControl(objHtmlTextWriter);
+        //    Response.Output.Write(objStringWriter.ToString());
+        //    Response.Flush();
+        //    Response.End();
+        //}
     }
 }

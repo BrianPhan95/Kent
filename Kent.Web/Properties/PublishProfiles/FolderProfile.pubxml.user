@@ -25,16 +25,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 17:28:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Forms/AdmissionListing.cshtml">
-      <publishTime>06/17/2018 10:50:35</publishTime>
+      <publishTime>07/12/2018 22:22:59</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Forms/AdvisoryListing.cshtml">
-      <publishTime>06/17/2018 10:54:59</publishTime>
+      <publishTime>07/12/2018 22:23:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Forms/AlumniListing.cshtml">
+      <publishTime>07/12/2018 22:22:44</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Forms/ContactListing.cshtml">
+      <publishTime>07/12/2018 22:23:26</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Forms/Index.cshtml">
       <publishTime>06/16/2018 08:58:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Forms/VisitListing.cshtml">
-      <publishTime>06/17/2018 11:02:20</publishTime>
+      <publishTime>07/12/2018 22:24:16</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Home/Index.cshtml">
       <publishTime>06/16/2018 09:00:18</publishTime>
@@ -43,7 +49,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/14/2018 23:04:37</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/Partials/_Sidebar.cshtml">
-      <publishTime>06/17/2018 17:33:50</publishTime>
+      <publishTime>07/09/2018 21:49:46</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
       <publishTime>07/05/2018 23:01:58</publishTime>
@@ -82,31 +88,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/Kent.Business.dll">
-      <publishTime>07/07/2018 13:16:44</publishTime>
+      <publishTime>07/12/2018 21:27:40</publishTime>
     </File>
     <File Include="bin/Kent.Business.pdb">
-      <publishTime>07/07/2018 13:16:44</publishTime>
+      <publishTime>07/12/2018 21:27:40</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll">
-      <publishTime>07/07/2018 13:16:42</publishTime>
+      <publishTime>07/12/2018 21:25:32</publishTime>
     </File>
     <File Include="bin/Kent.Entities.dll.config">
       <publishTime>06/22/2018 22:38:56</publishTime>
     </File>
     <File Include="bin/Kent.Entities.pdb">
-      <publishTime>07/07/2018 13:16:42</publishTime>
+      <publishTime>07/12/2018 21:25:32</publishTime>
     </File>
     <File Include="bin/Kent.Libary.dll">
-      <publishTime>07/07/2018 13:16:40</publishTime>
+      <publishTime>07/09/2018 21:52:24</publishTime>
     </File>
     <File Include="bin/Kent.Libary.pdb">
-      <publishTime>07/07/2018 13:16:40</publishTime>
+      <publishTime>07/09/2018 21:52:24</publishTime>
     </File>
     <File Include="bin/Kent.Web.dll">
-      <publishTime>07/07/2018 13:46:24</publishTime>
+      <publishTime>07/12/2018 22:28:00</publishTime>
     </File>
     <File Include="bin/Kent.Web.pdb">
-      <publishTime>07/07/2018 13:46:24</publishTime>
+      <publishTime>07/12/2018 22:28:00</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
@@ -2263,7 +2269,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/14/2018 22:11:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/04/2018 16:57:32</publishTime>
+      <publishTime>07/12/2018 22:33:52</publishTime>
     </File>
   </ItemGroup>
 </Project>
