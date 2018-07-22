@@ -14,7 +14,7 @@ using System.Web.UI;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class FormsController : BackendController
     {
         private readonly IFormServices _formServices;
@@ -23,11 +23,13 @@ namespace Kent.Web.Areas.Admin.Controllers
             _formServices = formServices;
         }
         // GET: Admin/Forms
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AdmissionListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Admission, keyword);
@@ -64,7 +66,7 @@ namespace Kent.Web.Areas.Admin.Controllers
             }
             return View(dataLst);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult AdvisoryListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Advisory, keyword);
@@ -99,6 +101,7 @@ namespace Kent.Web.Areas.Admin.Controllers
             }
             return View(dataLst);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult VisitListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Visit, keyword);
@@ -135,6 +138,7 @@ namespace Kent.Web.Areas.Admin.Controllers
 
             return View(dataLst);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AlumniListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Alumni, keyword);
@@ -171,7 +175,7 @@ namespace Kent.Web.Areas.Admin.Controllers
 
             return View(dataLst);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult ContactListing(string keyword, bool? export)
         {
             var listing = _formServices.GetListForms(FormsEnums.FormType.Contact, keyword);

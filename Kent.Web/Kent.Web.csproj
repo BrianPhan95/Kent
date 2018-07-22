@@ -209,6 +209,7 @@
     <Compile Include="Areas\Admin\Models\FormData\AlumniData.cs" />
     <Compile Include="Areas\Admin\Models\FormData\ContactData.cs" />
     <Compile Include="Areas\Admin\Models\FormData\VisitSchoolData.cs" />
+    <Compile Include="Areas\Admin\Models\Users\UserLogin.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserSessionModel.cs" />
     <Compile Include="Attribute\AdminAuthorize.cs" />
     <Compile Include="Attribute\InternationalizationAttribute.cs" />
@@ -885,6 +886,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Media\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kent.Business.Core.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Kent.Business.Services
 {
     public interface IUserServices
     {
+        UserModel GetUserDetails(UserLogin user);
     }
 }

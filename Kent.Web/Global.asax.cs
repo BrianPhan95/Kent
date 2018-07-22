@@ -3,10 +3,12 @@ using Kent.Entities.Repositories;
 using log4net.Config;
 using System;
 using System.IO;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 using Unity;
 using Unity.Mvc5;
 
@@ -14,6 +16,26 @@ namespace Kent.Web
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                if (authTicket != null && !authTicket.Expired)
+                {
+                    var roles = authTicket.UserData.Split(',');
+                    HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
+                }
+            }
+            //else
+            //{
+            //    Response.Redirect("~/Admin");
+            //    //FormsAuthentication.LoginUrl = "/Admin";
+            //    //FormsAuthentication.RedirectToLoginPage();
+            //}
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

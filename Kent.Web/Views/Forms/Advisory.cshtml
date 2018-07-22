@@ -4,14 +4,14 @@
     ViewBag.Title = "Tư vấn";
     var SpecializeList = new List<SelectListItem>()
     {
-        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
-        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
-        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
-        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
-        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
-        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
-        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
-        new SelectListItem(){Text="Dự bị Đại học Quốc tế", Value="Dự bị Đại học Quốc tế"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quan Tri Kinh Doanh"},
+        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quan Tri Nha Hang Dich Vu"},
+        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyen Thong Da Phuong Tien"},
+        new SelectListItem(){Text="Quản Trị Marketing", Value="Quan Tri Marketing"},
+        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiet Ke Thoi Trang"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quan Tri Kinh Doanh Van Tai Hang Khong"},
+        new SelectListItem(){Text="Kế Toán", Value="Ke Toan"},
+        new SelectListItem(){Text="Dự bị Đại học Quốc tế", Value="Du bi Dai hoc Quoc te"},
     };
 }
 <!-- Latest compiled and minified CSS -->
@@ -43,7 +43,7 @@
                     {
                         <div class="form-check">
                             <label class="form-check-label">
-                                @if (Model.Specialize != null && Model.Specialize.Contains(item.Value))
+                                @if (Model.Specialize != null && (Model.Specialize.Contains(item.Value) || Model.Specialize[0].Contains(item.Value + ",") || Model.Specialize[0].Contains(", " + item.Value)))
                                 {
                                     <input type="checkbox" name="Specialize" value="@item.Value" checked="checked" />
                                 }

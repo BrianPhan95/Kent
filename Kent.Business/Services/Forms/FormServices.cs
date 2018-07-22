@@ -1,11 +1,15 @@
 ﻿using Kent.Business.BackgroundTask;
 using Kent.Business.Core.Models.Forms;
+using Kent.Business.Core.Models.Forms.FormData;
 using Kent.Entities;
 using Kent.Entities.Model;
 using Kent.Entities.Repositories;
 using Kent.Libary.Configurations;
 using Kent.Libary.Enums;
 using Kent.Libary.Logger;
+using Kent.Libary.Utilities;
+using RazorEngine;
+using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -72,14 +77,14 @@ namespace Kent.Business.Services
             var formID = _formRepository.SaveFormData(form);
             if (formID > 0)
             {
-                CreateEmailQueue(form, model.EmailBodyString);
+                CreateEmailQueue(form, model.FormTypeID);
                 return true;
             }
 
             return false;
         }
 
-        private void CreateEmailQueue(Form formData, string emailBodyStr)
+        private void CreateEmailQueue(Form formData, FormsEnums.FormType type)
         {
             List<Employees> listEmployees = _employeesService.GetList();
 
@@ -88,18 +93,7 @@ namespace Kent.Business.Services
                 List<EmailQueue> emails = new List<EmailQueue>();
                 foreach (var employees in listEmployees)
                 {
-                    EmailQueue newEmail = new EmailQueue()
-                    {
-                        From = "",
-                        FromName = "Service",
-                        To = employees.Email,
-                        ToName = employees.Name,
-                        Subject = "",
-                        Body = emailBodyStr,
-                        CreatedBy = "system",
-                        Created = DateTime.Now,
-                        RecordActive = true,
-                    };
+                    EmailQueue newEmail = GetEmail(type, formData.Data, employees.Email, employees.Name);
 
                     int addToQueue = _emailQueueService.AddNewEmail(newEmail);
                     if (addToQueue > 0)
@@ -175,6 +169,66 @@ namespace Kent.Business.Services
 
             }
 
+        }
+
+        private EmailQueue GetEmail(FormsEnums.FormType type, string jsonData, string employeeEmail, string employeeName)
+        {
+            var email = new EmailQueue()
+            {
+                From = "",
+                FromName = "Hệ Thống",
+                To = employeeEmail,
+                ToName = employeeName,
+                Subject = "",
+                CreatedBy = "system",
+                Created = DateTime.Now,
+                RecordActive = true,
+            };
+            var data = new object();
+            string resourceName = string.Empty;
+            string templateFilePath = string.Empty;
+
+            switch (type)
+            {
+                case FormsEnums.FormType.Admission:
+                    email.Subject = "Đăng kí nhập học";
+                    data = SerializeUtilities.Deserialize<AdmissionData>(jsonData);
+                    resourceName = "Kent.Business.Core.EmailTemplate.Admission.cshtml";
+                    break;
+
+                case FormsEnums.FormType.Advisory:
+                    email.Subject = "Đăng kí tư vấn";
+                    data = SerializeUtilities.Deserialize<AdvisoryData>(jsonData);
+                    resourceName = "Kent.Business.Core.EmailTemplate.Advisory.cshtml";
+                    break;
+
+                case FormsEnums.FormType.Alumni:
+                    email.Subject = "Thông tin cựu sinh viên";
+                    data = SerializeUtilities.Deserialize<AlumniData>(jsonData);
+                    resourceName = "Kent.Business.Core.EmailTemplate.Alumni.cshtml";
+                    break;
+
+                case FormsEnums.FormType.Contact:
+                    email.Subject = "Liên hệ";
+                    data = SerializeUtilities.Deserialize<ContactData>(jsonData);
+                    resourceName = "Kent.Business.Core.EmailTemplate.Contact.cshtml";
+                    break;
+
+                case FormsEnums.FormType.Visit:
+                    email.Subject = "Đăng kí tham quan";
+                    data = SerializeUtilities.Deserialize<VisitSchoolData>(jsonData);
+                    resourceName = "Kent.Business.Core.EmailTemplate.VisitSchool.cshtml";
+                    break;
+            }
+            var assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string templateStr = reader.ReadToEnd();
+                email.Body = Engine.Razor.RunCompile(templateStr, "templateKey", null, data);
+            }
+
+            return email; ;
         }
     }
 }

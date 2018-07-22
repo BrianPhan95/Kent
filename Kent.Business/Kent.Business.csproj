@@ -38,6 +38,10 @@
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -68,7 +72,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundTask\EmailBackgroundTask.cs" />
+    <Compile Include="Core\Models\Forms\FormData\AdmissionData.cs" />
+    <Compile Include="Core\Models\Forms\FormData\AdvisoryData.cs" />
+    <Compile Include="Core\Models\Forms\FormData\AlumniData.cs" />
+    <Compile Include="Core\Models\Forms\FormData\ContactData.cs" />
+    <Compile Include="Core\Models\Forms\FormData\VisitSchoolData.cs" />
     <Compile Include="Core\Models\Forms\FormModel.cs" />
+    <Compile Include="Core\Models\Users\UserLogin.cs" />
+    <Compile Include="Core\Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailQueues\EmailQueueServices.cs" />
     <Compile Include="Services\EmailQueues\IEmailQueueServices.cs" />
@@ -92,7 +103,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Core\EmailTemplate\Admission.cshtml" />
+    <EmbeddedResource Include="Core\EmailTemplate\Advisory.cshtml" />
+    <EmbeddedResource Include="Core\EmailTemplate\Alumni.cshtml" />
+    <EmbeddedResource Include="Core\EmailTemplate\Contact.cshtml" />
+    <EmbeddedResource Include="Core\EmailTemplate\VisitSchool.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

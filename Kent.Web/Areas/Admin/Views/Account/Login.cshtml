@@ -1,4 +1,4 @@
-﻿
+﻿@model Kent.Web.Areas.Admin.Models.Users.UserLogin
 @{
     Layout = null;
     ViewBag.Title = "Đăng nhập";
@@ -23,29 +23,32 @@
                 <p class="login-box-msg">Sign in to start your session</p>
                 @using (Html.BeginForm("Login", "Account", null, FormMethod.Post, new { @class = "form-horizontal" }))
             {
+                    @Html.ValidationSummary()
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @*<input type="email" class="form-control" placeholder="Email">*@
                         <span class="fa fa-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @*<input type="password" class="form-control" placeholder="Password">*@
                         <span class="fa fa-lock form-control-feedback"></span>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                    <input type="checkbox"> Remember Me
-                                </label>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="checkbox icheck">
+                                    <label>
+                                        <input type="checkbox"> Remember Me
+                                    </label>
+                                </div>
                             </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <input type="hidden" name="username" value="test" />
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                            </div>
+                            <!-- /.col -->
                         </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <input type="hidden" name="username" value="test" />
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
                 }
             </div>
             <!-- /.login-card-body -->

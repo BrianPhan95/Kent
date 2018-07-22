@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BackendController : Controller
     {
         public BackendController()

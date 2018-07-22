@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class EmployeesController : BackendController
     {
         private readonly IEmployeesServices _employeesServices;
@@ -17,7 +18,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         {
             _employeesServices = employeesServices;
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Employees
         public ActionResult Index()
         {
@@ -31,20 +32,20 @@ namespace Kent.Web.Areas.Admin.Controllers
 
             return View(listData);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Employees/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Employees/Create
         public ActionResult Create()
         {
             var model = new EmployeesModel();
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Employees/Create
         [HttpPost]
         public ActionResult Create(EmployeesModel model)
@@ -78,13 +79,13 @@ namespace Kent.Web.Areas.Admin.Controllers
             }
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Employees/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Employees/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -100,13 +101,13 @@ namespace Kent.Web.Areas.Admin.Controllers
                 return View();
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Admin/Employees/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Admin/Employees/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
