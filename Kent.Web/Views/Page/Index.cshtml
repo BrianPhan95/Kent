@@ -1,0 +1,21 @@
+﻿@model Kent.Business.Core.Models.Pages.PageViewModel
+
+
+@Html.Raw(Model.HeaderContent)
+@if (ViewBag.IsSpecialPage != null && (bool)ViewBag.IsSpecialPage)
+{
+    if (ViewBag.Title == "Đăng kí nhập học")
+    {
+        @Html.Action("Admission", "Forms")
+    }
+    else if (ViewBag.Title == "Liên hệ")
+    {
+        @Html.Action("Contact", "Forms")
+    }
+}
+else
+{
+    @Html.Raw(Model.PageContent)
+
+}
+@Html.Raw(Model.FooterContent)

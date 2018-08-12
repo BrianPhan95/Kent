@@ -52,7 +52,7 @@ namespace Kent.Web.Controllers
                     return Json(new { success = true });
                 }
             }
-            return Json(new { success = false });
+            return Json(new { success = false , id=""});
         }
         #endregion
 
@@ -60,7 +60,7 @@ namespace Kent.Web.Controllers
         public ActionResult Advisory()
         {
             var model = new AdvisoryModel();
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -78,7 +78,7 @@ namespace Kent.Web.Controllers
                 var respone = _formServices.SaveForm(formModel);
                 if (respone)
                 {
-                    return Json(new { success = true });
+                    return Json(new { success = true, idfield = "tuvan" });
                 }
             }
             return Json(new { success = false });
@@ -89,7 +89,7 @@ namespace Kent.Web.Controllers
         public ActionResult VisitSchool()
         {
             var model = new VisitSchoolModel();
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -118,7 +118,7 @@ namespace Kent.Web.Controllers
         public ActionResult Contact()
         {
             var model = new ContactModel();
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -147,7 +147,7 @@ namespace Kent.Web.Controllers
         public ActionResult Alumni()
         {
             var model = new AlumniModel();
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]

@@ -1,0 +1,18 @@
+﻿@model Kent.Business.Core.Models.FooterTemplates.FooterTemplateManageModel
+
+@Html.HiddenFor(m => m.ID)
+@Html.AntiForgeryToken()
+<div class="form-group">
+    <label for="name" class="col-md-3">Tên</label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+</div>
+<div class="form-group form_item">
+    <label for="email" class="col-md-3">Content</label>
+    @Html.TextAreaFor(m => m.Content, new { @class = "col-md-9" })
+</div>
+<div class="form-group form_item">
+    <label for="email" class="col-md-3">Is default</label>
+    @Html.CheckBoxFor(m => m.IsDefaultTemplate, new { @class = "col-md-9" })
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+

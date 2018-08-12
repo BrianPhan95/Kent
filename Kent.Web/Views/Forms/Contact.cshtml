@@ -6,54 +6,107 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="~/Content/site.css">
-
-<div class="contact_columns__right">
-    @using (Ajax.BeginForm("Contact", "Forms", new AjaxOptions() { OnBegin = "ContactSubmit", OnSuccess = "ContactSuccess", OnComplete = "ContactComplete" }))
-    {
-        <h2>Gửi liên hệ</h2>
-        <div class="form-group col-sm-12">
-            <label for="email" class="col-sm-4">Email</label>
-            @Html.TextBoxFor(m => m.Email, new { @class = "col-sm-8" })
-        </div>
-        <div class="form-group col-sm-12">
-            <label for="email" class="col-sm-4">Họ tên</label>
-            @Html.TextBoxFor(m => m.Fullname, new { @class = "col-sm-8" })
-        </div>
-        <div class="form-group col-sm-12">
-            <label for="email" class="col-sm-4">Số điện thoại</label>
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-sm-8" })
-        </div>
-        <div class="form-group col-sm-12">
-            <label for="email" class="col-sm-4">Nội dung</label>
-            @Html.TextAreaFor(m => m.Content, new { @class = "col-sm-8" })
-        </div>
-        <div class="form-group col-sm-12">
-            <label for="email" class="col-sm-4 space_button">&nbsp;</label>
-            <button type="submit" class="btn bg1">Submit</button>
-        </div>
-    }
-</div>
-<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="../Scripts/bootstrap.min.js"></script>
-<div id="successModal" class="modal fade" role="dialog">
-    <div class="modal-dialog form_tuvan_popup">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="form_success">
-                    <div class="form_success__content">
-                        <img src="images/icon_success.png" alt="">
-                        <p>
-                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
-                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
-                            Xin cảm ơn!
-                        </p>
-                    </div>
+ <!--Banner-->
+<section class="banner_head head_contact">
+    <div class="container">
+    </div>
+</section>
+<section class="body_page page_about">
+    <div class="container">
+        <div class="contact_columns">
+            <div class="contact_columns__left">
+                <ul>
+                    <li>
+                        <h1>Kent International College</h1>
+                    </li>
+                    <li><a href="tel:1900 6456"> <i class="icon_phone"></i>(028) 7300 3969</a></li>
+                    <li>
+                        <i class="icon_mail"></i>info@kent.edu.vn
+                    </li>
+                    <li>
+                        <p><i class="icon_pin"></i>219 - 221 Xô Viết Nghệ Tĩnh, P. 17, Q. Bình Thạnh, Tp.HCM.</p>
+                    </li>
+                    <li>
+                        <i class="social_facebook_circle"></i>
+                        /KentCollegeVietnam
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h2>
+                            Hội sinh viên Kent</h1>
+                    </li>
+                    <li>
+                        <p><i class="icon_mail"></i>hoisinhvien@kent.edu.vn</p>
+                    </li>
+                    <li>
+                        <i class="social_facebook_circle"></i>
+                        /caodangkent
+                    </li>
+                </ul>
+                <div class="hotline_contact">
+                    <strong>hotline</strong>
+                    <h3>
+                        <a href="tel:1900 6456"><b>1900 6456</b> - <span>0938 361 456</span></a>
+                    </h3>
                 </div>
+                <div class="qr_code"><img src="/Content/particular/images/qr_code.jpg" alt=""></div>
+            </div>
+            <div class="contact_columns__right">
+                @using (Ajax.BeginForm("Contact", "Forms", new AjaxOptions() { OnBegin = "ContactSubmit", OnSuccess = "ContactSuccess", OnComplete = "ContactComplete" }))
+                {
+                    <h2>Gửi liên hệ</h2>
+                    <div class="form-group col-sm-12">
+                        <label for="email" class="col-sm-4">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "col-sm-8" })
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="email" class="col-sm-4">Họ tên</label>
+                        @Html.TextBoxFor(m => m.Fullname, new { @class = "col-sm-8" })
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="email" class="col-sm-4">Số điện thoại</label>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "col-sm-8" })
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="email" class="col-sm-4">Nội dung</label>
+                        @Html.TextAreaFor(m => m.Content, new { @class = "col-sm-8" })
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="email" class="col-sm-4 space_button">&nbsp;</label>
+                        <button type="submit" class="btn bg1">Submit</button>
+                    </div>
+                }
+            </div>
+            <div class="list_address">
+                <div class="col-sm-3">
+                    <h2>Cử Nhân Thực Hành Quốc Tế</h2>
+                    <p><span aria-hidden="true" class="icon_mobile"></span>0938 762 456 - 0938 361 456</p>
+                    <p><span aria-hidden="true" class="icon_mail_alt"></span>tuyensinh@kent.edu.vn</p>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <h2>Dự Bị Đại Học Quốc Tế</h2>
+                    <p><span aria-hidden="true" class="icon_mobile"></span>0963 969 039</p>
+                    <p><span aria-hidden="true" class="icon_mail_alt"></span>tuyensinh@kent.edu.vn</p>
+                </div>
+                <div class="col-sm-3">
+                    <h2>Các Khóa Chuyên Viên Quốc Tế</h2>
+                    <p><span aria-hidden="true" class="icon_mobile"></span>0937 48 3969</p>
+                    <p><span aria-hidden="true" class="icon_mail_alt"></span>tuvan@kent.edu.vn</p>
+                </div>
+                <div class="col-sm-3">
+                    <h2>Trung Tâm Anh Ngữ KELA</h2>
+                    <p><span aria-hidden="true" class="icon_mobile"></span>0969 201 739</p>
+                    <p><span aria-hidden="true" class="icon_mail_alt"></span>kela.englishcenter@gmail.vn</p>
+                </div>
+            </div>
+            <div class="maps_contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1458333768715!2d106.70868501528396!3d10.800140661707603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528baafe3cfd3%3A0x76843afedabe91a4!2sKent+International+College!5e0!3m2!1svi!2s!4v1529689382349" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
-</div>
+</section>
+
 <script>
     function ContactSubmit() {
         var specializeList = [];

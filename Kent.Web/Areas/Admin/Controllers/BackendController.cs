@@ -1,4 +1,5 @@
-﻿using Kent.Web.Attribute;
+﻿using Kent.Libary.Logger;
+using Kent.Web.Attribute;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,11 @@ namespace Kent.Web.Areas.Admin.Controllers
         {
 
             return true;
+        }
+
+        public void LogError(Exception ex)
+        {
+            Logger.ErrorException(ex);
         }
     }
 }

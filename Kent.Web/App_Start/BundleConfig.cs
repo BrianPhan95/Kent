@@ -23,7 +23,7 @@ namespace Kent.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
+            ///style
             bundles.Add(new StyleBundle("~/Content/admin-site").Include(
                      "~/Content/AdminLTE/css/adminlte.min.css",
                      "~/Content/Plugins/iCheck/flat/blue.css",
@@ -33,6 +33,7 @@ namespace Kent.Web
                      "~/Content/Plugins/daterangepicker/daterangepicker-bs3.css0",
                      "~/Content/Plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"));
 
+            ///script
             bundles.Add(new ScriptBundle("~/scripts/admin-site").Include(
                       "~/Content/Plugins/jquery/jquery.min.js",
                       "~/Content/Plugins/bootstrap/js/bootstrap.bundle.min.js",

@@ -61,13 +61,25 @@
     <Compile Include="Migrations\201806170958309_ChangeToEmployees.Designer.cs">
       <DependentUpon>201806170958309_ChangeToEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808011525235_Page.cs" />
+    <Compile Include="Migrations\201808011525235_Page.Designer.cs">
+      <DependentUpon>201808011525235_Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808120421381_MultiLanguage.cs" />
+    <Compile Include="Migrations\201808120421381_MultiLanguage.Designer.cs">
+      <DependentUpon>201808120421381_MultiLanguage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\BaseHierachyModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\EmailLog.cs" />
     <Compile Include="Model\EmailQueue.cs" />
     <Compile Include="Model\EmailType.cs" />
+    <Compile Include="Model\FooterTemplate.cs" />
     <Compile Include="Model\Form.cs" />
     <Compile Include="Model\Employees.cs" />
+    <Compile Include="Model\HeaderTemplate.cs" />
+    <Compile Include="Model\Page.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,10 +88,16 @@
     <Compile Include="Repositories\EmailQueues\IEmailQueueRepository.cs" />
     <Compile Include="Repositories\Emails\EmailRepository.cs" />
     <Compile Include="Repositories\Emails\IEmailRepository.cs" />
+    <Compile Include="Repositories\FooterTemplates\FooterTemplateRepository.cs" />
+    <Compile Include="Repositories\FooterTemplates\IFooterTemplateRepository.cs" />
     <Compile Include="Repositories\Forms\FormRepository.cs" />
     <Compile Include="Repositories\Forms\IFormRepository.cs" />
     <Compile Include="Repositories\Employees\EmployeesRepository.cs" />
     <Compile Include="Repositories\Employees\IEmployeesRepository.cs" />
+    <Compile Include="Repositories\HeaderTemplates\HeaderTemplateRepository.cs" />
+    <Compile Include="Repositories\HeaderTemplates\IHeaderTemplateRepository.cs" />
+    <Compile Include="Repositories\Pages\IPageRepository.cs" />
+    <Compile Include="Repositories\Pages\PageRepository.cs" />
     <Compile Include="Repositories\Users\IUserRespository.cs" />
     <Compile Include="Repositories\Users\UserRespository.cs" />
   </ItemGroup>
@@ -100,6 +118,13 @@
     <EmbeddedResource Include="Migrations\201806170958309_ChangeToEmployees.resx">
       <DependentUpon>201806170958309_ChangeToEmployees.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011525235_Page.resx">
+      <DependentUpon>201808011525235_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808120421381_MultiLanguage.resx">
+      <DependentUpon>201808120421381_MultiLanguage.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

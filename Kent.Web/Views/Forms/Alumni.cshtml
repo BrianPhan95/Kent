@@ -1,16 +1,8 @@
 ﻿@model Kent.Web.Models.Forms.AlumniModel
-@{
-    Layout = null;
-    ViewBag.Title = "cựu sinh viên";
-}
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="~/Content/site.css">
-<!-- Modal -->
-<div class="form_signup__content">
-    @using (Ajax.BeginForm("Alumni", "Forms", new AjaxOptions() { OnBegin = "AlumniSubmit", OnSuccess = "AlumniSuccess", OnComplete = "AlumniComplete" }))
-    {
-                <h2>Đăng ký tư vấn</h2>
+
+@using (Ajax.BeginForm("Alumni", "Forms", new AjaxOptions() { OnBegin = "AlumniSubmit", OnSuccess = "AlumniSuccess", OnComplete = "AlumniComplete" }))
+{
+    <h2>Đăng ký tư vấn</h2>
                 <div class="col-sm-6">
                     <div class="form-group form_item">
                         <label for="FullName" class="col-md-5">Họ và tên</label>
@@ -116,51 +108,18 @@
                     </div>
                 </div>
                 <div class="form-group form_item form_cuusv_button">
-                                <label for="email" class="col-md-3 none_label">&nbsp;</label>
-                                <button type="submit">Đăng ký</button>
-                                <p data-dismiss="modal">Bỏ qua</p>
-                            </div>
-    }
-</div>
-
-<!-- end popup dang ky cuu sinh vien -->
-
-<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="../Scripts/bootstrap.min.js"></script>
-<div id="successModal" class="modal fade" role="dialog">
-    <div class="modal-dialog form_tuvan_popup">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="form_success">
-                    <div class="form_success__content">
-                        <img src="images/icon_success.png" alt="">
-                        <p>
-                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
-                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
-                            Xin cảm ơn!
-                        </p>
-                    </div>
+                    <label for="email" class="col-md-3 none_label">&nbsp;</label>
+                    <button type="submit">Đăng ký</button>
+                    <p data-dismiss="modal">Bỏ qua</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-        function AlumniSubmit() {
-            var specializeList = [];
-            $('input:checkbox:checked').each(function () {
-                specializeList.push($(this).attr('value'));
-            });
-            document.getElementById("Specialize").value = specializeList;
-        };
-        function AlumniComplete(result) {
-            $("#successModal").modal();
-        }
+}
 
-        function AlumniSuccess(result) {
-            if (result.success == true) {
-                $("#successModal").modal();
-            }
-        }
+<script>
+    function AlumniSubmit() {
+        var specializeList = [];
+        $('input:checkbox:checked').each(function () {
+            specializeList.push($(this).attr('value'));
+        });
+        document.getElementById("Specialize").value = specializeList;
+    };
 </script>

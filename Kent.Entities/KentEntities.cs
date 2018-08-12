@@ -23,7 +23,9 @@ namespace Kent.Entities
         public DbSet<EmailQueue> EmailQueues { get; set; }
         public DbSet<EmailType> EmailTypes { get; set; }
         public DbSet<Employees> Employees { get; set; }
-
+        public DbSet<HeaderTemplate> HeaderTemplates { get; set; }
+        public DbSet<FooterTemplate> FooterTemplates { get; set; }
+        public DbSet<Page> Pages { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -70,9 +70,11 @@
     <Compile Include="Configurations\KentConfiguration.cs" />
     <Compile Include="Enums\EmailEnums.cs" />
     <Compile Include="Enums\FormsEnums.cs" />
+    <Compile Include="Enums\PageEnums.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ConvertUtilities.cs" />
+    <Compile Include="Utilities\SecureUtilities.cs" />
     <Compile Include="Utilities\SerializeUtilities.cs" />
     <Compile Include="Utilities\Time\TimeZoneUtilities.cs" />
   </ItemGroup>

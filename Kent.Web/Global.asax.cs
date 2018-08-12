@@ -79,6 +79,9 @@ namespace Kent.Web
             container.RegisterType<IEmailRepository, EmailRepository>();
             container.RegisterType<IEmailQueueRepository, EmailQueueRepository>();
             container.RegisterType<IUserRespository, UserRespository>();
+            container.RegisterType<IHeaderTemplateRepository, HeaderTemplateRepository>();
+            container.RegisterType<IFooterTemplateRepository, FooterTemplateRepository>();
+            container.RegisterType<IPageRepository, PageRepository>();
 
             #endregion
 
@@ -88,6 +91,9 @@ namespace Kent.Web
             container.RegisterType<IEmployeesServices, EmployeesServices>();
             container.RegisterType<IEmailServices, EmailServices>();
             container.RegisterType<IEmailQueueServices, EmailQueueServices>();
+            container.RegisterType<IHeaderTemplateServices, HeaderTemplateServices>();
+            container.RegisterType<IFooterTemplateServices, FooterTemplateServices>();
+            container.RegisterType<IPageServices, PageServices>();
             #endregion
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

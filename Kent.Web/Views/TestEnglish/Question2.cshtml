@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTestEnglish.cshtml";
+}
+<div class="test_english test_englishBg">
+    <div class="container">
+        <div class="test_englishBg__body2">
+            <div class="test_englishBg__body2__title">
+                <h1>Question 2</h1>
+                <p>
+                    Complete the notes below.<br />
+                    Write ONE WORD ONLY for each answer.
+                </p>
+            </div>
+            <div class="test_englishBg__body__audio">
+                @*<audio controls
+                       data-info-album-art="http://farm5.staticflickr.com/4050/4353986539_ec89b52698_d.jpg"
+                       data-info-album-title="8874"
+                       data-info-artist="Billy Murray"
+                       data-info-title="Come, take a trip in my air-ship"
+                       data-info-label="Edison Gold Moulded Record"
+                       data-info-year="1905"
+                       data-info-att="University of California, Santa Barbara Library."
+                       data-info-att-link="http://cylinders.library.ucsb.edu/search.php?query=8874"></audio>*@
+                <audio controls>
+                    <source src="@Url.Action("SectionAudio","TestEnglish", new { section = 2})" type="audio/mp3" />
+                    <p>Your browser does not support HTML 5 audio element</p>
+                </audio>
+            </div>
+            <h3>Fish Farming</h3>
+            <div class="col-sm-6 test_englishBg__body2__left">
+                <span>Local fish farmers are afraid that genetically modified fish will </span>
+                <input type="text"> <span>into the sea.</span>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>like to breed fish with special features, like</span> <input type="text">
+                </div>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>like to breed fish with special features, like</span> <input type="text">
+                </div>
+                <h4>Problems facing the local fishermen:</h4>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>lack of land on the</span> <input type="text">
+                </div>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>lack of</span> <input type="text"> <span>fish</span>
+                </div>
+            </div>
+            <div class="col-sm-6 test_englishBg__body2__left">
+                <span>encourages fish farmers to</span>
+                <input type="text"> <span>local fish farming business</span>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>like to breed fish with special features, like</span> <input type="text">
+                </div>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>like to breed fish with special features, like</span> <input type="text">
+                </div>
+                <h4>Problems facing the local fishermen:</h4>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>lack of land on the</span> <input type="text">
+                </div>
+                <div class="question_li">
+                    <span class="icon_stop"></span> <span>lack of</span> <input type="text"> <span>fish</span>
+                </div>
+            </div>
+            <div class="test_englishBg__body__button">
+                <button type="submit">Tiếp theo</button>
+            </div>
+        </div>
+    </div>
+</div>

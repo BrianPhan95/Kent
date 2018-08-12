@@ -201,8 +201,11 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BackendController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FooterTemplatesController.cs" />
     <Compile Include="Areas\Admin\Controllers\FormsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HeaderTemplatesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Areas\Admin\Models\Employees\EmployeesModel.cs" />
     <Compile Include="Areas\Admin\Models\FormData\AdmissionData.cs" />
     <Compile Include="Areas\Admin\Models\FormData\AdvisoryData.cs" />
@@ -215,6 +218,8 @@
     <Compile Include="Attribute\InternationalizationAttribute.cs" />
     <Compile Include="Attribute\KentUnauthorizeException.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\TestEnglishController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -377,6 +382,15 @@
     <Content Include="Content\AdminLTE\js\plugins\popper\umd\popper.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Media\TestEnglish\Audio\Section 1.mp3" />
+    <Content Include="Content\Media\TestEnglish\Audio\Section 2.mp3" />
+    <Content Include="Content\Media\TestEnglish\Audio\Section 3.mp3" />
+    <Content Include="Content\Media\TestEnglish\Audio\Section 4.mp3" />
+    <Content Include="Content\Media\TestEnglish\bg_test2.jpg" />
+    <Content Include="Content\Media\TestEnglish\question_seccess.jpg" />
+    <Content Include="Content\Media\TestEnglish\question_seccess_left.jpg" />
+    <Content Include="Content\Media\TestEnglish\testenglish_left.png" />
+    <Content Include="Content\Media\TestEnglish\test_english_right.png" />
     <Content Include="Content\Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
     <Content Include="Content\Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Content\Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
@@ -767,7 +781,10 @@
     <Content Include="Content\Plugins\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="Content\Plugins\sparkline\jquery.sparkline.js" />
     <Content Include="Content\Plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Content\TestEnglish\eleganticons.css" />
+    <Content Include="Content\TestEnglish\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Content\TestEnglish\fonts\ElegantIcons.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -853,6 +870,21 @@
     <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
     <Content Include="log4net.config" />
     <Content Include="Areas\Admin\Views\Forms\AlumniListing.cshtml" />
+    <Content Include="Content\TestEnglish\fonts\ElegantIcons.eot" />
+    <Content Include="Content\TestEnglish\fonts\ElegantIcons.ttf" />
+    <Content Include="Content\TestEnglish\fonts\ElegantIcons.woff" />
+    <Content Include="Areas\Admin\Views\FooterTemplates\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FooterTemplates\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HeaderTemplates\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HeaderTemplates\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HeaderTemplates\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\FooterTemplates\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\EditorTemplates\PageManageModel.cshtml" />
+    <Content Include="Areas\Admin\Views\HeaderTemplates\EditorTemplates\HeaderTemplateManageModel.cshtml" />
+    <Content Include="Areas\Admin\Views\FooterTemplates\EditorTemplates\FooterTemplateManageModel.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -862,6 +894,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TestEnglish\wonderplugingallery.js" />
+    <Content Include="Scripts\TestEnglish\wonderplugingridgallery.js" />
+    <Content Include="Scripts\TestEnglish\wonderplugingridlightbox.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -882,11 +917,21 @@
     <Content Include="Views\Forms\Admission.cshtml" />
     <Content Include="Views\Forms\VisitSchool.cshtml" />
     <Content Include="Views\Forms\Contact.cshtml" />
+    <Content Include="Views\Shared\_LayoutTestEnglish.cshtml" />
+    <Content Include="Views\TestEnglish\Index.cshtml" />
+    <Content Include="Views\TestEnglish\Question1.cshtml" />
+    <Content Include="Views\TestEnglish\Question2.cshtml" />
+    <Content Include="Views\TestEnglish\Question3.cshtml" />
+    <Content Include="Views\TestEnglish\Completed.cshtml" />
+    <Content Include="Views\TestEnglish\Score.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutClean.cshtml" />
+    <Content Include="Views\Shared\Popup\_Advisory.cshtml" />
+    <Content Include="Views\Shared\Popup\_VisitSchool.cshtml" />
+    <Content Include="Views\Shared\Popup\_Alumni.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Media\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -929,16 +974,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58296</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58296/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

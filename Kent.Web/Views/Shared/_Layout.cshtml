@@ -4,40 +4,56 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/particular/css/eleganticons.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/particular/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/particular/css/main.css">
+    <link href="~/Content/particular/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/particular/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Content/particular/css/animate.css" rel="stylesheet">
+
+</head>
+<body>
+    @RenderBody()
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Đăng ký nhập học", "Admission", "Forms", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Đăng ký tư vấn", "Advisory", "Forms", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Đăng ký tham quan", "VisitSchool", "Forms", new { area = "" }, null)</li>
-                </ul>
+
+
+    <div id="successModal" class="modal fade" role="dialog">
+        <div class="modal-dialog form_tuvan_popup">
+            <!-- Modal content-->
+            <div class="modal-content" style="background: none;border: none;box-shadow:  none;">
+                <div class="modal-body">
+                    <div class="form_success">
+                        <div class="form_success__content">
+                            <img src="images/icon_success.png" alt="">
+                            <p>
+                                Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
+                                và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
+                                Xin cảm ơn!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    @Html.Partial("Popup/_Advisory")
+    @Html.Partial("Popup/_Alumni")
+    @*@Html.Partial("Popup/_Contact")*@
+    @Html.Partial("Popup/_VisitSchool")
 
+    <script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function SubmitComplete(result) {
+            if (result.success == true) {
+                $('#' + result.idfield).modal('hide');
+                $("#successModal").modal();
+            }
+        }
+    </script>
 </body>
 </html>

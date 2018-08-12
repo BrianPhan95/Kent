@@ -1,28 +1,22 @@
 ﻿@model Kent.Web.Models.Forms.AdvisoryModel
 @{
-    Layout = null;
-    ViewBag.Title = "Tư vấn";
     var SpecializeList = new List<SelectListItem>()
     {
-        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quan Tri Kinh Doanh"},
-        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quan Tri Nha Hang Dich Vu"},
-        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyen Thong Da Phuong Tien"},
-        new SelectListItem(){Text="Quản Trị Marketing", Value="Quan Tri Marketing"},
-        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiet Ke Thoi Trang"},
-        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quan Tri Kinh Doanh Van Tai Hang Khong"},
-        new SelectListItem(){Text="Kế Toán", Value="Ke Toan"},
-        new SelectListItem(){Text="Dự bị Đại học Quốc tế", Value="Du bi Dai hoc Quoc te"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
+        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
+        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
+        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
+        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
+        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
+        new SelectListItem(){Text="Dự bị Đại học Quốc tế", Value="Dự bị Đại học Quốc tế"},
     };
 }
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="~/Content/site.css">
-<div class="form_signup">
-    <div class="form_signup__content">
-        @using (Ajax.BeginForm("Advisory", "Forms", new AjaxOptions() { OnBegin = "AdvisorySubmit", OnSuccess = "AdvisoryComplete" }))
-        {
-            @Html.ValidationSummary()
-            <h2>Đăng ký tư vấn</h2>
+
+@using (Ajax.BeginForm("Advisory", "Forms", new AjaxOptions() { OnBegin = "AdvisorySubmit", OnSuccess = "SubmitComplete" }))
+{
+    @Html.ValidationSummary()
+    <h2>Đăng ký tư vấn</h2>
             <div class="form-group form_item">
                 <label for="name" class="col-md-3">Họ và tên</label>
                 @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
@@ -67,34 +61,10 @@
             <div class="form-group form_item">
                 <label for="email" class="col-md-3">&nbsp;</label>
                 <button id="btn-submit">Đăng ký</button>
-                <p>Bỏ qua</p>
+                <p data-dismiss="modal">Bỏ qua</p>
             </div>
-        }
-    </div>
-</div>
-@Scripts.Render("~/bundles/jquery")
-<script src="../Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="../Scripts/bootstrap.min.js"></script>
+}
 
-<div id="successModal" class="modal fade" role="dialog">
-    <div class="modal-dialog form_tuvan_popup">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="form_success">
-                    <div class="form_success__content">
-                        <img src="images/icon_success.png" alt="">
-                        <p>
-                            Gửi thông tin thành công, chúng tôi sẽ gọi điện xác nhận
-                            và tư vấn chi tiết đến bạn trong vòng 24 giờ tới.<br />
-                            Xin cảm ơn!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <script>
     function AdvisorySubmit() {
         var specializeList = [];
@@ -103,9 +73,5 @@
         });
         document.getElementById("Specialize").value = specializeList;
     };
-    function AdvisoryComplete(result) {
-        if (result.success == true) {
-            $("#successModal").modal();
-        }
-    }
+    
 </script>

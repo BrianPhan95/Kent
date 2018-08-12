@@ -364,5 +364,10 @@ namespace Kent.Libary.Utilities
         {
             return EqualityComparer<T>.Default.Equals(object1, object2);
         }
+
+        public static string UnicodeString(this string value)
+        {
+            return string.Format("N'{0}'", value);
+        }
     }
 }

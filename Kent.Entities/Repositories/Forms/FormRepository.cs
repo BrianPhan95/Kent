@@ -50,37 +50,12 @@ namespace Kent.Entities.Repositories
 
         public int SaveFormData(Form form)
         {
-            int result = 0;
-
-            using (IDbConnection conn = Connection)
+            using (var db = new KentEntities())
             {
-                string sql = "INSERT INTO [dbo].[Forms] "
-                            + "([FormTypeID]"
-                            + ",[Data]"
-                            + ",[RecordOrder]"
-                            + ",[RecordActive]"
-                            + ",[RecordDeleted]"
-                            + ",[CreatedBy]"
-                            + ",[Created]"
-                            + ",[LastUpdateBy]"
-                            + ",[LastUpdate])"
-                            + " VALUES ("
-                            + form.FormTypeID.ToString() + ","
-                            + "'" + form.Data.ToString() + "',"
-                            + "0,"
-                            + "1,"
-                            + "0,"
-                            + "'system','"
-                            + DateTime.Now.ToString() + "',"
-                            + "'',"
-                            + "'')"
-                            + "SELECT @@IDENTITY";
-
                 try
                 {
-                    conn.Open();
-
-                    result = conn.Query<int>(sql).FirstOrDefault();
+                    db.Forms.Add(form);
+                    return db.SaveChanges();
                 }
                 catch (SqlException sqlEx)
                 {
@@ -90,16 +65,9 @@ namespace Kent.Entities.Repositories
                 {
                     Logger.ErrorException(ex);
                 }
-                finally
-                {
-                    if (conn != null && conn.State != ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
-                }
             }
 
-            return result;
+            return 0;
         }
     }
 }

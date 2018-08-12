@@ -1,0 +1,18 @@
+﻿@model Kent.Business.Core.Models.Pages.PageManageModel
+@{
+    ViewBag.Title = "Tạo mới";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+
+<div class="row">
+    <div class="col-12">
+        <h2>Header template</h2>
+
+        @using (Html.BeginForm("Create", "Pages", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.EditorForModel(Model)
+        }
+    </div>
+</div>
+

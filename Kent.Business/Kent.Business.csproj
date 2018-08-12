@@ -48,9 +48,7 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
@@ -78,6 +76,13 @@
     <Compile Include="Core\Models\Forms\FormData\ContactData.cs" />
     <Compile Include="Core\Models\Forms\FormData\VisitSchoolData.cs" />
     <Compile Include="Core\Models\Forms\FormModel.cs" />
+    <Compile Include="Core\Models\FooterTemplates\FooterTemplateManageModel.cs" />
+    <Compile Include="Core\Models\FooterTemplates\FooterTemplateModel.cs" />
+    <Compile Include="Core\Models\HeaderTemplates\HeaderTemplateManageModel.cs" />
+    <Compile Include="Core\Models\HeaderTemplates\HeaderTemplateModel.cs" />
+    <Compile Include="Core\Models\Pages\PageManageModel.cs" />
+    <Compile Include="Core\Models\Pages\PageModel.cs" />
+    <Compile Include="Core\Models\Pages\PageViewModel.cs" />
     <Compile Include="Core\Models\Users\UserLogin.cs" />
     <Compile Include="Core\Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,10 +90,16 @@
     <Compile Include="Services\EmailQueues\IEmailQueueServices.cs" />
     <Compile Include="Services\Emails\IEmailServices.cs" />
     <Compile Include="Services\Emails\EmailServices.cs" />
+    <Compile Include="Services\FooterTemplates\FooterTemplateServices.cs" />
+    <Compile Include="Services\FooterTemplates\IFooterTemplateServices.cs" />
     <Compile Include="Services\Forms\FormServices.cs" />
     <Compile Include="Services\Forms\IFormServices.cs" />
     <Compile Include="Services\Employees\IEmployeesServices.cs" />
     <Compile Include="Services\Employees\EmployeesServices.cs" />
+    <Compile Include="Services\HeaderTemplates\HeaderTemplateServices.cs" />
+    <Compile Include="Services\HeaderTemplates\IHeaderTemplateServices.cs" />
+    <Compile Include="Services\Pages\IPageServices.cs" />
+    <Compile Include="Services\Pages\PageServices.cs" />
     <Compile Include="Services\Users\IUserServices.cs" />
     <Compile Include="Services\Users\UserServices.cs" />
   </ItemGroup>

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTestEnglish.cshtml";
+}
+<div class="test_english test_englishBg">
+    <div class="container">
+        <div class="test_englishBg__body">
+            <div class="test_englishBg__body__title">
+                <h1>Question 1</h1>
+                <p>Choose the correct letter, A, B, or C.</p>
+            </div>
+            <div class="test_englishBg__body__audio">
+                @*<audio controls
+                    data-info-album-art="http://farm5.staticflickr.com/4050/4353986539_ec89b52698_d.jpg"
+                    data-info-album-title="8874"
+                    data-info-artist="Billy Murray"
+                    data-info-title="Come, take a trip in my air-ship"
+                    data-info-label="Edison Gold Moulded Record"
+                    data-info-year="1905"
+                    data-info-att="University of California, Santa Barbara Library."
+                    data-info-att-link="http://cylinders.library.ucsb.edu/search.php?query=8874"></audio>*@
+                <audio controls>
+                    <source src="@Url.Action("SectionAudio","TestEnglish", new { section = 1})" type="audio/mp3" />
+                    <p>Your browser does not support HTML 5 audio element</p>
+                </audio>
+            </div>
+            <div class="test_englishBg__body__question">
+                <h3>What is the purpose of the talk?</h3>
+            </div>
+            <div class="test_englishBg__body__Check">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">to welcome its new members</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                    <label class="form-check-label" for="exampleCheck2"> to commemorate its 10th anniversary </label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck3">
+                    <label class="form-check-label" for="exampleCheck3"> to celebrate the award it received recently</label>
+                </div>
+            </div>
+            <div class="test_englishBg__body__button">
+                <button type="submit">Tiếp theo</button>
+            </div>
+        </div>
+    </div>
+</div>

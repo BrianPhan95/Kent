@@ -1,0 +1,19 @@
+﻿@model Kent.Business.Core.Models.FooterTemplates.FooterTemplateManageModel
+@{
+    ViewBag.Title = "Chỉnh sửa";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm("Edit", "FooterTemplates", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            
+            <h2>Footer template</h2>
+            
+            @Html.EditorForModel(Model)
+        }
+    </div>
+</div>
+

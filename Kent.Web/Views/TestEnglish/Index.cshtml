@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTestEnglish.cshtml";
+}
+
+<div class="test_english">
+    <img class="left_test" src="~/Content/Media/TestEnglish/testenglish_left.png" alt="" />
+    <img class="right_test" src="~/Content/Media/TestEnglish/test_english_right.png" alt="" />
+    <div class="container">
+        <div class="cotent_test" style="position:absolute;">
+            <h1>Test English</h1>
+            <h6>
+                Grads4Nottm 2018 – NTU students take part in local business challenges
+                A host of businesses from Nottinghamshire will put their challenges to students as the annual Grads4Nottm scheme returns.
+            </h6>
+            <div class="checknote">
+                <h2>Lưu ý:</h2>
+                <p>
+                    <span class="icon_check"></span>
+                    <strong>
+                        Bài kiểm tra gồm 10 câu hỏi.
+                    </strong>
+                </p>
+                <p>
+                    <span class="icon_check"></span>
+                    <strong>
+                        Bài kiểm tra kỹ năng Nghe (Listening) và Đọc (Reading).
+                    </strong>
+                </p>
+                <p>
+                    <span class="icon_check"></span>
+                    <strong>
+                        Bạn không thể quay lại để thay đổi đáp án.
+                    </strong>
+                </p>
+            </div>
+            <div class="button_testenglish">
+                <a href="@Url.Action("Question1", "TestEnglish")">Thử ngay</a>
+            </div>
+        </div>
+    </div>
+</div>

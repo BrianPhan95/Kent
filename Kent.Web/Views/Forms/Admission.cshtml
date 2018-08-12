@@ -1,17 +1,14 @@
 ﻿@model Kent.Web.Models.Forms.AdmissionModel
 @{
-    Layout = null;
-    ViewBag.Title = "Đăng ký nhập học";
-    var InternationalBachelorProgramLst = new List<SelectListItem>
-    ()
+    var InternationalBachelorProgramLst = new List<SelectListItem>()
     {
-    new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
-    new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
-    new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
-    new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
-    new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
-    new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
-    new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh", Value="Quản Trị Kinh Doanh"},
+        new SelectListItem(){Text="Quản Trị Nhà Hàng & Dịch Vụ", Value="Quản Trị Nhà Hàng & Dịch Vụ"},
+        new SelectListItem(){Text="Truyền Thông Đa Phương Tiện", Value="Truyền Thông Đa Phương Tiện"},
+        new SelectListItem(){Text="Quản Trị Marketing", Value="Quản Trị Marketing"},
+        new SelectListItem(){Text="Thiết Kế Thời Trang", Value="Thiết Kế Thời Trang"},
+        new SelectListItem(){Text="Quản Trị Kinh Doanh Vận Tải Hàng Không", Value="Quản Trị Kinh Doanh Vận Tải Hàng Không"},
+        new SelectListItem(){Text="Kế Toán", Value="Kế Toán"},
     };
     var UniversityFoundationProgramLst = new List<SelectListItem>
         ()
