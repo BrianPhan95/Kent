@@ -2,29 +2,96 @@
 
 @Html.HiddenFor(m => m.ID)
 
-<div class="form-group">
-    <label for="name" class="col-md-3">Tên</label>
-    @Html.TextBoxFor(m => m.Title, new { @class = "col-md-8" })
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">Tiếng việt</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            @*<button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-remove"></i></button>*@
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="form-group">
+            <div class="row">
+                <label for="name" class="col-md-3">Tên</label>
+                @Html.TextBoxFor(m => m.Title, new { @class = "col-md-8" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="name" class="col-md-3">Url</label>
+                @Html.TextBoxFor(m => m.FriendlyUrl, new { @class = "col-md-8" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="email" class="col-md-3">Content</label>
+                @Html.TextAreaFor(m => m.Content, new { @id = "Content", @class = "col-md-8" })
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.card-body -->
 </div>
-<div class="form-group">
-    <label for="name" class="col-md-3">Url</label>
-    @Html.TextBoxFor(m => m.FriendlyUrl, new { @class = "col-md-8" })
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">Tiếng anh</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            @*<button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-remove"></i></button>*@
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="form-group">
+            <div class="row">
+                <label for="name" class="col-md-3">Tên</label>
+                @Html.TextBoxFor(m => m.TitleEnglish, new { @class = "col-md-8" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="name" class="col-md-3">Url</label>
+                @Html.TextBoxFor(m => m.FriendlyUrlEnglish, new { @class = "col-md-8" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="email" class="col-md-3">Content</label>
+                @Html.TextAreaFor(m => m.ContentEnglish, new { @id = "ContentEnglish", @class = "col-md-8" })
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.card-body -->
 </div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Content</label>
-    @Html.TextAreaFor(m => m.Content, new { @class = "col-md-8" })
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="email" class="col-md-3">Header Template</label>
+            @Html.DropDownListFor(m => m.HeaderTemplate, Model.HeaderTemplateList, new { @class = "col-md-8" })
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-md-3">Footer Template</label>
+            @Html.DropDownListFor(m => m.FooterTemplate, Model.FooterTemplateList, new { @class = "col-md-8" })
+        </div>
+        <div class="form-check">
+            @Html.CheckBoxFor(m => m.IsHomePage, new { @class = "form-check-input" })
+            <label for="IsHomePage" class="form-check-label">Là trang chủ</label>
+        </div>
+    </div>
 </div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Is home page</label>
-    @Html.CheckBoxFor(m => m.IsHomePage, new { @class = "col-md-8" })
-</div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Header Template</label>
-    @Html.DropDownListFor(m => m.HeaderTemplate, Model.HeaderTemplateList, new { @class = "col-md-8" })
-</div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Footer Template</label>
-    @Html.DropDownListFor(m => m.FooterTemplate, Model.FooterTemplateList, new { @class = "col-md-8" })
-</div>
+
 <button type="submit" class="btn btn-primary">Submit</button>
 
+<script>
+    CKEDITOR.replace("Content");
+    CKEDITOR.replace("ContentEnglish");
+</script>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Kent.Web.Areas.Admin.Controllers
@@ -53,7 +54,7 @@ namespace Kent.Web.Areas.Admin.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-               
+
             }
             catch
             {
@@ -87,25 +88,25 @@ namespace Kent.Web.Areas.Admin.Controllers
             }
             catch
             {
-               
+
             }
             return View();
         }
 
-       
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var response = _headerTemplateServices.DeleteHeaderTemplate(id);
+                return Json(new { success = response }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                return View();
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
         }
     }

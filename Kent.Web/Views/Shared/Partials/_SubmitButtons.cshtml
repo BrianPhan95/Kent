@@ -1,0 +1,16 @@
+﻿@using Kent.Libary.Enums
+<div class="button-wrapper padding-lr-12">
+    @*@Html.BackLink(Url.Action("Index"))*@
+    <button class="btn btn-primary btn-responsive" type="submit" value="@SubmitType.Save" name="Submit">
+        <i class="fa fa-check bigger-110"></i>
+        Save
+    </button>
+    <button class="btn btn-info btn-responsive" type="submit" value="@SubmitType.SaveAndContinueEdit" name="Submit">
+        <i class="fa fa-check bigger-110"></i>
+        Save And Continue Edit
+    </button>
+    <button class="btn btn-responsive" onclick="location.href = window.location.href;" type="reset">
+        <i class="fa fa-undo bigger-110"></i>
+        Closed
+    </button>
+</div>

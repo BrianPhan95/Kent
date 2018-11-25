@@ -14,5 +14,6 @@ namespace Kent.Business.Services
         FooterTemplateManageModel GetFooterTemplateById(int id);
 
         FooterTemplateModel GetFooterTemplateDefault();
+        bool DeleteFooterTemplate(int id);
     }
 }

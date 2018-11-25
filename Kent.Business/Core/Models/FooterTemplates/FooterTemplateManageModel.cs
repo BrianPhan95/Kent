@@ -15,6 +15,8 @@ namespace Kent.Business.Core.Models.FooterTemplates
         [AllowHtml]
         public string Content { get; set; }
 
+        public string ContentEnglish { get; set; }
+
         public bool IsDefaultTemplate { get; set; }
     }
 }

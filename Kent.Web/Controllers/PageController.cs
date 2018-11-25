@@ -1,5 +1,6 @@
 ﻿using Kent.Business.Core.Models.Pages;
 using Kent.Business.Services;
+using Kent.Libary.Enums;
 using Kent.Libary.Utilities;
 using Kent.Web.Models.Forms;
 using System;
@@ -7,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static Kent.Libary.Enums.PageEnums;
 
 namespace Kent.Web.Controllers
 {
@@ -40,11 +40,19 @@ namespace Kent.Web.Controllers
             var page = new PageViewModel();
             if (friendlyUrl == "dangkynhaphoc" || friendlyUrl == "lienhe")
             {
-                var headerContent = _headerTemplateServices.GetHeaderTemplateDefault().Content;
-                var footerContent = _footerTemplateServices.GetFooterTemplateDefault().Content;
+                var headerDefault = _headerTemplateServices.GetHeaderTemplateDefault();
+                var footerDefault = _footerTemplateServices.GetFooterTemplateDefault();
+                if (Language == "vn")
+                {
+                    page.HeaderContent = headerDefault.Content;
+                    page.FooterContent = footerDefault.Content;
+                }
+                else if (Language == "en")
+                {
+                    page.HeaderContent = headerDefault.ContentEnglish;
+                    page.FooterContent = footerDefault.ContentEnglish;
+                }
 
-                page.HeaderContent = headerContent;
-                page.FooterContent = footerContent;
                 ViewBag.IsSpecialPage = true;
                 if (friendlyUrl == "dangkynhaphoc")
                 {
@@ -67,6 +75,7 @@ namespace Kent.Web.Controllers
         public ActionResult ChangeLanguage(string lang)
         {
             string url = Request.UrlReferrer.ToString();
+            Response.Cookies["culture"].Expires = DateTime.Now.AddDays(-1);
             SetLanguage(lang);
             return Redirect(url);
         }

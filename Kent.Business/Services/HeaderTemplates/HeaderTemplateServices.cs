@@ -37,7 +37,8 @@ namespace Kent.Business.Services
                 {
                     ID = model.ID.Value,
                     Content = model.Content,
-                    IsDefaultTemplate = model.IsDefaultTemplate
+                    IsDefaultTemplate = model.IsDefaultTemplate,
+                    ContentEnglish = model.ContentEnglish
                 };
 
                 return _headerRepository.UpdateHeaderTemplate(dataUpdate);
@@ -48,6 +49,7 @@ namespace Kent.Business.Services
                 {
                     Name = model.Name,
                     Content = model.Content,
+                    ContentEnglish = model.ContentEnglish,
                     IsDefaultTemplate = model.IsDefaultTemplate,
                     Created = DateTime.Now,
                     CreatedBy = "Admin",
@@ -81,6 +83,11 @@ namespace Kent.Business.Services
             return new HeaderTemplateModel();
         }
 
+        public bool DeleteHeaderTemplate(int id)
+        {
+            return _headerRepository.DeleteHeaderTemplate(id);
+        }
+
         private HeaderTemplateModel Mapping(HeaderTemplate data)
         {
             return new HeaderTemplateModel()
@@ -88,6 +95,7 @@ namespace Kent.Business.Services
                 ID = data.ID,
                 Name = data.Name,
                 Content = data.Content,
+                ContentEnglish = data.ContentEnglish,
                 IsDefaultTemplate = data.IsDefaultTemplate,
                 Created = data.Created,
                 CreatedBy = data.CreatedBy,
@@ -103,6 +111,7 @@ namespace Kent.Business.Services
                 ID = data.ID,
                 Name = data.Name,
                 Content = data.Content,
+                ContentEnglish = data.ContentEnglish,
                 IsDefaultTemplate = data.IsDefaultTemplate
             };
         }

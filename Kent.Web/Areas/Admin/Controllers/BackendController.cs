@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Kent.Web.Areas.Admin.Controllers
 {
@@ -15,7 +16,11 @@ namespace Kent.Web.Areas.Admin.Controllers
         {
 
         }
+        
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
 
+        }
         public int Permission { get; set; }
 
         public bool IsLogin()

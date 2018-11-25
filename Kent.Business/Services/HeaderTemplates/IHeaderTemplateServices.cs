@@ -14,5 +14,6 @@ namespace Kent.Business.Services
         HeaderTemplateManageModel GetHeaderTemplateById(int id);
 
         HeaderTemplateModel GetHeaderTemplateDefault();
+        bool DeleteHeaderTemplate(int id);
     }
 }

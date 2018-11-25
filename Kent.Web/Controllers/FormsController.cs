@@ -41,7 +41,7 @@ namespace Kent.Web.Controllers
             {
                 var formModel = new FormModel()
                 {
-                    FormTypeID = FormsEnums.FormType.Admission,
+                    FormTypeID = FormType.Admission,
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Admission", model)
                 };
@@ -52,7 +52,7 @@ namespace Kent.Web.Controllers
                     return Json(new { success = true });
                 }
             }
-            return Json(new { success = false , id=""});
+            return Json(new { success = false, id = "" });
         }
         #endregion
 
@@ -71,7 +71,7 @@ namespace Kent.Web.Controllers
             {
                 var formModel = new FormModel()
                 {
-                    FormTypeID = FormsEnums.FormType.Advisory,
+                    FormTypeID = FormType.Advisory,
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Advisory", model)
                 };
@@ -100,7 +100,7 @@ namespace Kent.Web.Controllers
             {
                 var formModel = new FormModel()
                 {
-                    FormTypeID = FormsEnums.FormType.Visit,
+                    FormTypeID = FormType.Visit,
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("VisitSchool", model)
                 };
@@ -129,7 +129,7 @@ namespace Kent.Web.Controllers
             {
                 var formModel = new FormModel()
                 {
-                    FormTypeID = FormsEnums.FormType.Contact,
+                    FormTypeID = FormType.Contact,
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Contact", model)
                 };
@@ -158,7 +158,7 @@ namespace Kent.Web.Controllers
             {
                 var formModel = new FormModel()
                 {
-                    FormTypeID = FormsEnums.FormType.Alumni,
+                    FormTypeID = FormType.Alumni,
                     Data = SerializeUtilities.Serialize(model),
                     EmailBodyString = RenderRazorViewToString("Alumni", model)
                 };

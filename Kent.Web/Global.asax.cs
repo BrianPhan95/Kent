@@ -1,5 +1,14 @@
 ﻿using Kent.Business.Services;
+using Kent.Business.Services.Media;
+using Kent.Business.Services.Menus;
+using Kent.Business.Services.QuestionKits;
+using Kent.Business.Services.Questions;
+using Kent.Business.Services.QuestionSections;
 using Kent.Entities.Repositories;
+using Kent.Entities.Repositories.Menus;
+using Kent.Entities.Repositories.QuestionKits;
+using Kent.Entities.Repositories.Questions;
+using Kent.Entities.Repositories.QuestionSections;
 using log4net.Config;
 using System;
 using System.IO;
@@ -54,6 +63,15 @@ namespace Kent.Web
             XmlConfigurator.Configure();
         }
 
+        protected void Application_EndRequest()
+        {
+            var context = new HttpContextWrapper(Context);
+            if (context.Response.StatusCode == 401)
+            {
+                context.Response.Redirect("~/Admin");
+            }
+        }
+
         //protected void Application_PreSendRequestHeaders()
         //{
         //    Response.Headers.Remove("Server");
@@ -82,7 +100,10 @@ namespace Kent.Web
             container.RegisterType<IHeaderTemplateRepository, HeaderTemplateRepository>();
             container.RegisterType<IFooterTemplateRepository, FooterTemplateRepository>();
             container.RegisterType<IPageRepository, PageRepository>();
-
+            container.RegisterType<IMenuRepository, MenuRepository>();
+            container.RegisterType<IQuestionRepository, QuestionRepository>();
+            container.RegisterType<IQuestionKitRepository, QuestionKitRepository>();
+            container.RegisterType<IQuestionSectionRepository, QuestionSectionRepository>();
             #endregion
 
             #region Services
@@ -94,6 +115,12 @@ namespace Kent.Web
             container.RegisterType<IHeaderTemplateServices, HeaderTemplateServices>();
             container.RegisterType<IFooterTemplateServices, FooterTemplateServices>();
             container.RegisterType<IPageServices, PageServices>();
+            container.RegisterType<IMediaFileManager, MediaFileManager>();
+            container.RegisterType<IMediaService, MediaService>();
+            container.RegisterType<IMenuService, MenuService>();
+            container.RegisterType<IQuestionService, QuestionService>();
+            container.RegisterType<IQuestionKitService, QuestionKitService>();
+            container.RegisterType<IQuestionSectionService, QuestionSectionService>();
             #endregion
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

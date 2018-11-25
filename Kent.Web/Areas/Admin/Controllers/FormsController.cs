@@ -32,7 +32,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AdmissionListing(string keyword, bool? export)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Admission, keyword);
+            var listing = _formServices.GetListForms(FormType.Admission, keyword);
             List<AdmissionData> dataLst = listing
                 .Select(d =>
                 {
@@ -69,7 +69,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AdvisoryListing(string keyword, bool? export)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Advisory, keyword);
+            var listing = _formServices.GetListForms(FormType.Advisory, keyword);
             List<AdvisoryData> dataLst = listing
                 .Select(d =>
                 {
@@ -104,7 +104,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult VisitListing(string keyword, bool? export)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Visit, keyword);
+            var listing = _formServices.GetListForms(FormType.Visit, keyword);
             List<VisitSchoolData> dataLst = listing
                 .Select(d =>
                 {
@@ -141,7 +141,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AlumniListing(string keyword, bool? export)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Alumni, keyword);
+            var listing = _formServices.GetListForms(FormType.Alumni, keyword);
             List<AlumniData> dataLst = listing
                 .Select(d =>
                 {
@@ -178,7 +178,7 @@ namespace Kent.Web.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult ContactListing(string keyword, bool? export)
         {
-            var listing = _formServices.GetListForms(FormsEnums.FormType.Contact, keyword);
+            var listing = _formServices.GetListForms(FormType.Contact, keyword);
             List<ContactData> dataLst = listing
                 .Select(d =>
                 {

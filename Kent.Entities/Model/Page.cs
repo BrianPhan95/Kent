@@ -50,20 +50,23 @@ namespace Kent.Entities.Model
         //public virtual BodyTemplate BodyTemplate { get; set; }
         //public string Abstract { get; set; }
 
-        //[StringLength(255)]
-        //public string SeoTitle { get; set; }
+        [StringLength(255)]
+        public string SeoTitle { get; set; }
 
-        //public string Description { get; set; }
+        public string Description { get; set; }
 
         //public string AbstractWorking { get; set; }
 
-        public PageEnums.PageStatus Status { get; set; }
+        public PageStatus Status { get; set; }
 
         public bool IsHomePage { get; set; }
 
-        //public bool ShowOnSitemap { get; set; }
+        public bool ShowOnSitemap { get; set; }
 
         public bool IncludeInSiteNavigation { get; set; }
+
+        public bool IsNews { get; set; }
+
 
         //public bool DisableMenuCascade { get; set; }
 

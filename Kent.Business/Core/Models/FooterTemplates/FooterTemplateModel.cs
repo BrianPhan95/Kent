@@ -12,6 +12,7 @@ namespace Kent.Business.Core.Models.FooterTemplates
         public string Name { get; set; }
 
         public string Content { get; set; }
+        public string ContentEnglish { get; set; }
 
         public bool IsDefaultTemplate { get; set; }
         public string CreatedBy { get; set; }

@@ -15,5 +15,6 @@ namespace Kent.Entities.Repositories
         bool UpdateFooterTemplate(FooterTemplate headerTemplate);
 
         FooterTemplate GetFooterTemplateDefault();
+        bool DeleteFooterTemplate(int id);
     }
 }

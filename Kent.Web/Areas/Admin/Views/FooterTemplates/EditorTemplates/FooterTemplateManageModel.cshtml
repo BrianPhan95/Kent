@@ -1,18 +1,52 @@
 ﻿@model Kent.Business.Core.Models.FooterTemplates.FooterTemplateManageModel
 
 @Html.HiddenFor(m => m.ID)
-@Html.AntiForgeryToken()
-<div class="form-group">
-    <label for="name" class="col-md-3">Tên</label>
-    @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="Name" class="col-md-3">Tên</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+        </div>
+        <div class="form-check">
+            @Html.CheckBoxFor(m => m.IsDefaultTemplate, new { @class = "form-check-input" })
+            <label for="IsDefaultTemplate" class="form-check-label">Mặc định</label>
+        </div>
+    </div>
 </div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Content</label>
-    @Html.TextAreaFor(m => m.Content, new { @class = "col-md-9" })
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">Content - Tiếng việt</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            @*<button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-remove"></i></button>*@
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.TextAreaFor(m => m.Content, new { @id = "Content", @class = "col-lg-12" })
+    </div>
 </div>
-<div class="form-group form_item">
-    <label for="email" class="col-md-3">Is default</label>
-    @Html.CheckBoxFor(m => m.IsDefaultTemplate, new { @class = "col-md-9" })
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">Content - Tiếng anh</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            @*<button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-remove"></i></button>*@
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @Html.TextAreaFor(m => m.ContentEnglish, new { @id = "ContentEnglish", @class = "col-lg-12" })
+    </div>
+    <!-- /.card-body -->
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 
+<script>
+    CKEDITOR.replace("Content");
+    CKEDITOR.replace("ContentEnglish");
+</script>

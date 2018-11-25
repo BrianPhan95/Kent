@@ -1,0 +1,113 @@
+﻿@model Kent.Business.Core.Models.Media.MediaBrowserSetupModel
+@{
+    ViewBag.Title = "MediaBrowser";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutMedia.cshtml";
+}
+
+<h2>MediaBrowser</h2>
+
+<div id="media-browser" class="page-content">
+    <div class="row">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="lighter smaller">FileBrowser</h4>
+            </div>
+            <div class="widget-body">
+                <div class="">
+                    <div class="col-xs-3" style="padding: 0;">
+                        <div id="cssmenu" class="cssmenu media-menu">
+                            <ul>
+                                <li><a href="#" onclick="createMediaItem()">Create</a></li>
+                                <li><a href="#" onclick="renameMediaItem()">Rename</a></li>
+                                <li><a href="#" onclick="removeMediaItem()">Delete</a></li>
+                                <li class="">
+                                    <a href="#"><span class="submenu-button">Edit</span> <i class="fa fa-angle-double-down"></i></a>
+                                    <ul>
+                                        <li class="sub-item"><a href="#" onclick="cutMediaItem()">Cut</a></li>
+                                        <li class="sub-item"><a href="#" onclick="copyMediaItem()">Copy</a></li>
+                                        <li class="sub-item"><a href="#" onclick="pasteMediaItem()">Paste</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="file-browser">
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <ul id="location-bar"></ul>
+                        <div class="clearfix"></div>
+                        <div class="space-4"></div>
+                        <div class="table-bordered preview-box">
+                            <div class="file-preview" style="display: none">
+                                <div class="file-preview-inner">
+                                    <img id="file-picker-loading" src="/Images/loading.gif" style="display: none;" />
+                                    <img id="file-picker-preview" />
+                                </div>
+                                <ul id="file-info" class="row"></ul>
+                            </div>
+                            <ul id="file-list"></ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="space-4"></div>
+                    <div id="fileUploader" class="col-xs-3">
+                        <noscript>
+                            <p>
+                            </p>
+                            <!-- or put a simple form for upload here -->
+                        </noscript>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="center">
+                            <input type="button" class="btn btn-primary" value="Edit" onclick="EditThis()" />
+                            <input id="select" type="button" class="btn btn-primary" value="Select" onclick="SaveThis()" />
+                            <input id="select-for-ckeditor" type="button" class="btn btn-primary" value="Select" onclick="SelectThis()" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("Partials/_MediaBrowserScripts", Model)
+
+
+
+
+@section scripts
+{
+
+    <script language="javascript">
+        var copyFolder;
+        function createMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            var id = $("#file-browser").jstree('create_node', currentNode, 'New node', 'New node');
+        }
+
+        function removeMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            $("#file-browser").jstree("remove", currentNode.id);
+        }
+
+        function renameMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            $("#file-browser").jstree('rename', currentNode);
+        }
+
+        function cutMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            $("#file-browser").jstree('cut', currentNode);
+        }
+
+        function copyMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            $("#file-browser").jstree('copy', currentNode);
+        }
+
+        function pasteMediaItem() {
+            var currentNode = jQuery("#file-browser").jstree("get_selected");
+            $("#file-browser").jstree('paste', currentNode);
+        }
+    </script>
+}

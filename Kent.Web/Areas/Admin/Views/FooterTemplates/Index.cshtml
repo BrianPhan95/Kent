@@ -3,7 +3,6 @@
     ViewBag.Title = "Footer templates";
 }
 
-<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
 <h2>Footer templates</h2>
 
 <div class="row">
@@ -11,7 +10,7 @@
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-primary center-block" href="@Url.Action("Create", "FooterTemplates")">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa fa-plus"></i>
                     Create
                 </a>
             </div>
@@ -34,7 +33,10 @@
                             <tr>
                                 <th>
                                     <a href="@Url.Action("Edit", "FooterTemplates", new { id = data.ID })">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="deleteFooter" data-id="@data.ID" data-name="@data.Name">
+                                        <i class="fa fa-remove" style="color:red"></i>
                                     </a>
                                 </th>
                                 <td>@data.ID</td>
@@ -54,3 +56,29 @@
         </div>
     </div>
 </div>
+<script>
+    $('.deleteFooter').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var confirmMsg = "Are you sure deleted footer " + name + " ?";
+        if (confirm(confirmMsg)) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/FooterTemplates/Delete",
+                data: { id: id },
+                success: function (result) {
+                    if (result.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    //debugger;
+                    console.log(xhr.responseText);
+                    alert("Error has occurred..");
+                }
+            });
+
+        }
+        return false;
+    });
+</script>

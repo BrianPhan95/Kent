@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-primary center-block" href="@Url.Action("Create", "Pages")">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa fa-plus"></i>
                     Create
                 </a>
             </div>
@@ -35,7 +35,10 @@
                             <tr>
                                 <th>
                                     <a href="@Url.Action("Edit", "Pages", new { id = data.ID })">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="deletePage" data-id="@data.ID" data-name="@data.Title">
+                                        <i class="fa fa-remove" style="color:red"></i>
                                     </a>
                                 </th>
                                 <td>@data.ID</td>
@@ -56,3 +59,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.deletePage').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var confirmMsg = "Are you sure deleted page " + name + " ?";
+        if (confirm(confirmMsg)) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Pages/Delete",
+                data: { id: id },
+                success: function (result) {
+                    if (result.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    //debugger;
+                    console.log(xhr.responseText);
+                    alert("Error has occurred..");
+                }
+            });
+
+        }
+        return false;
+    });
+</script>

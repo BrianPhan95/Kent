@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace Kent.Libary.Enums
 {
-    public class FormsEnums
+    public enum FormType
     {
-        public enum FormType
-        {
-            Admission = 1,
-            Advisory = 2,
-            Visit = 3,
-            Contact = 4,
-            Alumni = 5
-        }
+        Admission = 1,
+        Advisory = 2,
+        Visit = 3,
+        Contact = 4,
+        Alumni = 5
     }
 }

@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-primary center-block" href="@Url.Action("Create", "HeaderTemplates")">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa fa-plus"></i>
                     Create
                 </a>
             </div>
@@ -21,8 +21,8 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th> Số thứ tự</th>
-                            <th>Template</th>
+                            <th>Số thứ tự</th>
+                            <th>Tên</th>
                             <th>Mặc định</th>
                             <th>Lần cuối update</th>
                             <th>Tài khoản update</th>
@@ -34,7 +34,10 @@
                             <tr>
                                 <th>
                                     <a href="@Url.Action("Edit", "HeaderTemplates", new { id = data.ID })">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="deleteHeader" data-id="@data.ID" data-name="@data.Name">
+                                        <i class="fa fa-remove" style="color:red"></i>
                                     </a>
                                 </th>
                                 <td>@data.ID</td>
@@ -54,3 +57,29 @@
         </div>
     </div>
 </div>
+<script>
+    $('.deleteHeader').click(function(){
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var confirmMsg = "Are you sure deleted header " + name + " ?";
+        if (confirm(confirmMsg)) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/HeaderTemplates/Delete",
+                data: { id: id },
+                success: function (result) {
+                    if (result.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    //debugger;  
+                    console.log(xhr.responseText);
+                    alert("Error has occurred..");
+                }
+            });
+
+        }
+        return false;
+    });
+</script>

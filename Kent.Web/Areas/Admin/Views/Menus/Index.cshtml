@@ -1,0 +1,88 @@
+﻿@model List<Kent.Business.Core.Models.Menus.MenuModel>
+@{
+    ViewBag.Title = "Quản lí menus";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+<h2>Menu</h2>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-primary center-block" href="@Url.Action("Create", "Menus")">
+                    <i class="fa fa-plus"></i>
+                    Create
+                </a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Số thứ tự</th>
+                            <th>Trang</th>
+                            <th>Url</th>
+                            <th>Trang chủ</th>
+                            <th>Lần cuối update</th>
+                            <th>Tài khoản update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <th>
+                                    <a href="@Url.Action("Edit", "Menus", new { id = data.ID })">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="deletePage" data-id="@data.ID" data-name="@data.Name">
+                                        <i class="fa fa-remove" style="color:red"></i>
+                                    </a>
+                                </th>
+                                <td>@data.ID</td>
+                                <td>
+                                    @data.Name
+                                </td>
+                                <td>@data.Controller</td>
+                                <td>@data.Action</td>
+                                <td>@data.LastUpdate</td>
+                                <td>@data.LastUpdateBy</td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.deletePage').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var confirmMsg = "Are you sure deleted page " + name + " ?";
+        if (confirm(confirmMsg)) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Pages/Delete",
+                data: { id: id },
+                success: function (result) {
+                    if (result.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr) {
+                    //debugger;
+                    console.log(xhr.responseText);
+                    alert("Error has occurred..");
+                }
+            });
+
+        }
+        return false;
+    });
+</script>

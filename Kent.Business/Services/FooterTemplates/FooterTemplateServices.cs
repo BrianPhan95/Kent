@@ -36,6 +36,7 @@ namespace Kent.Business.Services
                 {
                     ID = model.ID.Value,
                     Content = model.Content,
+                    ContentEnglish = model.ContentEnglish,
                     IsDefaultTemplate = model.IsDefaultTemplate
                 };
 
@@ -47,6 +48,7 @@ namespace Kent.Business.Services
                 {
                     Name = model.Name,
                     Content = model.Content,
+                    ContentEnglish = model.ContentEnglish,
                     IsDefaultTemplate = model.IsDefaultTemplate,
                     Created = DateTime.Now,
                     CreatedBy = "Admin",
@@ -80,6 +82,11 @@ namespace Kent.Business.Services
             return new FooterTemplateModel();
         }
 
+        public bool DeleteFooterTemplate(int id)
+        {
+            return _footerRepository.DeleteFooterTemplate(id);
+        }
+
         private FooterTemplateModel Mapping(FooterTemplate data)
         {
             return new FooterTemplateModel()
@@ -87,6 +94,7 @@ namespace Kent.Business.Services
                 ID = data.ID,
                 Name = data.Name,
                 Content = data.Content,
+                ContentEnglish = data.ContentEnglish,
                 IsDefaultTemplate = data.IsDefaultTemplate,
                 Created = data.Created,
                 CreatedBy = data.CreatedBy,
@@ -102,6 +110,7 @@ namespace Kent.Business.Services
                 ID = data.ID,
                 Name = data.Name,
                 Content = data.Content,
+                ContentEnglish = data.ContentEnglish,
                 IsDefaultTemplate = data.IsDefaultTemplate
             };
         }

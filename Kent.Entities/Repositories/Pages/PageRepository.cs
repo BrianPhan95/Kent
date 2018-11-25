@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Kent.Libary.Enums.PageEnums;
 
 namespace Kent.Entities.Repositories
 {
@@ -189,6 +188,41 @@ namespace Kent.Entities.Repositories
             }
 
             return false;
+        }
+
+        public bool DeletePage(int id)
+        {
+            using (IDbConnection conn = Connection)
+            {
+                string sql = "DELETE Pages WHERE ID = {0}";
+                sql = string.Format(sql, id);
+
+                try
+                {
+                    conn.Open();
+
+                    var result = conn.Execute(sql);
+                    return result == 1 ? true : false;
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
+                finally
+                {
+                    if (conn != null && conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+
+            return false;
+
         }
     }
 }

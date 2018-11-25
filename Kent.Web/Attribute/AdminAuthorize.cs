@@ -7,19 +7,37 @@ namespace Kent.Web.Attribute
 {
     public class AdminAuthorize : AuthorizeAttribute
     {
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            //filterContext.Result = new HttpUnauthorizedResult(); // Try this but i'm not sure
+            filterContext.Result = new RedirectResult("~/Admin");
+        }
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (this.AuthorizeCore(filterContext.HttpContext))
+            {
+                base.OnAuthorization(filterContext);
+            }
+            else
+            {
+                this.HandleUnauthorizedRequest(filterContext);
+            }
+        }
+
         /// <summary>
         /// On authorizing
         /// </summary>
         /// <param name="authorizationContext">the authorize context</param>
-        public override void OnAuthorization(AuthorizationContext authorizationContext)
-        {
-            base.OnAuthorization(authorizationContext);
+        //public override void OnAuthorization(AuthorizationContext authorizationContext)
+        //{
+        //    base.OnAuthorization(authorizationContext);
 
-            if (authorizationContext.Result is HttpUnauthorizedResult)
-            {
-                throw new KentUnauthorizeException(string.Empty);
-            }
-        }
+        //    if (authorizationContext.Result is HttpUnauthorizedResult)
+        //    {
+        //        throw new KentUnauthorizeException(string.Empty);
+        //    }
+        //}
 
         /// <summary>
         /// Authorize

@@ -13,6 +13,8 @@ namespace Kent.Business.Core.Models.HeaderTemplates
 
         public string Content { get; set; }
 
+        public string ContentEnglish { get; set; }
+
         public bool IsDefaultTemplate { get; set; }
         public string CreatedBy { get; set; }
         public DateTime Created { get; set; }

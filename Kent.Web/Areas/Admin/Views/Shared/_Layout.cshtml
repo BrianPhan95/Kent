@@ -11,14 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/regular.css" integrity="sha384-zkhEzh7td0PG30vxQk1D9liRKeizzot4eqkJ8gB3/I+mZ1rjgQk+BSt2F6rT2c+I" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/admin-site")
+
+    @*<script src="//cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>*@
+    @Scripts.Render("~/scripts/ckeditor")
+
+
+    @*<script src="~/Scripts/Plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/Shared/Initialize/ckeditor.init.js"></script>*@
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -57,7 +62,7 @@
             
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2014-2018 <a href="">AdminLTE.io</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.0.0-alpha
@@ -80,6 +85,27 @@
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     @Scripts.Render("~/scripts/admin-site")
+    <script>
+        CKEDITOR.editorConfig = function (config) {
+    // Define changes to default configuration here. For example:
+    // config.language = 'fr';
+    // config.uiColor = '#AADC6E';
 
+    config.filebrowserBrowseUrl = '/Admin/Media/MediaBrowser?mode=File';
+    config.filebrowserImageBrowseUrl = '/Admin/Media/MediaBrowser?mode=Image';
+    config.filebrowserWindowWidth = 1200;
+    config.filebrowserWindowHeight = 640;
+
+    config.enterMode = CKEDITOR.ENTER_BR;
+    config.allowedContent = true;
+
+    config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi);
+    config.protectedSource.push(/foreach[\s\S]*?}/g);
+    config.extraAllowedContent = 'code(*){*}[*]';
+
+    config.entities = false;
+    config.disableNativeSpellChecker = false;
+};
+    </script>
 </body>
 </html>

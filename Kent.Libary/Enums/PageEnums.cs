@@ -6,43 +6,40 @@ using System.Threading.Tasks;
 
 namespace Kent.Libary.Enums
 {
-    public class PageEnums
+    public enum PageLanguages
     {
-        public enum PageLanguages
-        {
-            Vietnamese = 1,
-            English = 2
-        }
+        Vietnamese = 1,
+        English = 2
+    }
 
-        public enum PageStatus
-        {
-            Online = 1,
-            Draft = 2,
-            Offline = 3
-        }
+    public enum PageStatus
+    {
+        Online = 1,
+        Draft = 2,
+        Offline = 3
+    }
 
-        public enum PagePosition
-        {
-            Before = 1,
-            After = 2
-        }
+    public enum PagePosition
+    {
+        Before = 1,
+        After = 2
+    }
 
-        public enum PageResponseCode
-        {
-            Ok = 0,
-            RequiredSSL,
-            FileTemplateRedirect,
-            PageDraft,
-            PageOffline,
-            Redirect301
-        }
+    public enum PageResponseCode
+    {
+        Ok = 0,
+        RequiredSSL,
+        FileTemplateRedirect,
+        PageDraft,
+        PageOffline,
+        Redirect301
+    }
 
-        public enum SEOScore
-        {
-            Good,
-            Medium,
-            Bad,
-            VeryBad
-        }
+    public enum SEOScore
+    {
+        Good,
+        Medium,
+        Bad,
+        VeryBad
     }
 }

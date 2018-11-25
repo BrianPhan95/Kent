@@ -48,10 +48,37 @@ namespace Kent.Entities.Repositories
                         return false;
 
                     template.Content = headerTemplate.Content;
+                    template.ContentEnglish = headerTemplate.ContentEnglish;
                     template.IsDefaultTemplate = headerTemplate.IsDefaultTemplate;
                     template.LastUpdate = DateTime.Now;
 
                     return db.SaveChanges() > 0 ? true : false;
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
+            }
+
+            return false;
+        }
+
+        public bool DeleteHeaderTemplate(int id)
+        {
+            using (IDbConnection conn = Connection)
+            {
+                string sql = "DELETE HeaderTemplates WHERE ID = {0}";
+                sql = string.Format(sql, id);
+                try
+                {
+                    conn.Open();
+
+                    var result = conn.Execute(sql);
+                    return result == 1 ? true : false;
                 }
                 catch (SqlException sqlEx)
                 {

@@ -16,7 +16,7 @@ namespace Kent.Entities.Model
 
         public string Message { get; set; }
 
-        public EmailEnums.EmailStatusEnums Status { get; set; }
+        public EmailStatusEnums Status { get; set; }
 
     }
 }

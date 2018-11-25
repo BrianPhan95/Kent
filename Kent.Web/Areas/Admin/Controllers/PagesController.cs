@@ -112,12 +112,12 @@ namespace Kent.Web.Areas.Admin.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var response = _pageServices.DeletePage(id);
+                return Json(new { success = response }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                return View();
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
         }
 

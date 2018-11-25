@@ -1,0 +1,25 @@
+﻿@using Kent.Libary.Utilities.Time;
+@using Kent.Libary.Configurations;
+<script type="text/javascript">
+
+    //Init current culture
+    var currentCulture = "en-AU";
+    Globalize.culture(currentCulture);
+
+    var defaultAddress = "Viet Nam";
+    var defaultLatitude = Globalize.parseFloat("-33.868356");
+    var defaultLongitude = Globalize.parseFloat("151.203121");
+    var defaultZoom = Globalize.parseInt("13");
+    var phoneFormat = "(999) 999-9999";
+    var timezoneOffSet = Globalize.parseInt("36000000");
+    var keepAliveInterval = Globalize.parseInt("60000");
+    var currentTimezoneCookieKey = ":::CurrentTimezone:::";
+    var currentTimezoneCookie = "Asia/Ho_Chi_Minh";
+    var pageSize = Globalize.parseInt("50");
+    var gridRowList = "25,50,100,250";
+    var moreText = "More...";
+    var lessText = "Less...";
+    var detailsTextFormat = "View Details Of {0}";
+
+    window.CKEDITOR_BASEPATH = "@Url.Content("~/Scripts/Plugins/CkEditor/")";
+</script>

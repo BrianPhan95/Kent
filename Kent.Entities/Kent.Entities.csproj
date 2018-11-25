@@ -44,6 +44,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,18 @@
     <Compile Include="Migrations\201808120421381_MultiLanguage.Designer.cs">
       <DependentUpon>201808120421381_MultiLanguage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809261456559_Menu.cs" />
+    <Compile Include="Migrations\201809261456559_Menu.Designer.cs">
+      <DependentUpon>201809261456559_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810130411192_QuestionsEnglish.cs" />
+    <Compile Include="Migrations\201810130411192_QuestionsEnglish.Designer.cs">
+      <DependentUpon>201810130411192_QuestionsEnglish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811241626289_UpdateEnglishTest.cs" />
+    <Compile Include="Migrations\201811241626289_UpdateEnglishTest.Designer.cs">
+      <DependentUpon>201811241626289_UpdateEnglishTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\BaseHierachyModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
@@ -79,7 +92,13 @@
     <Compile Include="Model\Form.cs" />
     <Compile Include="Model\Employees.cs" />
     <Compile Include="Model\HeaderTemplate.cs" />
+    <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\NewsHot.cs" />
     <Compile Include="Model\Page.cs" />
+    <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\QuestionSection.cs" />
+    <Compile Include="Model\QuestionKit.cs" />
+    <Compile Include="Model\QuestionTemplate.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,8 +115,17 @@
     <Compile Include="Repositories\Employees\IEmployeesRepository.cs" />
     <Compile Include="Repositories\HeaderTemplates\HeaderTemplateRepository.cs" />
     <Compile Include="Repositories\HeaderTemplates\IHeaderTemplateRepository.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
+    <Compile Include="Repositories\Menus\IMenuRepository.cs" />
+    <Compile Include="Repositories\Menus\MenuRepository.cs" />
     <Compile Include="Repositories\Pages\IPageRepository.cs" />
     <Compile Include="Repositories\Pages\PageRepository.cs" />
+    <Compile Include="Repositories\QuestionKits\IQuestionKitRepository.cs" />
+    <Compile Include="Repositories\QuestionKits\QuestionKitRepository.cs" />
+    <Compile Include="Repositories\QuestionSections\IQuestionSectionRepository.cs" />
+    <Compile Include="Repositories\QuestionSections\QuestionSectionRepository.cs" />
+    <Compile Include="Repositories\Questions\IQuestionRepository.cs" />
+    <Compile Include="Repositories\Questions\QuestionRepository.cs" />
     <Compile Include="Repositories\Users\IUserRespository.cs" />
     <Compile Include="Repositories\Users\UserRespository.cs" />
   </ItemGroup>
@@ -123,6 +151,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808120421381_MultiLanguage.resx">
       <DependentUpon>201808120421381_MultiLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809261456559_Menu.resx">
+      <DependentUpon>201809261456559_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810130411192_QuestionsEnglish.resx">
+      <DependentUpon>201810130411192_QuestionsEnglish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241626289_UpdateEnglishTest.resx">
+      <DependentUpon>201811241626289_UpdateEnglishTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

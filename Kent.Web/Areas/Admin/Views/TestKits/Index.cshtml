@@ -1,0 +1,61 @@
+﻿@model List<Kent.Business.Core.Models.TestKits.QuestionKitModel>
+@{
+    ViewBag.Title = "Quản lí Test Tiếng Anh";
+}
+
+<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+<h2>Quản lí Test Tiếng Anh</h2>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-primary center-block" href="@Url.Action("Create", "TestKits")">
+                    <i class="fa fa-plus"></i>
+                    Tạo mới bài thi
+                </a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Số thứ tự</th>
+                            <th>Tên</th>
+                            <th>Url</th>
+                            <th></th>
+                            <th>Lần cuối update</th>
+                            <th>Tài khoản update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <th>
+                                    <a href="@Url.Action("Edit", "Pages", new { id = data.ID })">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    @*<a href="#" class="deletePage" data-id="@data.ID" data-name="@data.Title">
+                                        <i class="fa fa-remove" style="color:red"></i>
+                                    </a>*@
+                                </th>
+                                <td>@data.ID</td>
+                                <td>
+                                    @data.Name
+                                </td>
+                                <td>@data.Description</td>
+                                <td>@data.CreatedBy</td>
+                                <td>@data.LastUpdate</td>
+                                <td>@data.LastUpdateBy</td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>

@@ -14,5 +14,6 @@ namespace Kent.Entities.Repositories
         HeaderTemplate GetHeaderTemplateById(int id);
         HeaderTemplate GetHeaderTemplateDefault();
         bool UpdateHeaderTemplate(HeaderTemplate headerTemplate);
+        bool DeleteHeaderTemplate(int id);
     }
 }

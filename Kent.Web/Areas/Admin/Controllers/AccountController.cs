@@ -45,7 +45,7 @@ namespace Kent.Web.Areas.Admin.Controllers
             {
                 FormsAuthentication.SetAuthCookie(userDetails.Email, false);
 
-                var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, userDetails.Roles);
+                var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddHours(2), false, userDetails.Roles);
                 string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                 var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                 HttpContext.Response.Cookies.Add(authCookie);

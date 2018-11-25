@@ -48,6 +48,7 @@ namespace Kent.Entities.Repositories
                         return false;
 
                     template.Content = headerTemplate.Content;
+                    template.ContentEnglish = headerTemplate.ContentEnglish;
                     template.IsDefaultTemplate = headerTemplate.IsDefaultTemplate;
                     template.LastUpdate = DateTime.Now;
 
@@ -165,6 +166,38 @@ namespace Kent.Entities.Repositories
             }
 
             return result;
+        }
+        public bool DeleteFooterTemplate(int id)
+        {
+            using (IDbConnection conn = Connection)
+            {
+                string sql = "DELETE FooterTemplates WHERE ID = {0}";
+                sql = string.Format(sql, id);
+                try
+                {
+                    conn.Open();
+
+                    var result = conn.Execute(sql);
+                    return result == 1 ? true : false;
+                }
+                catch (SqlException sqlEx)
+                {
+                    Logger.ErrorException(sqlEx);
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException(ex);
+                }
+                finally
+                {
+                    if (conn != null && conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

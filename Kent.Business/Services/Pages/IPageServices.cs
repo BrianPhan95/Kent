@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kent.Business.Core.Models.Pages;
-using static Kent.Libary.Enums.PageEnums;
+using Kent.Libary.Enums;
 
 namespace Kent.Business.Services
 {
@@ -14,5 +14,6 @@ namespace Kent.Business.Services
         bool SavePage(PageManageModel model);
         PageManageModel GetPageById(int id);
         PageViewModel GetPageByFiendlyUrl(string url, PageLanguages language);
+        bool DeletePage(int id);
     }
 }

@@ -9,7 +9,7 @@ namespace Kent.Business.Core.Models.Forms
 {
     public class FormModel
     {
-        public FormsEnums.FormType FormTypeID { get; set; }
+        public FormType FormTypeID { get; set; }
 
         public string Data { get; set; }
 

@@ -1,0 +1,38 @@
+﻿@model Kent.Business.Core.Models.TestKits.ImportQuestionKitModel
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+    </div>
+    <div class="card-body">
+        <button class="btn btn-primary center-block" onclick="window.open('@Url.Action("ExampleTestKitImport", "TestKits")')">
+            <img src="http://icons.iconarchive.com/icons/ncrow/mega-pack-1/128/Excel-icon.png" width="10%" height="10%">
+            File Example
+        </button>
+
+        <div class="form-group">
+            <label for="Name" class="col-md-3">Tên</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "col-md-9" })
+        </div>
+        <div class="form-group">
+            <label for="Description" class="col-md-3">Description</label>
+            @Html.TextAreaFor(m => m.Description, new { @class = "col-md-9" })
+        </div>
+        <div>
+            <label for="FilePath" class="col-md-3">File Path</label>
+            @*@Html.TextBoxFor(m => m.FilePath, new { @class = "col-md-9" })*@
+            <input class="col-md-9" id="txt" type="text" value="Choose File" onclick="javascript:document.getElementById('file').click();">
+            <input id="file" type="file" style='visibility: hidden;' name="FilePath" onchange="ChangeText(this, 'txt');" />
+
+        </div>
+    </div>
+</div>
+
+
+<button type="submit" class="btn btn-primary">Submit</button>
+<script>
+    function ChangeText(oFileInput, sTargetID) {
+
+        document.getElementById(sTargetID).value = oFileInput.value;
+    }
+</script>

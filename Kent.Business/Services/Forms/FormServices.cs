@@ -36,21 +36,21 @@ namespace Kent.Business.Services
             _employeesService = employeesService;
             _emailQueueService = emailQueueService;
         }
-        public List<FormModel> GetListForms(FormsEnums.FormType type, string keyword)
+        public List<FormModel> GetListForms(FormType type, string keyword)
         {
             List<FormModel> list = new List<FormModel>();
             List<Form> listData = new List<Form>();
             switch (type)
             {
-                case FormsEnums.FormType.Admission:
+                case FormType.Admission:
                     listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
-                case FormsEnums.FormType.Advisory:
+                case FormType.Advisory:
                     listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
-                case FormsEnums.FormType.Visit:
+                case FormType.Visit:
                     listData = _formRepository.GetList((int)type, keyword);
                     list = Mapping(listData, type);
                     break;
@@ -84,7 +84,7 @@ namespace Kent.Business.Services
             return false;
         }
 
-        private void CreateEmailQueue(Form formData, FormsEnums.FormType type)
+        private void CreateEmailQueue(Form formData, FormType type)
         {
             List<Employees> listEmployees = _employeesService.GetList();
 
@@ -109,7 +109,7 @@ namespace Kent.Business.Services
                 Logger.ErrorException(ex);
             }
         }
-        private List<FormModel> Mapping(List<Form> lst, FormsEnums.FormType type)
+        private List<FormModel> Mapping(List<Form> lst, FormType type)
         {
             return lst.Select(d => new FormModel()
             {
@@ -171,7 +171,7 @@ namespace Kent.Business.Services
 
         }
 
-        private EmailQueue GetEmail(FormsEnums.FormType type, string jsonData, string employeeEmail, string employeeName)
+        private EmailQueue GetEmail(FormType type, string jsonData, string employeeEmail, string employeeName)
         {
             var email = new EmailQueue()
             {
@@ -190,31 +190,31 @@ namespace Kent.Business.Services
 
             switch (type)
             {
-                case FormsEnums.FormType.Admission:
+                case FormType.Admission:
                     email.Subject = "Đăng kí nhập học";
                     data = SerializeUtilities.Deserialize<AdmissionData>(jsonData);
                     resourceName = "Kent.Business.Core.EmailTemplate.Admission.cshtml";
                     break;
 
-                case FormsEnums.FormType.Advisory:
+                case FormType.Advisory:
                     email.Subject = "Đăng kí tư vấn";
                     data = SerializeUtilities.Deserialize<AdvisoryData>(jsonData);
                     resourceName = "Kent.Business.Core.EmailTemplate.Advisory.cshtml";
                     break;
 
-                case FormsEnums.FormType.Alumni:
+                case FormType.Alumni:
                     email.Subject = "Thông tin cựu sinh viên";
                     data = SerializeUtilities.Deserialize<AlumniData>(jsonData);
                     resourceName = "Kent.Business.Core.EmailTemplate.Alumni.cshtml";
                     break;
 
-                case FormsEnums.FormType.Contact:
+                case FormType.Contact:
                     email.Subject = "Liên hệ";
                     data = SerializeUtilities.Deserialize<ContactData>(jsonData);
                     resourceName = "Kent.Business.Core.EmailTemplate.Contact.cshtml";
                     break;
 
-                case FormsEnums.FormType.Visit:
+                case FormType.Visit:
                     email.Subject = "Đăng kí tham quan";
                     data = SerializeUtilities.Deserialize<VisitSchoolData>(jsonData);
                     resourceName = "Kent.Business.Core.EmailTemplate.VisitSchool.cshtml";
@@ -228,7 +228,7 @@ namespace Kent.Business.Services
                 email.Body = Engine.Razor.RunCompile(templateStr, "templateKey", null, data);
             }
 
-            return email; ;
+            return email;
         }
     }
 }

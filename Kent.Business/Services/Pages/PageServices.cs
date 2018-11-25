@@ -1,12 +1,12 @@
 ﻿using Kent.Business.Core.Models.Pages;
 using Kent.Entities.Model;
 using Kent.Entities.Repositories;
+using Kent.Libary.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Kent.Libary.Enums.PageEnums;
 
 namespace Kent.Business.Services
 {
@@ -37,16 +37,16 @@ namespace Kent.Business.Services
             Page data = _pageRepository.GetPageByFriendlyUrl(url);
             if (data != null)
             {
-                var headerContent = _headerTemplateRepository.GetHeaderTemplateById(data.HeaderTemplateId.Value).Content;
-                var footerContent = _footerTemplateRepository.GetFooterTemplateById(data.FooterTemplateId.Value).Content;
+                var header = _headerTemplateRepository.GetHeaderTemplateById(data.HeaderTemplateId.Value);
+                var footer = _footerTemplateRepository.GetFooterTemplateById(data.FooterTemplateId.Value);
                 if(language == PageLanguages.Vietnamese)
                 {
                     return new PageViewModel()
                     {
                         Title = data.Title,
-                        HeaderContent = headerContent,
+                        HeaderContent = header.Content,
                         PageContent = data.Content,
-                        FooterContent = footerContent,
+                        FooterContent = footer.Content,
                     };
                 }
                 else if(language == PageLanguages.English)
@@ -54,13 +54,18 @@ namespace Kent.Business.Services
                     return new PageViewModel()
                     {
                         Title = data.TitleEnglish,
-                        HeaderContent = headerContent,
+                        HeaderContent = header.ContentEnglish,
                         PageContent = data.ContentEnglish,
-                        FooterContent = footerContent,
+                        FooterContent = footer.ContentEnglish,
                     };
                 }
             }
             return new PageViewModel();
+        }
+
+        public bool DeletePage(int id)
+        {
+            return _pageRepository.DeletePage(id);
         }
 
         public bool SavePage(PageManageModel model)
@@ -78,8 +83,8 @@ namespace Kent.Business.Services
                 dataUpdate.FriendlyUrlEnglish = model.FriendlyUrlEnglish;
                 dataUpdate.ContentEnglish = model.ContentEnglish;
 
-                dataUpdate.FooterTemplate = _footerTemplateRepository.GetFooterTemplates(model.FooterTemplate).FirstOrDefault();
-                dataUpdate.HeaderTemplate = _headerTemplateRepository.GetHeaderTemplates(model.HeaderTemplate).FirstOrDefault();
+                dataUpdate.FooterTemplateId = _footerTemplateRepository.GetFooterTemplates(model.FooterTemplate).FirstOrDefault().ID;
+                dataUpdate.HeaderTemplateId = _headerTemplateRepository.GetHeaderTemplates(model.HeaderTemplate).FirstOrDefault().ID;
                 dataUpdate.LastUpdateBy = "Admin";
                 dataUpdate.LastUpdate = DateTime.Now;
                 dataUpdate.RecordOrder = 1;
@@ -102,8 +107,8 @@ namespace Kent.Business.Services
                     FriendlyUrlEnglish = model.FriendlyUrlEnglish,
                     ContentEnglish = model.ContentEnglish,
 
-                    FooterTemplate = _footerTemplateRepository.GetFooterTemplates(model.FooterTemplate).FirstOrDefault(),
-                    HeaderTemplate = _headerTemplateRepository.GetHeaderTemplates(model.HeaderTemplate).FirstOrDefault(),
+                    FooterTemplateId = _footerTemplateRepository.GetFooterTemplates(model.FooterTemplate).FirstOrDefault().ID,
+                    HeaderTemplateId = _headerTemplateRepository.GetHeaderTemplates(model.HeaderTemplate).FirstOrDefault().ID,
                     Created = DateTime.Now,
                     CreatedBy = "Admin",
                     LastUpdate = DateTime.Now,

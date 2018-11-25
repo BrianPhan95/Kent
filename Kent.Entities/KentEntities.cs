@@ -26,6 +26,16 @@ namespace Kent.Entities
         public DbSet<HeaderTemplate> HeaderTemplates { get; set; }
         public DbSet<FooterTemplate> FooterTemplates { get; set; }
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+
+        #region English Testing
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionSection> QuestionSections { get; set; }
+        public DbSet<QuestionKit> QuestionKits { get; set; }
+        public DbSet<QuestionTemplate> QuestionTemplates { get; set; }
+        #endregion
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

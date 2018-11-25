@@ -14,5 +14,6 @@ namespace Kent.Entities.Repositories
         Page GetPageByFriendlyUrl(string url);
         bool AddPage(Page page);
         bool UpdatePage(Page page);
+        bool DeletePage(int id);
     }
 }

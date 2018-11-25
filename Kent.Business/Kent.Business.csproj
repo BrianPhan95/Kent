@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -70,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundTask\EmailBackgroundTask.cs" />
+    <Compile Include="Core\Models\Base\BaseHierachyModel.cs" />
+    <Compile Include="Core\Models\Base\BaseModel.cs" />
     <Compile Include="Core\Models\Forms\FormData\AdmissionData.cs" />
     <Compile Include="Core\Models\Forms\FormData\AdvisoryData.cs" />
     <Compile Include="Core\Models\Forms\FormData\AlumniData.cs" />
@@ -80,12 +83,27 @@
     <Compile Include="Core\Models\FooterTemplates\FooterTemplateModel.cs" />
     <Compile Include="Core\Models\HeaderTemplates\HeaderTemplateManageModel.cs" />
     <Compile Include="Core\Models\HeaderTemplates\HeaderTemplateModel.cs" />
+    <Compile Include="Core\Models\Media\FileInfoModel.cs" />
+    <Compile Include="Core\Models\Media\FileTreeAttribute.cs" />
+    <Compile Include="Core\Models\Media\FileTreeModel.cs" />
+    <Compile Include="Core\Models\Media\FolderTransferModel.cs" />
+    <Compile Include="Core\Models\Media\MediaBrowserSetupModel.cs" />
+    <Compile Include="Core\Models\Menus\MenuManageModel.cs" />
+    <Compile Include="Core\Models\Menus\MenuModel.cs" />
     <Compile Include="Core\Models\Pages\PageManageModel.cs" />
     <Compile Include="Core\Models\Pages\PageModel.cs" />
     <Compile Include="Core\Models\Pages\PageViewModel.cs" />
+    <Compile Include="Core\Models\TestKits\Manage\ImportKitFormatModel.cs" />
+    <Compile Include="Core\Models\TestKits\Manage\ImportQuestionKitModel.cs" />
+    <Compile Include="Core\Models\TestKits\Manage\QuestionKitManageModel.cs" />
+    <Compile Include="Core\Models\TestKits\QuestionKitModel.cs" />
+    <Compile Include="Core\Models\TestKits\QuestionModel.cs" />
+    <Compile Include="Core\Models\TestKits\QuestionSectionModel.cs" />
     <Compile Include="Core\Models\Users\UserLogin.cs" />
     <Compile Include="Core\Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\BaseService.cs" />
+    <Compile Include="Services\Base\IBaseService.cs" />
     <Compile Include="Services\EmailQueues\EmailQueueServices.cs" />
     <Compile Include="Services\EmailQueues\IEmailQueueServices.cs" />
     <Compile Include="Services\Emails\IEmailServices.cs" />
@@ -98,8 +116,20 @@
     <Compile Include="Services\Employees\EmployeesServices.cs" />
     <Compile Include="Services\HeaderTemplates\HeaderTemplateServices.cs" />
     <Compile Include="Services\HeaderTemplates\IHeaderTemplateServices.cs" />
+    <Compile Include="Services\Media\IMediaFileManager.cs" />
+    <Compile Include="Services\Media\IMediaService.cs" />
+    <Compile Include="Services\Media\MediaFileManager.cs" />
+    <Compile Include="Services\Media\MediaService.cs" />
+    <Compile Include="Services\Menus\IMenuService.cs" />
+    <Compile Include="Services\Menus\MenuService.cs" />
     <Compile Include="Services\Pages\IPageServices.cs" />
     <Compile Include="Services\Pages\PageServices.cs" />
+    <Compile Include="Services\QuestionKits\IQuestionKitService.cs" />
+    <Compile Include="Services\QuestionKits\QuestionKitService.cs" />
+    <Compile Include="Services\QuestionSections\IQuestionSectionService.cs" />
+    <Compile Include="Services\QuestionSections\QuestionSectionService.cs" />
+    <Compile Include="Services\Questions\IQuestionService.cs" />
+    <Compile Include="Services\Questions\QuestionService.cs" />
     <Compile Include="Services\Users\IUserServices.cs" />
     <Compile Include="Services\Users\UserServices.cs" />
   </ItemGroup>
@@ -119,8 +149,13 @@
     <EmbeddedResource Include="Core\EmailTemplate\Alumni.cshtml" />
     <EmbeddedResource Include="Core\EmailTemplate\Contact.cshtml" />
     <EmbeddedResource Include="Core\EmailTemplate\VisitSchool.cshtml" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

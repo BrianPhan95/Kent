@@ -33,7 +33,7 @@ namespace Kent.Business.Core.Models.Pages
 
         public string FooterTemplate { get; set; }
 
-        public PageEnums.PageStatus Status { get; set; }
+        public PageStatus Status { get; set; }
 
         public bool IsHomePage { get; set; }
 

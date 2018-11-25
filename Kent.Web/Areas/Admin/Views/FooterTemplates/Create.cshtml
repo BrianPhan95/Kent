@@ -1,16 +1,15 @@
 ﻿@model Kent.Business.Core.Models.FooterTemplates.FooterTemplateManageModel
 @{
-    ViewBag.Title = "Tạo mới";
+    ViewBag.Title = "Tạo mới header";
 }
 
-<link rel="stylesheet" href="~/Content/Plugins/datatables/dataTables.bootstrap4.css">
+
 
 <div class="row">
     <div class="col-12">
         @using (Html.BeginForm("Create", "FooterTemplates", null, FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            <h2>Footer template</h2>
-
+            <h2>Tạo mới header</h2>
             @Html.EditorForModel(Model)
         }
     </div>
